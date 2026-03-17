@@ -4,21 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Andrés | Finanzas & Inversiones</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,600;1,400;1,500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0f0f0e;
-    --bg2: #161614;
-    --bg3: #1e1e1b;
-    --border: #2a2a26;
-    --accent: #c9a84c;
-    --accent2: #e8c87a;
-    --text: #e8e6df;
-    --muted: #8a8880;
-    --green: #4caf82;
-    --yellow: #d4a820;
-    --red: #e8754a;
-    --card-bg: #181816;
+    --bg: #f8fafc;
+    --bg2: #ffffff;
+    --bg3: #f1f5f9;
+    --border: #e2e8f0;
+    --accent: #1e40af;
+    --accent2: #3b82f6;
+    --accent-light: #dbeafe;
+    --text: #0f172a;
+    --text2: #334155;
+    --muted: #64748b;
+    --green: #059669;
+    --green-light: #d1fae5;
+    --yellow: #d97706;
+    --yellow-light: #fef3c7;
+    --red: #dc2626;
+    --red-light: #fee2e2;
+    --card-bg: #ffffff;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04);
+    --shadow-hover: 0 8px 28px rgba(30,64,175,0.12), 0 4px 10px rgba(0,0,0,0.06);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,227 +34,356 @@
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
     line-height: 1.7;
     min-height: 100vh;
   }
 
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none; z-index: 999; opacity: 0.4;
-  }
-
   .container { max-width: 860px; margin: 0 auto; padding: 0 24px 80px; }
 
-  .hero { padding: 72px 0 48px; border-bottom: 1px solid var(--border); animation: fadeUp 0.8s ease both; }
+  /* ── HERO ── */
+  .hero { padding: 64px 0 48px; border-bottom: 1px solid var(--border); animation: fadeUp 0.7s ease both; }
+
   .hero-eyebrow {
     font-family: 'DM Mono', monospace; font-size: 11px;
     letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 20px;
+    color: var(--accent2); margin-bottom: 20px;
     display: flex; align-items: center; gap: 10px;
   }
-  .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
+  .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 2px; background: var(--accent2); border-radius: 2px; }
+
   h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(36px, 6vw, 56px); font-weight: 700;
-    line-height: 1.1; letter-spacing: -0.02em; color: var(--text); margin-bottom: 24px;
+    font-family: 'Lora', serif;
+    font-size: clamp(34px, 5.5vw, 52px); font-weight: 600;
+    line-height: 1.15; letter-spacing: -0.01em; color: var(--text); margin-bottom: 22px;
   }
   h1 span { color: var(--accent); font-style: italic; }
-  .hero-bio { font-size: 15.5px; color: #aba9a2; max-width: 580px; line-height: 1.85; margin-bottom: 28px; }
+
+  .hero-bio { font-size: 15.5px; color: var(--text2); max-width: 600px; line-height: 1.85; margin-bottom: 28px; }
   .hero-meta { display: flex; gap: 20px; flex-wrap: wrap; font-size: 12.5px; color: var(--muted); }
   .hero-meta span { display: flex; align-items: center; gap: 6px; }
 
+  /* ── QUOTE ── */
   .quote-block {
-    margin: 48px 0; padding: 30px 34px;
-    border-left: 3px solid var(--accent); background: var(--bg2);
-    border-radius: 0 12px 12px 0; animation: fadeUp 0.8s 0.12s ease both;
+    margin: 44px 0; padding: 28px 32px;
+    border-left: 3px solid var(--accent2); background: var(--accent-light);
+    border-radius: 0 12px 12px 0; animation: fadeUp 0.7s 0.1s ease both;
   }
-  .quote-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 16.5px; color: var(--text); line-height: 1.75; margin-bottom: 10px; }
+  .quote-text {
+    font-family: 'Lora', serif; font-style: italic; font-weight: 400;
+    font-size: 16.5px; color: var(--accent); line-height: 1.8; margin-bottom: 8px;
+  }
   .quote-sub { font-size: 12.5px; color: var(--muted); }
 
+  /* ── DISCLAIMER ── */
   .disclaimer {
-    background: #1a1a0f; border: 1px solid #3a3a1a; border-radius: 10px;
-    padding: 14px 18px; font-size: 12.5px; color: #9a9a68;
+    background: #fffbeb; border: 1px solid #fcd34d; border-radius: 10px;
+    padding: 14px 18px; font-size: 12.5px; color: #92400e;
     display: flex; gap: 12px; align-items: flex-start;
-    margin-bottom: 52px; animation: fadeUp 0.8s 0.18s ease both;
+    margin-bottom: 52px; animation: fadeUp 0.7s 0.15s ease both;
   }
   .disclaimer-icon { font-size: 15px; flex-shrink: 0; margin-top: 2px; }
 
-  .section { margin-bottom: 56px; animation: fadeUp 0.7s 0.22s ease both; }
+  /* ── SECTIONS ── */
+  .section { margin-bottom: 52px; animation: fadeUp 0.7s 0.2s ease both; }
   .section-header {
     display: flex; align-items: center; gap: 12px;
-    margin-bottom: 26px; padding-bottom: 14px; border-bottom: 1px solid var(--border);
+    margin-bottom: 24px; padding-bottom: 14px; border-bottom: 2px solid var(--border);
   }
-  .section-title { font-family: 'Playfair Display', serif; font-size: 25px; font-weight: 700; color: var(--text); }
+  .section-title { font-size: 20px; font-weight: 700; color: var(--text); letter-spacing: -0.01em; }
   .section-badge {
-    font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 0.15em;
-    text-transform: uppercase; background: var(--bg3); border: 1px solid var(--border);
-    color: var(--muted); padding: 3px 10px; border-radius: 20px; margin-left: auto;
+    font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em;
+    text-transform: uppercase; background: var(--accent-light);
+    color: var(--accent); padding: 3px 10px; border-radius: 20px; margin-left: auto;
+    border: 1px solid #bfdbfe;
   }
 
-  /* PROFILE BUCKETS */
+  /* ── PROFILE BUCKETS ── */
   .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
   .profile-card {
     background: var(--card-bg); border: 1px solid var(--border);
-    border-radius: 13px; padding: 20px;
+    border-radius: 12px; padding: 20px;
     transition: all 0.2s ease; position: relative; overflow: hidden;
+    box-shadow: var(--shadow);
   }
-  .profile-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 13px 13px 0 0; }
+  .profile-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 12px 12px 0 0; }
   .profile-card.conservative::before { background: var(--green); }
   .profile-card.moderate::before     { background: var(--yellow); }
   .profile-card.growth::before       { background: var(--red); }
-  .profile-card:hover { transform: translateY(-2px); border-color: rgba(201,168,76,0.3); }
+  .profile-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
   .profile-dot { width: 9px; height: 9px; border-radius: 50%; margin-bottom: 10px; }
   .conservative .profile-dot { background: var(--green); }
   .moderate .profile-dot     { background: var(--yellow); }
   .growth .profile-dot       { background: var(--red); }
-  .profile-label { font-size: 10px; font-family: 'DM Mono', monospace; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
-  .profile-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 7px; line-height: 1.4; }
+  .profile-label { font-size: 11px; font-weight: 600; color: var(--muted); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .profile-title { font-size: 13.5px; font-weight: 600; color: var(--text); margin-bottom: 7px; line-height: 1.4; }
   .profile-platforms { font-size: 11.5px; color: var(--muted); line-height: 1.65; }
 
-  /* PLATFORM CARDS */
+  /* ── PLATFORM CARDS ── */
   .platforms-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-
   .platform-card {
     background: var(--card-bg); border: 1px solid var(--border);
-    border-radius: 16px; padding: 22px 22px 20px;
-    transition: all 0.25s ease;
-    position: relative; overflow: hidden;
+    border-radius: 14px; padding: 22px;
+    transition: all 0.25s ease; position: relative; overflow: hidden;
+    box-shadow: var(--shadow);
   }
   .platform-card::before {
-    content: ''; position: absolute;
-    top: 0; left: 0; bottom: 0; width: 3px;
-    border-radius: 16px 0 0 16px;
+    content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
+    border-radius: 14px 0 0 14px;
   }
-  .platform-card.risk-green::before  { background: linear-gradient(180deg, var(--green), rgba(76,175,130,0.15)); }
-  .platform-card.risk-yellow::before { background: linear-gradient(180deg, var(--yellow), rgba(212,168,32,0.15)); }
-  .platform-card.risk-red::before    { background: linear-gradient(180deg, var(--red), rgba(232,117,74,0.15)); }
-
-  .platform-card.risk-green:hover  { border-color: rgba(76,175,130,0.32);  transform: translateY(-3px); box-shadow: 0 10px 36px rgba(76,175,130,0.06); }
-  .platform-card.risk-yellow:hover { border-color: rgba(212,168,32,0.32);  transform: translateY(-3px); box-shadow: 0 10px 36px rgba(212,168,32,0.06); }
-  .platform-card.risk-red:hover    { border-color: rgba(232,117,74,0.32);  transform: translateY(-3px); box-shadow: 0 10px 36px rgba(232,117,74,0.06); }
+  .platform-card.risk-green::before  { background: linear-gradient(180deg, var(--green), rgba(5,150,105,0.15)); }
+  .platform-card.risk-yellow::before { background: linear-gradient(180deg, var(--yellow), rgba(217,119,6,0.15)); }
+  .platform-card.risk-red::before    { background: linear-gradient(180deg, var(--red), rgba(220,38,38,0.15)); }
+  .platform-card.risk-green:hover  { border-color: rgba(5,150,105,0.3);  transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+  .platform-card.risk-yellow:hover { border-color: rgba(217,119,6,0.3);  transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+  .platform-card.risk-red:hover    { border-color: rgba(220,38,38,0.3);  transform: translateY(-3px); box-shadow: var(--shadow-hover); }
 
   .card-header { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; padding-left: 8px; }
-
   .platform-logo {
-    width: 50px; height: 50px; border-radius: 13px;
-    background: #ffffff; border: 1px solid rgba(255,255,255,0.1);
+    width: 50px; height: 50px; border-radius: 12px;
+    background: #fff; border: 1px solid var(--border);
     display: flex; align-items: center; justify-content: center;
-    overflow: hidden; flex-shrink: 0;
+    overflow: hidden; flex-shrink: 0; box-shadow: var(--shadow);
   }
   .platform-logo img { width: 40px; height: 40px; object-fit: contain; display: block; }
-  .logo-fallback { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 20px; line-height: 1; }
+  .logo-fallback { font-family: 'Lora', serif; font-weight: 600; font-size: 20px; line-height: 1; }
 
   .card-header-info { flex: 1; min-width: 0; }
   .platform-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px; font-weight: 700; color: var(--text);
+    font-size: 18px; font-weight: 700; color: var(--text);
     display: flex; align-items: center; gap: 7px; flex-wrap: wrap; line-height: 1.2;
   }
   .risk-badge {
     font-family: 'DM Mono', monospace; font-size: 8.5px;
     letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 2px 7px; border-radius: 20px; white-space: nowrap;
+    padding: 2px 7px; border-radius: 20px; white-space: nowrap; font-weight: 500;
   }
-  .risk-badge.green  { background: rgba(76,175,130,0.1);  color: var(--green);  border: 1px solid rgba(76,175,130,0.22); }
-  .risk-badge.yellow { background: rgba(212,168,32,0.1);  color: var(--yellow); border: 1px solid rgba(212,168,32,0.22); }
-  .risk-badge.red    { background: rgba(232,117,74,0.1);  color: var(--red);    border: 1px solid rgba(232,117,74,0.22); }
-
+  .risk-badge.green  { background: var(--green-light);  color: var(--green);  border: 1px solid rgba(5,150,105,0.2); }
+  .risk-badge.yellow { background: var(--yellow-light); color: var(--yellow); border: 1px solid rgba(217,119,6,0.2); }
+  .risk-badge.red    { background: var(--red-light);    color: var(--red);    border: 1px solid rgba(220,38,38,0.2); }
   .featured-badge {
     font-size: 8.5px; font-family: 'DM Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase;
-    background: rgba(201,168,76,0.1); color: var(--accent);
-    border: 1px solid rgba(201,168,76,0.22); border-radius: 4px; padding: 2px 6px;
+    background: var(--accent-light); color: var(--accent);
+    border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 6px; font-weight: 500;
   }
   .platform-category { font-size: 11.5px; color: var(--muted); margin-top: 3px; }
 
   .platform-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 12px; padding-left: 8px; }
   .tag-pill {
-    font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 0.06em;
+    font-size: 10px; font-weight: 500;
     background: var(--bg3); border: 1px solid var(--border);
-    color: var(--muted); padding: 2px 8px; border-radius: 20px;
+    color: var(--text2); padding: 2px 8px; border-radius: 20px;
   }
 
+  /* Quote inside card — now uses Lora italic which is clean and readable */
   .platform-why {
-    font-size: 13px; color: #9a9890; line-height: 1.65;
-    border-top: 1px solid var(--border); padding: 12px 8px 12px;
-    font-style: italic; margin-bottom: 12px;
+    font-family: 'Lora', serif; font-style: italic; font-weight: 400;
+    font-size: 13px; color: var(--muted); line-height: 1.7;
+    border-top: 1px solid var(--border); padding: 12px 8px;
+    margin-bottom: 12px;
   }
+
   .platform-bonus {
     background: var(--bg3); border-radius: 8px; padding: 10px 12px;
-    margin: 0 0 10px 8px; font-size: 12.5px; color: var(--text);
+    margin: 0 0 8px 8px; font-size: 12.5px; color: var(--text2);
   }
-  .bonus-label { color: var(--muted); font-size: 10px; margin-bottom: 2px; font-family: 'DM Mono', monospace; letter-spacing: 0.05em; }
+  .bonus-label { color: var(--green); font-size: 10px; margin-bottom: 2px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* Min investment box — tinted by risk color */
+  .min-invest {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 8px; padding: 10px 12px;
+    margin: 0 0 8px 8px; font-size: 12.5px; font-weight: 500;
+    display: flex; align-items: center; gap: 8px;
+    color: var(--text2);
+  }
+  .min-invest-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; color: var(--muted); }
+  .risk-green .min-invest  { background: var(--bg3); color: var(--text2); border-color: var(--border); }
+  .risk-yellow .min-invest { background: var(--bg3); color: var(--text2); border-color: var(--border); }
+  .risk-red .min-invest    { background: var(--bg3); color: var(--text2); border-color: var(--border); }
+  .min-invest-inner { display: flex; flex-direction: column; }
 
   .code-block {
     background: var(--bg3); border: 1px solid var(--border);
     border-radius: 8px; padding: 9px 12px;
     display: flex; justify-content: space-between; align-items: center; gap: 10px;
-    margin: 0 0 6px 8px;
+    margin: 0 0 8px 8px;
   }
-  .code-label { font-size: 10px; color: var(--muted); font-family: 'DM Mono', monospace; }
-  .code-value { font-family: 'DM Mono', monospace; font-size: 13.5px; font-weight: 500; color: var(--accent2); letter-spacing: 0.04em; }
+  .code-label { font-size: 10px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+  .code-value { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; color: var(--accent); letter-spacing: 0.04em; }
   .copy-btn {
-    background: none; border: 1px solid var(--border); color: var(--muted);
-    border-radius: 6px; padding: 3px 9px; font-size: 10px;
-    font-family: 'DM Mono', monospace; cursor: pointer; transition: all 0.2s; white-space: nowrap;
+    background: white; border: 1px solid var(--border); color: var(--muted);
+    border-radius: 6px; padding: 4px 10px; font-size: 10px; font-weight: 500;
+    cursor: pointer; transition: all 0.2s; white-space: nowrap;
   }
-  .copy-btn:hover { border-color: var(--accent); color: var(--accent); }
-  .copy-btn.copied { color: var(--green); border-color: var(--green); }
+  .copy-btn:hover { border-color: var(--accent2); color: var(--accent); background: var(--accent-light); }
+  .copy-btn.copied { color: var(--green); border-color: var(--green); background: var(--green-light); }
 
-  /* TOOLS */
-  .tools-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .visit-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--accent); color: white;
+    border: none; border-radius: 7px; padding: 8px 14px;
+    font-size: 12px; font-weight: 600; cursor: pointer;
+    text-decoration: none; transition: all 0.2s;
+    margin-left: 8px; margin-top: 4px;
+  }
+  .visit-btn:hover { background: var(--accent2); transform: translateY(-1px); }
+
+  /* ── TOOLS ── */
+  .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
   .tool-card {
     background: var(--card-bg); border: 1px solid var(--border);
-    border-radius: 13px; padding: 20px; transition: all 0.2s;
+    border-radius: 12px; padding: 20px; transition: all 0.2s;
+    box-shadow: var(--shadow);
   }
-  .tool-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-2px); }
+  .tool-card:hover { border-color: var(--accent2); transform: translateY(-2px); box-shadow: var(--shadow-hover); }
   .tool-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
   .tool-logo {
     width: 42px; height: 42px; border-radius: 10px;
-    background: #ffffff; border: 1px solid rgba(0,0,0,0.08);
-    display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;
+    background: #fff; border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; flex-shrink: 0; box-shadow: var(--shadow);
   }
   .tool-logo img { width: 32px; height: 32px; object-fit: contain; }
-  .tool-name { font-size: 16px; font-weight: 600; color: var(--text); }
+  .tool-name { font-size: 15px; font-weight: 700; color: var(--text); }
+  .tool-market { font-size: 11px; color: var(--accent2); font-weight: 500; margin-top: 2px; }
   .tool-desc { font-size: 12.5px; color: var(--muted); margin-bottom: 12px; line-height: 1.55; }
+  .tool-block {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 8px; padding: 9px 12px; margin-bottom: 8px;
+  }
+  .tool-block-label { font-size: 10px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; }
+  .tool-block.beneficio .tool-block-label { color: var(--green); }
+  .tool-block-value { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; color: var(--accent); }
 
-  /* SOCIAL */
+  /* ── SOCIAL ── */
   .social-grid { display: flex; gap: 10px; flex-wrap: wrap; }
   .social-link {
     display: flex; align-items: center; gap: 8px;
     background: var(--card-bg); border: 1px solid var(--border);
-    border-radius: 10px; padding: 11px 16px;
-    text-decoration: none; color: var(--text); font-size: 13.5px; transition: all 0.2s;
+    border-radius: 10px; padding: 11px 18px;
+    text-decoration: none; color: var(--text2); font-size: 13.5px;
+    font-weight: 500; transition: all 0.2s; box-shadow: var(--shadow);
   }
-  .social-link:hover { border-color: var(--accent); color: var(--accent); }
+  .social-link:hover { border-color: var(--accent2); color: var(--accent); box-shadow: var(--shadow-hover); transform: translateY(-1px); }
 
-  /* CONTACT */
+  /* ── CONTACT ── */
   .contact-block {
-    background: linear-gradient(135deg, var(--bg2), var(--bg3));
-    border: 1px solid var(--border); border-radius: 16px;
-    padding: 36px; text-align: center; margin-top: 48px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+    border-radius: 16px; padding: 40px; text-align: center; margin-top: 48px;
+    box-shadow: var(--shadow-md);
   }
-  .contact-block h3 { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 10px; }
-  .contact-block p { font-size: 14px; color: var(--muted); margin-bottom: 20px; max-width: 460px; margin-left: auto; margin-right: auto; line-height: 1.7; }
-  .contact-email {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--accent); color: #0f0f0e;
-    font-weight: 600; font-size: 14px; padding: 12px 26px;
-    border-radius: 8px; text-decoration: none; transition: all 0.2s;
-  }
-  .contact-email:hover { background: var(--accent2); }
+  .contact-block h3 { font-size: 22px; font-weight: 700; color: white; margin-bottom: 10px; }
+  .contact-block p { font-size: 14px; color: rgba(255,255,255,0.85); margin-bottom: 24px; max-width: 460px; margin-left: auto; margin-right: auto; line-height: 1.7; }
 
+  .contact-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+  .contact-email-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: white; color: var(--accent);
+    font-weight: 700; font-size: 14px; padding: 13px 24px;
+    border-radius: 8px; text-decoration: none; transition: all 0.2s;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  }
+  .contact-email-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+
+  .contact-copy-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.15); color: white;
+    font-weight: 600; font-size: 14px; padding: 13px 20px;
+    border-radius: 8px; border: 1.5px solid rgba(255,255,255,0.4);
+    cursor: pointer; transition: all 0.2s;
+  }
+  .contact-copy-btn:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
+  .contact-copy-btn.copied { background: rgba(255,255,255,0.3); border-color: white; }
+
+  /* ── ANIMATIONS ── */
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(18px); }
+    from { opacity: 0; transform: translateY(16px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  @media (max-width: 620px) {
+  @media (max-width: 700px) {
     .platforms-grid, .tools-grid, .profile-grid { grid-template-columns: 1fr; }
-    h1 { font-size: 32px; }
+    h1 { font-size: 30px; }
+    .hero { padding: 44px 0 36px; }
+  }
+
+  /* ── MOBILE FINE-TUNING (≤480px) ── */
+  @media (max-width: 480px) {
+    .container { padding: 0 16px 60px; }
+
+    /* Hero */
+    h1 { font-size: 26px; }
+    .hero { padding: 36px 0 28px; }
+    .hero-bio { font-size: 14px; }
+    .hero-meta { flex-direction: column; gap: 8px; }
+
+    /* Quote */
+    .quote-block { padding: 20px 20px; }
+    .quote-text { font-size: 15px; }
+
+    /* Nav flag — smaller and less intrusive */
+    .nav-flag { width: 30px; height: 30px; font-size: 14px; top: 16px; right: 16px; }
+
+    /* Profile cards */
+    .profile-card { padding: 16px; }
+    .profile-title { font-size: 13px; }
+
+    /* Platform cards — fix header compression */
+    .platform-card { padding: 16px 14px; }
+    .card-header { gap: 10px; padding-left: 4px; flex-wrap: nowrap; align-items: flex-start; }
+    .platform-logo { width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0; }
+    .platform-logo img { width: 34px; height: 34px; }
+
+    /* Name + badges wrap gracefully */
+    .platform-name { font-size: 16px; gap: 5px; }
+    .risk-badge { font-size: 8px; padding: 2px 6px; }
+    .featured-badge { font-size: 8px; padding: 2px 5px; }
+    .platform-category { font-size: 11px; }
+
+    /* Tags */
+    .platform-tags { padding-left: 4px; gap: 4px; }
+    .tag-pill { font-size: 9.5px; padding: 2px 7px; }
+
+    /* Why quote */
+    .platform-why { font-size: 12.5px; padding: 10px 4px; }
+
+    /* Bonus / min invest / code blocks */
+    .platform-bonus { margin-left: 4px; font-size: 12px; }
+    .min-invest { margin-left: 4px; }
+    .code-block { margin-left: 4px; padding: 8px 10px; }
+    .code-value { font-size: 12px; }
+
+    /* Visit button — full width on mobile */
+    .visit-btn {
+      display: flex; justify-content: center;
+      margin-left: 4px; margin-top: 8px;
+      width: calc(100% - 4px);
+      padding: 10px 14px;
+    }
+
+    /* Tools */
+    .tool-card { padding: 16px; }
+    .tool-name { font-size: 14px; }
+    .tool-market { font-size: 10.5px; }
+    .tool-desc { font-size: 12px; }
+
+    /* Section headers */
+    .section-header { flex-wrap: wrap; gap: 8px; }
+    .section-badge { margin-left: 0; }
+    .section-title { font-size: 18px; }
+
+    /* Social links */
+    .social-grid { flex-direction: column; }
+    .social-link { width: 100%; justify-content: center; }
+
+    /* Contact block */
+    .contact-block { padding: 28px 20px; }
+    .contact-block h3 { font-size: 19px; }
+    .contact-actions { flex-direction: column; align-items: center; }
+    .contact-email-btn, .contact-copy-btn { width: 100%; justify-content: center; }
   }
 
   ::-webkit-scrollbar { width: 5px; }
@@ -255,10 +392,10 @@
 
   .nav-flag {
     position: fixed; top: 24px; right: 24px;
-    background: var(--bg2); border: 1px solid var(--border);
-    border-radius: 50%; width: 34px; height: 34px;
+    background: white; border: 1px solid var(--border);
+    border-radius: 50%; width: 36px; height: 36px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 16px; z-index: 100;
+    font-size: 16px; z-index: 100; box-shadow: var(--shadow);
   }
 </style>
 </head>
@@ -273,7 +410,7 @@
     <div class="hero-eyebrow">Explorador Financiero · Medellín, Colombia</div>
     <h1>Andrés<br><span>Finanzas & Inversiones</span></h1>
     <p class="hero-bio">
-      Llevo varios años trabajando en análisis financiero y contabilidad en sectores como finanzas, bienes raíces, consultoría y servicios profesionales. Esta página nació porque vi que muchas personas cercanas a mí no sabían por dónde empezar a invertir — y yo sí. Las plataformas que encuentras aquí son las que yo mismo uso y he investigado. Mi objetivo es ayudarte a desarrollar hábitos de inversión inteligentes y simplificar tus finanzas.
+      Llevo varios años trabajando en análisis financiero y contabilidad en sectores como finanzas, bienes raíces, consultoría y servicios profesionales. Esta página nació porque vi que muchas personas cercanas a mí no sabían por dónde empezar a invertir. Las plataformas que encuentras aquí son las que yo mismo uso, he usado y he investigado. Mi objetivo es ayudarte a desarrollar hábitos de inversión inteligentes, simplificar tus finanzas y empezar con algunos beneficios de entrada.
     </p>
     <div class="hero-meta">
       <span>📍 Medellín, Colombia</span>
@@ -303,19 +440,19 @@
     <div class="profile-grid">
       <div class="profile-card conservative">
         <div class="profile-dot"></div>
-        <div class="profile-label">🟢 Conservador</div>
+        <div class="profile-label">Conservador</div>
         <div class="profile-title">Quiero empezar con algo seguro y sencillo</div>
         <div class="profile-platforms">Tyba · Littio (ahorro en dólares)</div>
       </div>
       <div class="profile-card moderate">
         <div class="profile-dot"></div>
-        <div class="profile-label">🟡 Moderado</div>
+        <div class="profile-label">Moderado</div>
         <div class="profile-title">Quiero diversificar con ETFs y copy trading</div>
         <div class="profile-platforms">Insights · eToro</div>
       </div>
       <div class="profile-card growth">
         <div class="profile-dot"></div>
-        <div class="profile-label">🔴 Crecimiento</div>
+        <div class="profile-label">Crecimiento</div>
         <div class="profile-title">Quiero acciones y activos de alto potencial</div>
         <div class="profile-platforms">Trii · Hapi · XTB · Binance</div>
       </div>
@@ -334,24 +471,25 @@
       <div class="platform-card risk-red">
         <div class="card-header">
           <div class="platform-logo">
-            <img src="https://logo.clearbit.com/trii.com.co" alt="Trii logo"
+            <img src="https://logo.clearbit.com/trii.com.co" alt="Trii"
                  onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'logo-fallback\' style=\'color:#1a7c3e\'>T</span>'">
           </div>
           <div class="card-header-info">
-            <div class="platform-name">
-              Trii
-              <span class="risk-badge red">🔴 Crecimiento</span>
-              <span class="featured-badge">⭐ Favorita</span>
-            </div>
+            <div class="platform-name">Trii <span class="risk-badge red">🔴 Crecimiento</span> <span class="featured-badge">⭐ Favorita</span></div>
             <div class="platform-category">Acciones Colombianas · BVC</div>
           </div>
         </div>
         <div class="platform-tags">
           <span class="tag-pill">🇨🇴 Colombia</span>
-          <span class="tag-pill">Acciones BVC</span>
-          <span class="tag-pill">Desde $5.000 COP</span>
+          <span class="tag-pill">Mercado Global Colombiano</span>
         </div>
-        <div class="platform-why">"La uso para acciones colombianas. Es la más fácil de abrir y tiene las comisiones más bajas del mercado local. Puedes empezar desde $5,000 COP — el precio de un café."</div>
+        <div class="platform-why">"La uso para acciones colombianas. Es la más fácil de abrir y tiene las comisiones más bajas del mercado local."</div>
+        <div class="min-invest">
+          <div class="min-invest-inner">
+            <div class="min-invest-label">💰 Monto mínimo recomendado</div>
+            <div>$1,000,000 COP — Ideal para cubrir costos operativos</div>
+          </div>
+        </div>
         <div class="platform-bonus">
           <div class="bonus-label">Bono de bienvenida</div>
           <div>$5,000 COP en tu primera inversión</div>
@@ -360,20 +498,18 @@
           <div><div class="code-label">Código de referido</div><div class="code-value">aa_4m59</div></div>
           <button class="copy-btn" onclick="copyCode(this,'aa_4m59')">Copiar</button>
         </div>
+        <a href="https://trii.co/?referrals=aa_4m59&name=Andr%C3%A9s" target="_blank" class="visit-btn">Abrir cuenta →</a>
       </div>
 
       <!-- HAPI 🔴 -->
       <div class="platform-card risk-red">
         <div class="card-header">
           <div class="platform-logo">
-            <img src="https://logo.clearbit.com/hapi.com" alt="Hapi logo"
+            <img src="https://logo.clearbit.com/hapi.com" alt="Hapi"
                  onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'logo-fallback\' style=\'color:#1a1a9e\'>H</span>'">
           </div>
           <div class="card-header-info">
-            <div class="platform-name">
-              Hapi
-              <span class="risk-badge red">🔴 Crecimiento</span>
-            </div>
+            <div class="platform-name">Hapi <span class="risk-badge red">🔴 Crecimiento</span></div>
             <div class="platform-category">Acciones Internacionales · Criptomonedas</div>
           </div>
         </div>
@@ -383,6 +519,12 @@
           <span class="tag-pill">Cripto</span>
         </div>
         <div class="platform-why">"Mi plataforma para el mercado americano. Sin comisiones y sin monto mínimo. Perfecta para comprar fracciones de acciones del S&P 500 desde Colombia."</div>
+        <div class="min-invest">
+          <div class="min-invest-inner">
+            <div class="min-invest-label">💰 Monto mínimo recomendado</div>
+            <div>$200 USD — Ideal para cubrir costos operativos</div>
+          </div>
+        </div>
         <div class="platform-bonus">
           <div class="bonus-label">Bono de bienvenida</div>
           <div>$10 USD al abrir tu cuenta</div>
@@ -391,20 +533,18 @@
           <div><div class="code-label">Código de referido</div><div class="code-value">ANDALA21</div></div>
           <button class="copy-btn" onclick="copyCode(this,'ANDALA21')">Copiar</button>
         </div>
+        <a href="https://app.hapi.trade/rewards?code=ANDALA21" target="_blank" class="visit-btn">Abrir cuenta →</a>
       </div>
 
       <!-- XTB 🔴 -->
       <div class="platform-card risk-red">
         <div class="card-header">
           <div class="platform-logo">
-            <img src="https://logo.clearbit.com/xtb.com" alt="XTB logo"
+            <img src="https://logo.clearbit.com/xtb.com" alt="XTB"
                  onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'logo-fallback\' style=\'color:#e60000\'>X</span>'">
           </div>
           <div class="card-header-info">
-            <div class="platform-name">
-              XTB
-              <span class="risk-badge red">🔴 Crecimiento</span>
-            </div>
+            <div class="platform-name">XTB <span class="risk-badge red">🔴 Crecimiento</span></div>
             <div class="platform-category">Acciones Internacionales · ETFs · Sin comisión</div>
           </div>
         </div>
@@ -413,28 +553,28 @@
           <span class="tag-pill">Regulado UE</span>
           <span class="tag-pill">Miles de activos</span>
         </div>
-        <div class="platform-why">"La mejor plataforma para invertir en acciones internacionales sin comisiones. Regulada en Europa, acceso a miles de activos e interfaz profesional. Ideal para un portafolio global serio."</div>
-        <div class="platform-bonus">
-          <div class="bonus-label">Beneficio</div>
-          <div>$5 USD para suscripción premium</div>
+        <div class="platform-why">"La mejor plataforma para invertir en acciones internacionales sin comisiones. Regulada en Europa, acceso a miles de activos e interfaz profesional."</div>
+        <div class="min-invest">
+          <div class="min-invest-inner">
+            <div class="min-invest-label">💰 Monto mínimo recomendado</div>
+            <div>$50 USD — sin comisión hasta USD 100.000/mes</div>
+          </div>
         </div>
         <div class="code-block">
           <div><div class="code-label">Acceso</div><div class="code-value">Disponible en Colombia</div></div>
         </div>
+        <a href="https://www.xtb.com" target="_blank" class="visit-btn">Abrir cuenta →</a>
       </div>
 
       <!-- BINANCE 🔴 -->
       <div class="platform-card risk-red">
         <div class="card-header">
           <div class="platform-logo">
-            <img src="https://logo.clearbit.com/binance.com" alt="Binance logo"
+            <img src="https://logo.clearbit.com/binance.com" alt="Binance"
                  onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'logo-fallback\' style=\'color:#F0B90B\'>₿</span>'">
           </div>
           <div class="card-header-info">
-            <div class="platform-name">
-              Binance
-              <span class="risk-badge red">🔴 Crecimiento</span>
-            </div>
+            <div class="platform-name">Binance <span class="risk-badge red">🔴 Crecimiento</span></div>
             <div class="platform-category">Criptomonedas · Exchange #1 Mundial</div>
           </div>
         </div>
@@ -444,6 +584,12 @@
           <span class="tag-pill">Global</span>
         </div>
         <div class="platform-why">"Para exposición a criptomonedas con las comisiones más bajas. Si eres nuevo en cripto, empieza solo con spot antes de explorar staking o futuros."</div>
+        <div class="min-invest">
+          <div class="min-invest-inner">
+            <div class="min-invest-label">💰 Monto mínimo recomendado</div>
+            <div>$10 USD — comisión spot: 0.10% por operación</div>
+          </div>
+        </div>
         <div class="platform-bonus">
           <div class="bonus-label">Beneficio</div>
           <div>50% descuento en comisiones · Hasta $1,000 en reembolsos</div>
@@ -458,20 +604,18 @@
             <button class="copy-btn" onclick="copyCode(this,'CPA_00A0363UER')">Copiar</button>
           </div>
         </div>
+        <a href="https://accounts.binance.com/en/register?ref=94547225" target="_blank" class="visit-btn">Abrir cuenta →</a>
       </div>
 
       <!-- INSIGHTS 🟡 -->
       <div class="platform-card risk-yellow">
         <div class="card-header">
           <div class="platform-logo">
-            <img src="https://logo.clearbit.com/insightsinvestment.com" alt="Insights logo"
+            <img src="https://logo.clearbit.com/insightswm.com" alt="Insights"
                  onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'logo-fallback\' style=\'color:#0050FF\'>I</span>'">
           </div>
           <div class="card-header-info">
-            <div class="platform-name">
-              Insights
-              <span class="risk-badge yellow">🟡 Moderado</span>
-            </div>
+            <div class="platform-name">Insights <span class="risk-badge yellow">🟡 Moderado</span></div>
             <div class="platform-category">ETFs Temáticos · Fondos Internacionales</div>
           </div>
         </div>
@@ -481,6 +625,12 @@
           <span class="tag-pill">100% Digital</span>
         </div>
         <div class="platform-why">"Regulada y asegurada por el SIPC de EE.UU. La uso para ETFs temáticos — tecnología, energía limpia, salud. Ideal para diversificar con una sola inversión."</div>
+        <div class="min-invest">
+          <div class="min-invest-inner">
+            <div class="min-invest-label">💰 Monto mínimo recomendado</div>
+            <div>$10 USD — mínimo requerido por la plataforma</div>
+          </div>
+        </div>
         <div class="platform-bonus">
           <div class="bonus-label">Bono de bienvenida</div>
           <div>$10 USD al invertir</div>
@@ -489,20 +639,18 @@
           <div><div class="code-label">Código de referido</div><div class="code-value">AA9737</div></div>
           <button class="copy-btn" onclick="copyCode(this,'AA9737')">Copiar</button>
         </div>
+        <a href="https://www.insightswm.com/" target="_blank" class="visit-btn">Abrir cuenta →</a>
       </div>
 
       <!-- ETORO 🟡 -->
       <div class="platform-card risk-yellow">
         <div class="card-header">
           <div class="platform-logo">
-            <img src="https://logo.clearbit.com/etoro.com" alt="eToro logo"
+            <img src="https://logo.clearbit.com/etoro.com" alt="eToro"
                  onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'logo-fallback\' style=\'color:#6EC834\'>e</span>'">
           </div>
           <div class="card-header-info">
-            <div class="platform-name">
-              eToro
-              <span class="risk-badge yellow">🟡 Moderado</span>
-            </div>
+            <div class="platform-name">eToro <span class="risk-badge yellow">🟡 Moderado</span></div>
             <div class="platform-category">Acciones · ETFs · Copy Trading</div>
           </div>
         </div>
@@ -511,7 +659,13 @@
           <span class="tag-pill">Copy Trading</span>
           <span class="tag-pill">Desde $100 USD</span>
         </div>
-        <div class="platform-why">"Interesante por el copy trading — copias automáticamente a traders con track record comprobado. Útil si quieres mercados internacionales sin dedicarle mucho tiempo al análisis."</div>
+        <div class="platform-why">"Interesante por el copy trading — copias automáticamente a traders con track record comprobado. Útil si quieres mercados internacionales sin dedicarle mucho tiempo."</div>
+        <div class="min-invest">
+          <div class="min-invest-inner">
+            <div class="min-invest-label">💰 Monto mínimo recomendado</div>
+            <div>$200 USD — mínimo requerido para copy trading</div>
+          </div>
+        </div>
         <div class="platform-bonus">
           <div class="bonus-label">Mínimo de inversión</div>
           <div>Desde $100 USD</div>
@@ -519,21 +673,19 @@
         <div class="code-block">
           <div><div class="code-label">Acceso</div><div class="code-value">Disponible en Colombia</div></div>
         </div>
+        <a href="https://www.etoro.com" target="_blank" class="visit-btn">Abrir cuenta →</a>
       </div>
 
       <!-- TYBA 🟢 -->
       <div class="platform-card risk-green">
         <div class="card-header">
           <div class="platform-logo">
-            <img src="https://logo.clearbit.com/tyba.com.co" alt="Tyba logo"
+            <img src="https://logo.clearbit.com/tyba.com.co" alt="Tyba"
                  onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'logo-fallback\' style=\'color:#00B2A9\'>T</span>'">
           </div>
           <div class="card-header-info">
-            <div class="platform-name">
-              Tyba
-              <span class="risk-badge green">🟢 Conservador</span>
-            </div>
-            <div class="platform-category">Fondos de Inversión Colectiva · Powered by BCP</div>
+            <div class="platform-name">Tyba <span class="risk-badge green">🟢 Conservador</span></div>
+            <div class="platform-category">Fondos de Inversión Colectiva · Powered by Credicorp Capital</div>
           </div>
         </div>
         <div class="platform-tags">
@@ -542,6 +694,12 @@
           <span class="tag-pill">Bajo riesgo</span>
         </div>
         <div class="platform-why">"Buena opción si quieres algo más conservador que acciones individuales. Fondos de inversión colectiva fáciles de entender, para diferentes perfiles de riesgo."</div>
+        <div class="min-invest">
+          <div class="min-invest-inner">
+            <div class="min-invest-label">💰 Monto mínimo recomendado</div>
+            <div>$10,000 COP — mínimo requerido por la plataforma</div>
+          </div>
+        </div>
         <div class="platform-bonus">
           <div class="bonus-label">Bono de bienvenida</div>
           <div>$10,000 Tybs en tu primera inversión</div>
@@ -550,29 +708,33 @@
           <div><div class="code-label">Código de referido</div><div class="code-value">AAL985239</div></div>
           <button class="copy-btn" onclick="copyCode(this,'AAL985239')">Copiar</button>
         </div>
+        <a href="https://tyba.com.co/" target="_blank" class="visit-btn">Abrir cuenta →</a>
       </div>
 
       <!-- LITTIO 🟢 -->
       <div class="platform-card risk-green">
         <div class="card-header">
           <div class="platform-logo">
-            <img src="https://logo.clearbit.com/littio.com" alt="Littio logo"
+            <img src="https://logo.clearbit.com/littio.com" alt="Littio"
                  onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'logo-fallback\' style=\'color:#7B2FBE\'>L</span>'">
           </div>
           <div class="card-header-info">
-            <div class="platform-name">
-              Littio
-              <span class="risk-badge green">🟢 Conservador</span>
-            </div>
-            <div class="platform-category">Ahorro en Dólares Digitales · Tarjeta Internacional</div>
+            <div class="platform-name">Littio <span class="risk-badge green">🟢 Conservador</span></div>
+            <div class="platform-category">Ahorro en Dólares Digitales · Tarjeta</div>
           </div>
         </div>
         <div class="platform-tags">
           <span class="tag-pill">💵 USDC</span>
           <span class="tag-pill">Dolarización</span>
-          <span class="tag-pill">Tarjeta int'l</span>
+          <span class="tag-pill">Tarjeta</span>
         </div>
-        <div class="platform-why">"La uso para protegerme de la devaluación del peso. Dólares digitales (USDC) con tarjeta para gastos en el exterior. Para quienes quieren dolarizar sus ahorros sin complicaciones."</div>
+        <div class="platform-why">"La uso para protegerme de la devaluación del peso. Dólares digitales (USDC) con tarjeta para gastos. Para quienes quieren dolarizar sus ahorros sin complicaciones."</div>
+        <div class="min-invest">
+          <div class="min-invest-inner">
+            <div class="min-invest-label">💰 Monto mínimo recomendado</div>
+            <div>$10 USD — depósito mínimo requerido</div>
+          </div>
+        </div>
         <div class="platform-bonus">
           <div class="bonus-label">Bono de bienvenida</div>
           <div>$10 USDC al depositar</div>
@@ -581,6 +743,7 @@
           <div><div class="code-label">Código de referido</div><div class="code-value">XMGC</div></div>
           <button class="copy-btn" onclick="copyCode(this,'XMGC')">Copiar</button>
         </div>
+        <a href="https://www.littio.com" target="_blank" class="visit-btn">Abrir cuenta →</a>
       </div>
 
     </div>
@@ -593,32 +756,75 @@
       <span class="section-badge">Para ir más profundo</span>
     </div>
     <div class="tools-grid">
+
+      <!-- FINBOX -->
       <div class="tool-card">
         <div class="tool-header">
           <div class="tool-logo">
             <img src="https://logo.clearbit.com/finbox.com" alt="Finbox"
                  onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-weight:700;color:#1a3cff;font-size:13px\'>FB</span>'">
           </div>
-          <div class="tool-name">Finbox</div>
+          <div>
+            <div class="tool-name">Finbox <span style="font-size:11px;font-weight:500;color:var(--muted);">Starter</span></div>
+            <div class="tool-market">🌎 EE.UU. · Posible acceso internacional</div>
+          </div>
         </div>
         <div class="tool-desc">Análisis financiero de empresas. La uso para evaluar fundamentales antes de tomar decisiones de inversión.</div>
-        <div class="code-block">
-          <div><div class="code-label">Beneficio</div><div class="code-value" style="font-size:12px;">$5 USD suscripción premium</div></div>
+        <div class="tool-block beneficio" style="margin-bottom:8px;">
+          <div class="tool-block-label">Beneficio</div>
+          <div class="tool-block-value" style="font-size:11.5px;">$5 USD al usar el enlace de referido</div>
         </div>
+        <div class="tool-block">
+          <div class="tool-block-label">Costo</div>
+          <div class="tool-block-value">$10 USD / mes · Plan Starter</div>
+        </div>
+        <a href="https://finbox.com/?r=3c15404" target="_blank" class="visit-btn">Ver plataforma →</a>
       </div>
+
+      <!-- TRADINGVIEW -->
       <div class="tool-card">
         <div class="tool-header">
           <div class="tool-logo">
             <img src="https://logo.clearbit.com/tradingview.com" alt="TradingView"
                  onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-weight:700;color:#2962ff;font-size:12px\'>TV</span>'">
           </div>
-          <div class="tool-name">TradingView</div>
+          <div>
+            <div class="tool-name">TradingView</div>
+            <div class="tool-market">🌐 Internacional · 🇨🇴 Acciones colombianas</div>
+          </div>
         </div>
         <div class="tool-desc">Análisis técnico y seguimiento de mercados en tiempo real. El plan gratuito es suficiente para monitorear tu portafolio.</div>
-        <div class="code-block">
-          <div><div class="code-label">Costo</div><div class="code-value" style="font-size:12px;">Gratuito (plan básico)</div></div>
+        <div class="tool-block">
+          <div class="tool-block-label">Costo</div>
+          <div class="tool-block-value">Gratuito (plan básico)</div>
         </div>
+        <a href="https://www.tradingview.com" target="_blank" class="visit-btn">Ver plataforma →</a>
       </div>
+
+      <!-- GURUFOCUS -->
+      <div class="tool-card">
+        <div class="tool-header">
+          <div class="tool-logo">
+            <img src="https://logo.clearbit.com/gurufocus.com" alt="GuruFocus"
+                 onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-weight:700;color:#e67e22;font-size:12px\'>GF</span>'">
+          </div>
+          <div>
+            <div class="tool-name">GuruFocus</div>
+            <div class="tool-market">🇺🇸 EE.UU. · 🌐 Internacional</div>
+          </div>
+        </div>
+        <div class="tool-desc">Análisis financiero de empresas. La uso para evaluar fundamentales antes de tomar decisiones de inversión y tener nuevas opciones para invertir.</div>
+        <div class="tool-block beneficio" style="margin-bottom:8px;">
+          <div class="tool-block-label">Beneficio</div>
+          <div class="tool-block-value" style="font-size:11.5px;">1 mes gratis al contratar plan premium</div>
+        </div>
+        <div class="tool-block">
+          <div class="tool-block-label">Costo</div>
+          <div class="tool-block-value">$35 USD / mes · Plan Premium</div>
+        </div>
+        <a href="https://www.gurufocus.com/?r=418172fc0e44aa3058ae45ee5f1fe3c0" target="_blank" class="visit-btn">Ver plataforma →</a>
+      </div>
+
     </div>
   </div>
 
@@ -628,10 +834,9 @@
       <h2 class="section-title">Encuéntrame</h2>
     </div>
     <div class="social-grid">
-      <a href="#" class="social-link">📊 Financial Projects</a>
-      <a href="#" class="social-link">in LinkedIn</a>
-      <a href="#" class="social-link">𝕏 Twitter / X</a>
-      <a href="#" class="social-link">🏃 Strava</a>
+      <a href="#" class="social-link">📊 Proyectos Profesionales</a>
+      <a href="https://x.com/aalarconfp" target="_blank" class="social-link">𝕏 Twitter / X</a>
+      <a href="https://www.strava.com/athletes/122611267" target="_blank" class="social-link">🏃 Strava</a>
     </div>
   </div>
 
@@ -639,24 +844,32 @@
   <div class="contact-block">
     <h3>¿Tienes alguna pregunta?</h3>
     <p>Si tienes dudas sobre alguna plataforma, quieres empezar a invertir y no sabes por dónde, o simplemente quieres conversar sobre finanzas — escríbeme. Respondo.</p>
-    <a href="mailto:aalarconfp@gmail.com" class="contact-email">✉️ aalarconfp@gmail.com</a>
+    <div class="contact-actions">
+      <a href="/cdn-cgi/l/email-protection#e382828f8291808c8d8593a3848e828a8fcd808c8e" class="contact-email-btn">✉️ Enviar correo</a>
+      <button class="contact-copy-btn" onclick="copyEmail(this)">📋 Copiar correo</button>
+    </div>
+    <p style="margin-top:14px;font-size:13px;color:rgba(255,255,255,0.6);"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6001010c0112030f0e061020070d01090c4e030f0d">[email&#160;protected]</a></p>
   </div>
 
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function copyCode(btn, code) {
   const fallback = () => {
     const el = document.createElement('textarea');
     el.value = code; document.body.appendChild(el); el.select();
     document.execCommand('copy'); document.body.removeChild(el);
   };
-  (navigator.clipboard ? navigator.clipboard.writeText(code) : Promise.reject())
-    .catch(fallback)
-    .finally ? null : fallback();
+  try { navigator.clipboard.writeText(code).catch(fallback); } catch(e) { fallback(); }
   btn.textContent = '✓ Copiado'; btn.classList.add('copied');
   setTimeout(() => { btn.textContent = 'Copiar'; btn.classList.remove('copied'); }, 2000);
 }
-</script>
-</body>
-</html>
+
+function copyEmail(btn) {
+  const email = 'aalarconfp@gmail.com';
+  const fallback = () => {
+    const el = document.createElement('textarea');
+    el.value = email; document.body.appendChild(el); el.select();
+    document.execCommand('copy'); document.body.removeChild(el);
+  };
+  try { navigator
