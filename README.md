@@ -1,0 +1,1 @@
+Página personal de finanzas e inversiones para colombianos. Guía de plataformas recomendadas con códigos de referido: acciones locales, mercados internacionales, cripto y ahorro en dólares digitales. Basada en uso personal e investigación.
