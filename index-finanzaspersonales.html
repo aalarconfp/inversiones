@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andrés Alarcón — Finanzas Personales para LATAM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #ffffff;
+  --bg1:     #f7f8fc;
+  --bg2:     #eef0f7;
+  --bg3:     #e2e5ef;
+  --border:  rgba(0,0,0,0.08);
+  --border2: rgba(0,0,0,0.16);
+  --accent:  #2563eb;
+  --accent-d:#1d4ed8;
+  --warm:    #9a6f00;
+  --green:   #059669;
+  --rose:    #dc2626;
+  --text:    #0f1117;
+  --text2:   #4b5563;
+  --text3:   #9ca3af;
+  --mono:    'JetBrains Mono', monospace;
+  --sans:    'DM Sans', sans-serif;
+  --display: 'Syne', sans-serif;
+  --r:       12px;
+  --rl:      20px;
+  --max:     1100px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+
+.wrap{max-width:var(--max);margin:0 auto;padding:0 32px;position:relative;z-index:1;}
+a{text-decoration:none;color:inherit;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:#f1f3f8;}::-webkit-scrollbar-thumb{background:#c7cad6;border-radius:99px;}
+section{padding:96px 0;}
+.divider{height:1px;background:var(--border);margin:0;}
+
+/* ── NAV ─────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid var(--border);}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 32px;height:60px;display:flex;align-items:center;}
+.nav-logo{font-family:var(--display);font-weight:700;font-size:14.5px;letter-spacing:-0.02em;color:var(--text);margin-right:auto;line-height:1.2;}
+.nav-logo small{display:block;font-family:var(--mono);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);font-weight:400;margin-top:1px;}
+.nav-links{display:flex;gap:2px;}
+.nav-links a{font-size:13px;color:var(--text2);padding:6px 13px;border-radius:8px;transition:color .18s,background .18s;}
+.nav-links a:hover{color:var(--text);background:rgba(0,0,0,0.05);}
+.nav-cta{margin-left:10px;background:var(--accent)!important;color:#fff!important;padding:6px 16px!important;border-radius:8px!important;font-weight:500!important;font-size:13px!important;}
+.nav-cta:hover{background:var(--accent-d)!important;}
+.nav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;margin-left:12px;}
+.nav-ham span{width:22px;height:1.5px;background:var(--text2);border-radius:2px;}
+.mob-menu{display:none;position:fixed;top:60px;left:0;right:0;z-index:99;background:rgba(255,255,255,0.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 32px 24px;flex-direction:column;gap:4px;}
+.mob-menu.open{display:flex;}
+.mob-menu a{font-size:15px;color:var(--text2);padding:10px 0;border-bottom:1px solid var(--border);}
+
+/* ── BUTTONS ─────────────────────── */
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:14px;font-weight:500;padding:12px 24px;border-radius:var(--r);transition:all .2s;cursor:pointer;border:none;letter-spacing:.01em;}
+.btn-primary{background:var(--accent);color:#fff;}
+.btn-primary:hover{background:var(--accent-d);transform:translateY(-1px);box-shadow:0 8px 24px rgba(79,142,255,.28);}
+.btn-ghost{background:transparent;color:var(--text2);border:1px solid var(--border2);}
+.btn-ghost:hover{border-color:rgba(0,0,0,.22);color:var(--text);background:rgba(0,0,0,.04);}
+.btn-warm{background:rgba(212,168,67,.12);color:var(--warm);border:1px solid rgba(212,168,67,.25);}
+.btn-warm:hover{background:rgba(212,168,67,.18);}
+
+/* ── LABELS ─────────────────────── */
+.lbl{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--text3);display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;}
+.lbl::before{content:'';width:16px;height:1px;background:var(--text3);}
+.lbl.accent{color:var(--accent);}
+.lbl.accent::before{background:var(--accent);}
+.h2{font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px;}
+.sub{font-size:16px;color:var(--text2);max-width:520px;line-height:1.7;font-weight:300;margin-bottom:52px;}
+
+/* ── REVEAL ─────────────────────── */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1);}
+.rv.vis{opacity:1;transform:none;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:none;}}
+
+/* ═══════════════════════════════════
+   HERO
+═══════════════════════════════════ */
+.hero{padding:140px 0 88px;position:relative;overflow:hidden;animation:fadeUp .8s cubic-bezier(.22,1,.36,1) both;}
+.hero-glow{position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:1000px;height:560px;background:radial-gradient(ellipse at 50% 0%,rgba(37,99,235,.07) 0%,transparent 65%);pointer-events:none;}
+.hero-warm-dot{position:absolute;top:180px;right:10%;width:260px;height:260px;background:radial-gradient(ellipse,rgba(154,111,0,.06) 0%,transparent 70%);pointer-events:none;}
+.hero-eyebrow{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:10px;margin-bottom:24px;opacity:.85;}
+.hero-eyebrow::before{content:'';width:22px;height:1px;background:var(--accent);}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(34px,4.8vw,58px);line-height:1.12;letter-spacing:-.025em;color:var(--text);max-width:680px;margin-bottom:28px;}
+.hero h1 em{font-style:normal;color:var(--accent);}
+.hero h1 .warm{color:var(--warm);}
+.hero-sub{font-size:18px;color:var(--text2);max-width:580px;line-height:1.72;margin-bottom:40px;font-weight:300;}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:64px;}
+.hero-trust{display:flex;gap:28px;padding-top:40px;border-top:1px solid var(--border);flex-wrap:wrap;}
+.trust-item{display:flex;flex-direction:column;gap:3px;}
+.trust-item strong{font-family:var(--display);font-size:26px;font-weight:700;letter-spacing:-.03em;}
+.trust-item span{font-size:12px;color:var(--text3);font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;}
+
+/* ═══════════════════════════════════
+   PILARS — EMPIEZA AQUÍ
+═══════════════════════════════════ */
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,0.06);}
+.pillar{background:var(--bg1);padding:40px 36px;position:relative;transition:background .2s;}
+.pillar:hover{background:var(--bg2);}
+.pillar-icon{font-size:28px;margin-bottom:20px;display:block;}
+.pillar h3{font-family:var(--display);font-size:21px;font-weight:700;letter-spacing:-.025em;margin-bottom:10px;}
+.pillar p{font-size:14.5px;color:var(--text2);line-height:1.7;font-weight:300;margin-bottom:20px;}
+.pillar-link{font-family:var(--mono);font-size:11.5px;color:var(--accent);letter-spacing:.05em;display:inline-flex;align-items:center;gap:6px;transition:gap .18s;}
+.pillar-link:hover{gap:10px;}
+.pillar-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;}
+.ptag{font-family:var(--mono);font-size:10px;color:var(--text3);background:var(--bg);border:1px solid var(--border);padding:3px 9px;border-radius:4px;}
+
+/* ═══════════════════════════════════
+   TOOLS / GUIDES (free)
+═══════════════════════════════════ */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;}
+.tool-card{background:var(--bg1);border:1px solid var(--border);border-radius:var(--r);padding:28px 28px 24px;transition:border-color .18s,background .18s,box-shadow .18s;display:flex;flex-direction:column;box-shadow:0 1px 4px rgba(0,0,0,0.05);}
+.tool-card:hover{border-color:var(--border2);background:var(--bg2);box-shadow:0 4px 20px rgba(0,0,0,0.09);}
+.tool-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;}
+.tool-label{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--text3);}
+.tool-badge{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;padding:3px 8px;border-radius:4px;font-weight:500;}
+.tb-free{background:rgba(5,150,105,.08);color:var(--green);border:1px solid rgba(5,150,105,.2);}
+.tb-guide{background:rgba(37,99,235,.08);color:var(--accent);border:1px solid rgba(37,99,235,.18);}
+.tb-template{background:rgba(154,111,0,.08);color:var(--warm);border:1px solid rgba(154,111,0,.2);}
+.tool-card h3{font-family:var(--display);font-size:18px;font-weight:700;letter-spacing:-.025em;margin-bottom:8px;line-height:1.3;}
+.tool-card p{font-size:13.5px;color:var(--text2);line-height:1.65;font-weight:300;flex:1;}
+.tool-card-footer{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.tool-cta{font-family:var(--mono);font-size:11px;color:var(--accent);display:inline-flex;align-items:center;gap:6px;transition:gap .18s;}
+.tool-cta:hover{gap:10px;}
+.tool-meta{font-family:var(--mono);font-size:10.5px;color:var(--text3);}
+
+/* ═══════════════════════════════════
+   ARTICLES / EDUCACIÓN
+═══════════════════════════════════ */
+.articles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;}
+.article-card{background:var(--bg1);border:1px solid var(--border);border-radius:var(--r);padding:28px 26px;transition:border-color .18s,background .18s,box-shadow .18s;cursor:default;box-shadow:0 1px 4px rgba(0,0,0,0.05);}
+.article-card:hover{border-color:var(--border2);background:var(--bg2);box-shadow:0 4px 20px rgba(0,0,0,0.09);}
+.article-tag{font-family:var(--mono);font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px;display:block;}
+.article-card h3{font-family:var(--display);font-size:16.5px;font-weight:600;letter-spacing:-.02em;margin-bottom:10px;line-height:1.35;}
+.article-card p{font-size:13.5px;color:var(--text2);line-height:1.62;font-weight:300;}
+.article-footer{margin-top:18px;padding-top:14px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.prox{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--warm);background:rgba(154,111,0,.07);border:1px solid rgba(154,111,0,.16);padding:3px 9px;border-radius:4px;}
+
+/* ═══════════════════════════════════
+   RECURSOS
+═══════════════════════════════════ */
+.disclosure{font-family:var(--mono);font-size:11px;color:var(--text3);background:var(--bg1);border:1px solid var(--border);border-radius:8px;padding:13px 16px;margin-bottom:40px;line-height:1.65;max-width:700px;display:flex;gap:10px;}
+.res-tabs{display:flex;gap:4px;margin-bottom:32px;flex-wrap:wrap;}
+.res-tab{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);background:var(--bg2);border:1px solid var(--border);padding:7px 16px;border-radius:8px;cursor:pointer;transition:all .18s;}
+.res-tab:hover,.res-tab.active{background:rgba(79,142,255,.1);border-color:rgba(79,142,255,.3);color:var(--accent);}
+.res-panel{display:none;}
+.res-panel.active{display:block;}
+.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px;}
+.res-card{background:var(--bg1);border:1px solid var(--border);border-radius:var(--r);padding:24px;transition:border-color .18s,background .18s,box-shadow .18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);}
+.res-card:hover{border-color:var(--border2);background:var(--bg2);box-shadow:0 4px 20px rgba(0,0,0,0.09);}
+.res-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;}
+.res-name{font-family:var(--display);font-size:17px;font-weight:700;letter-spacing:-.02em;}
+.badges{display:flex;gap:5px;flex-wrap:wrap;}
+.badge{font-family:var(--mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;padding:3px 7px;border-radius:4px;font-weight:500;}
+.b-green{background:rgba(52,211,153,.1);color:var(--green);border:1px solid rgba(52,211,153,.2);}
+.b-blue{background:rgba(37,99,235,.08);color:var(--accent);border:1px solid rgba(37,99,235,.18);}
+.b-warm{background:rgba(154,111,0,.08);color:var(--warm);border:1px solid rgba(154,111,0,.18);}
+.b-rose{background:rgba(220,38,38,.08);color:var(--rose);border:1px solid rgba(220,38,38,.18);}
+.res-desc{font-size:13.5px;color:var(--text2);line-height:1.65;font-weight:300;margin-bottom:16px;}
+.res-foot{display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid var(--border);}
+.res-detail{font-family:var(--mono);font-size:11px;color:var(--text3);}
+.code-row{display:flex;align-items:center;gap:8px;margin-top:12px;flex-wrap:wrap;}
+.code-val{font-family:var(--mono);font-size:12px;color:var(--accent);background:rgba(37,99,235,.07);padding:3px 9px;border-radius:4px;border:1px solid rgba(37,99,235,.18);}
+.copy-btn{background:none;border:none;color:var(--text3);cursor:pointer;font-family:var(--mono);font-size:10px;transition:color .18s;}
+.copy-btn:hover{color:var(--text2);}
+.res-link{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:11px;color:var(--text2);padding:5px 10px;border-radius:6px;background:var(--bg3);border:1px solid var(--border);transition:all .18s;}
+.res-link:hover{color:var(--text);border-color:var(--border2);}
+.risk-box{background:rgba(220,38,38,.05);border:1px solid rgba(220,38,38,.16);border-radius:8px;padding:10px 14px;margin-top:12px;font-family:var(--mono);font-size:10.5px;color:var(--rose);line-height:1.55;}
+
+/* ═══════════════════════════════════
+   PROYECTOS AVANZADOS
+═══════════════════════════════════ */
+.adv-grid{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,0.06);}
+.adv-row{background:var(--bg1);padding:22px 32px;display:grid;grid-template-columns:44px 1fr auto;gap:20px;align-items:center;transition:background .18s;}
+.adv-row:hover{background:var(--bg2);}
+.adv-row:hover .adv-arr{opacity:1;transform:translate(2px,-2px);}
+.adv-num{font-family:var(--mono);font-size:12px;color:var(--text3);}
+.adv-body h4{font-family:var(--display);font-size:15.5px;font-weight:600;letter-spacing:-.02em;margin-bottom:3px;}
+.adv-body p{font-size:13px;color:var(--text2);font-weight:300;}
+.adv-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px;}
+.adv-tag{font-family:var(--mono);font-size:9.5px;color:var(--text3);background:var(--bg1);border:1px solid var(--border);padding:2px 7px;border-radius:4px;}
+.adv-arr{font-size:16px;color:var(--text3);opacity:0;transition:opacity .18s,transform .18s;flex-shrink:0;}
+
+/* ═══════════════════════════════════
+   ABOUT
+═══════════════════════════════════ */
+.about-grid{display:grid;grid-template-columns:1fr 380px;gap:80px;align-items:start;}
+.about-body h2{font-family:var(--display);font-size:clamp(26px,3.5vw,38px);font-weight:700;letter-spacing:-.03em;line-height:1.15;margin-bottom:24px;}
+.about-body p{font-size:15px;color:var(--text2);line-height:1.78;font-weight:300;margin-bottom:16px;}
+.about-body p strong{color:var(--text);font-weight:500;}
+.about-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px;}
+.alink{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--text2);background:var(--bg2);border:1px solid var(--border);padding:8px 14px;border-radius:8px;transition:all .18s;}
+.alink:hover{color:var(--text);border-color:var(--border2);background:var(--bg3);}
+.about-side{display:flex;flex-direction:column;gap:12px;}
+.acard{background:var(--bg1);border:1px solid var(--border);border-radius:var(--r);padding:22px 24px;box-shadow:0 1px 4px rgba(0,0,0,0.05);}
+.acard h4{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--text3);margin-bottom:8px;}
+.pills{display:flex;flex-wrap:wrap;gap:6px;}
+.pill{font-family:var(--mono);font-size:11px;color:var(--text2);background:var(--bg);border:1px solid var(--border);padding:4px 10px;border-radius:6px;}
+.big-n{font-family:var(--display);font-size:34px;font-weight:700;letter-spacing:-.03em;}
+.big-l{font-size:13px;color:var(--text3);margin-top:2px;}
+
+/* ═══════════════════════════════════
+   CONTACT
+═══════════════════════════════════ */
+.contact-box{background:var(--bg1);border:1px solid var(--border);border-radius:var(--rl);padding:64px;text-align:center;position:relative;overflow:hidden;}
+.contact-box::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:600px;height:350px;background:radial-gradient(ellipse,rgba(37,99,235,.06) 0%,transparent 65%);pointer-events:none;}
+.contact-box h2{font-family:var(--display);font-size:clamp(28px,4vw,48px);font-weight:700;letter-spacing:-.03em;margin-bottom:14px;}
+.contact-box p{font-size:16px;color:var(--text2);max-width:480px;margin:0 auto 36px;font-weight:300;line-height:1.7;}
+.contact-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.email-copy{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:13px;color:var(--text2);background:var(--bg2);border:1px solid var(--border);padding:11px 18px;border-radius:var(--r);cursor:pointer;transition:all .18s;font-size:13px;}
+.email-copy:hover{border-color:var(--border2);color:var(--text);}
+.email-copy.copied{color:var(--green);border-color:rgba(52,211,153,.3);}
+
+/* ── FOOTER ─────────────────────── */
+footer{border-top:1px solid var(--border);padding:28px 0;}
+.foot-in{max-width:var(--max);margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.foot-copy{font-family:var(--mono);font-size:11px;color:var(--text3);}
+.foot-links{display:flex;gap:20px;}
+.foot-links a{font-family:var(--mono);font-size:11px;color:var(--text3);transition:color .18s;}
+.foot-links a:hover{color:var(--text2);}
+
+/* ── RESPONSIVE ─────────────────── */
+@media(max-width:900px){.pillars-grid{grid-template-columns:1fr;}.about-grid{grid-template-columns:1fr;}.adv-row{grid-template-columns:36px 1fr;}.adv-arr{display:none;}.contact-box{padding:40px 28px;}}
+@media(max-width:720px){.wrap{padding:0 20px;}.nav-in{padding:0 20px;}.nav-links{display:none;}.nav-ham{display:flex;}.mob-menu{padding:16px 20px 24px;}.hero{padding:110px 0 72px;}.hero-trust{gap:20px;}.foot-in{flex-direction:column;align-items:flex-start;}section{padding:72px 0;}}
+
+/* ═══════════════════════════════════
+   QUIZ DE PERFIL
+═══════════════════════════════════ */
+.quiz-intro-card{background:linear-gradient(135deg,rgba(37,99,235,.05) 0%,rgba(154,111,0,.04) 100%);border:1px solid var(--border2);border-radius:var(--rl);padding:32px 36px;margin-bottom:40px;display:flex;align-items:center;gap:32px;flex-wrap:wrap;}
+.quiz-intro-icon{font-size:36px;flex-shrink:0;}
+.quiz-intro-body{flex:1;min-width:220px;}
+.quiz-intro-body h3{font-family:var(--display);font-size:19px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px;}
+.quiz-intro-body p{font-size:14px;color:var(--text2);line-height:1.65;font-weight:300;margin:0;}
+.quiz-intro-cta{flex-shrink:0;}
+
+.quiz-wrap{border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:40px;display:none;}
+.quiz-wrap.open{display:block;}
+.qscreen{display:none;padding:40px 44px;}
+.qscreen.active{display:block;}
+
+/* Progress */
+.q-progress-bar{height:3px;background:var(--bg2);border-radius:0;}
+.q-progress-fill{height:100%;background:var(--accent);border-radius:0;transition:width .4s ease;}
+.q-header-row{display:flex;align-items:center;gap:12px;margin-bottom:28px;}
+.q-counter{font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:.08em;}
+.q-num{font-family:var(--display);font-size:32px;font-weight:700;letter-spacing:-.03em;color:var(--accent);}
+.q-text{font-family:var(--display);font-size:20px;font-weight:600;letter-spacing:-.02em;line-height:1.35;margin-bottom:28px;color:var(--text);}
+.q-opts{display:flex;flex-direction:column;gap:10px;margin-bottom:32px;}
+.q-opt{background:var(--bg1);border:1.5px solid var(--border);border-radius:var(--r);padding:14px 18px;cursor:pointer;display:flex;align-items:center;gap:14px;transition:all .18s;text-align:left;}
+.q-opt:hover{border-color:rgba(37,99,235,.35);background:rgba(37,99,235,.04);}
+.q-opt.sel{border-color:var(--accent);background:rgba(37,99,235,.07);}
+.q-radio{width:18px;height:18px;border-radius:50%;border:2px solid var(--border2);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:border-color .18s;}
+.q-opt.sel .q-radio{border-color:var(--accent);}
+.q-radio-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);opacity:0;transition:opacity .18s;}
+.q-opt.sel .q-radio-dot{opacity:1;}
+.q-opt-label{font-size:14.5px;color:var(--text2);line-height:1.5;font-weight:300;}
+.q-opt.sel .q-opt-label{color:var(--text);}
+.q-footer{display:flex;justify-content:flex-end;}
+.q-btn{background:var(--accent);color:#fff;font-family:var(--sans);font-size:14px;font-weight:500;padding:11px 24px;border-radius:var(--r);border:none;cursor:pointer;transition:background .18s;display:flex;align-items:center;gap:8px;}
+.q-btn:hover{background:var(--accent-d);}
+.q-btn:disabled{opacity:.4;cursor:not-allowed;}
+.q-restart{background:none;border:1px solid var(--border2);color:var(--text3);font-family:var(--mono);font-size:11px;padding:7px 14px;border-radius:8px;cursor:pointer;transition:all .18s;}
+.q-restart:hover{color:var(--text2);border-color:var(--border2);}
+
+/* Results */
+.result-header{display:flex;gap:24px;align-items:flex-start;margin-bottom:28px;flex-wrap:wrap;}
+.result-ring-wrap{flex-shrink:0;}
+.result-ring-wrap svg{width:88px;height:88px;transform:rotate(-90deg);}
+.ring-bg2{fill:none;stroke:var(--border);stroke-width:6;}
+.ring-fill2{fill:none;stroke-width:6;stroke-linecap:round;transition:stroke-dasharray 1s ease-out;}
+.ring-pct{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--display);font-size:18px;font-weight:700;}
+.ring-box{position:relative;width:88px;height:88px;}
+.result-body{flex:1;}
+.result-badge{display:inline-block;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.12em;padding:3px 10px;border-radius:4px;font-weight:500;margin-bottom:10px;}
+.result-badge.conservative{background:rgba(5,150,105,.1);color:#059669;border:1px solid rgba(5,150,105,.2);}
+.result-badge.moderate{background:rgba(217,119,6,.1);color:#d97706;border:1px solid rgba(217,119,6,.2);}
+.result-badge.aggressive{background:rgba(220,38,38,.1);color:#dc2626;border:1px solid rgba(220,38,38,.2);}
+.result-name{font-family:var(--display);font-size:24px;font-weight:700;letter-spacing:-.025em;margin-bottom:8px;}
+.result-desc{font-size:14px;color:var(--text2);line-height:1.65;font-weight:300;max-width:480px;}
+.result-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.result-pill{font-family:var(--mono);font-size:11px;color:var(--text3);background:var(--bg2);border:1px solid var(--border);padding:3px 10px;border-radius:4px;}
+.result-section-title{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--text3);margin:28px 0 14px;display:flex;align-items:center;gap:8px;}
+.result-section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.result-chars{display:flex;flex-direction:column;gap:8px;}
+.result-char{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--text2);font-weight:300;}
+.result-char-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.result-char-dot.conservative{background:#059669;}
+.result-char-dot.moderate{background:#d97706;}
+.result-char-dot.aggressive{background:#dc2626;}
+.result-plat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;}
+.rplat-card{background:var(--bg1);border:1px solid var(--border);border-radius:var(--r);padding:20px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:border-color .18s;}
+.rplat-card:hover{border-color:var(--border2);}
+.rplat-header{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.rplat-logo{width:36px;height:36px;border-radius:8px;border:1px solid var(--border);background:var(--bg2);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;}
+.rplat-logo img{width:36px;height:36px;object-fit:contain;}
+.rplat-logo-fb{font-family:var(--display);font-size:16px;font-weight:700;color:var(--accent);}
+.rplat-name{font-family:var(--display);font-size:15px;font-weight:700;letter-spacing:-.02em;}
+.rplat-cat{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.05em;}
+.rplat-why{font-size:13px;color:var(--text2);line-height:1.6;font-weight:300;margin-bottom:12px;}
+.rplat-code-row{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:8px 12px;margin-bottom:10px;}
+.rplat-code-label{font-family:var(--mono);font-size:10px;color:var(--text3);margin-bottom:2px;}
+.rplat-code-val{font-family:var(--mono);font-size:12px;color:var(--accent);font-weight:500;}
+.rplat-btn{display:block;text-align:center;background:var(--accent);color:#fff;font-family:var(--sans);font-size:13px;font-weight:500;padding:9px 16px;border-radius:8px;transition:background .18s;}
+.rplat-btn:hover{background:var(--accent-d);}
+.result-restart-row{display:flex;justify-content:flex-end;margin-top:24px;gap:10px;flex-wrap:wrap;}
+@media(max-width:600px){.qscreen{padding:28px 20px;}.quiz-intro-card{padding:24px 20px;gap:20px;}}
+
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══════════════════════════════════════ -->
+<nav>
+  <div class="nav-in">
+    <div class="nav-logo">
+      Andrés Alarcón
+      <small>Finanzas Personales · LATAM</small>
+    </div>
+    <div class="nav-links">
+      <a href="#empieza">Empieza aquí</a>
+      <a href="#herramientas">Herramientas</a>
+      <a href="#educacion">Aprende</a>
+      <a href="#recursos">Recursos</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#contacto" class="nav-cta">Escríbeme</a>
+    </div>
+    <div class="nav-ham" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <a href="#empieza" onclick="toggleMenu()">Empieza aquí</a>
+  <a href="#herramientas" onclick="toggleMenu()">Herramientas</a>
+  <a href="#educacion" onclick="toggleMenu()">Aprende</a>
+  <a href="#recursos" onclick="toggleMenu()">Recursos</a>
+  <a href="#sobre-mi" onclick="toggleMenu()">Sobre mí</a>
+  <a href="#contacto" onclick="toggleMenu()">Escríbeme</a>
+</div>
+
+<!-- ══ HERO ══════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-warm-dot"></div>
+  <div class="wrap">
+    <div class="hero-eyebrow">Finanzas personales · LATAM</div>
+    <h1>Construye patrimonio<br>con <em>claridad</em><br>y <span class="warm">calma.</span></h1>
+    <p class="hero-sub">
+      Aprende a manejar tu dinero, invertir a largo plazo y construir un futuro financiero sólido.
+      Sin jerga técnica, sin humo — solo estrategia real y herramientas que funcionan.
+    </p>
+    <div class="hero-ctas">
+      <a href="#empieza" class="btn btn-primary">Empieza aquí →</a>
+      <a href="#herramientas" class="btn btn-ghost">Ver herramientas</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <strong>6+</strong>
+        <span>Años en finanzas</span>
+      </div>
+      <div class="trust-item">
+        <strong>2</strong>
+        <span>Mercados (BVC · NYSE)</span>
+      </div>
+      <div class="trust-item">
+        <strong>LATAM</strong>
+        <span>Enfoque regional</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ EMPIEZA AQUÍ ══════════════════════════════ -->
+<section id="empieza">
+  <div class="wrap">
+    <div class="rv">
+      <div class="lbl accent">Empieza aquí</div>
+      <div class="h2">Tres pasos para ordenar tu dinero.</div>
+      <p class="sub">No importa desde dónde empiezas. Estos tres pilares cubren lo esencial para tener finanzas sanas y construir patrimonio a largo plazo.</p>
+    </div>
+    <div class="pillars-grid rv">
+      <div class="pillar">
+        <span class="pillar-icon">💰</span>
+        <h3>Ahorra mejor</h3>
+        <p>Aprende a crear un presupuesto real, construir tu fondo de emergencia y dejar de perder dinero en cuentas que no te rinden nada.</p>
+        <div class="pillar-tags">
+          <span class="ptag">Presupuesto</span>
+          <span class="ptag">Fondo de emergencia</span>
+          <span class="ptag">Control de gastos</span>
+        </div>
+        <br>
+        <a href="#herramientas" class="pillar-link">Ver plantillas →</a>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">📈</span>
+        <h3>Invierte a largo plazo</h3>
+        <p>Empieza a invertir en acciones y ETFs de forma racional. Sin promesas de enriquecerte rápido — solo estrategia, constancia y tiempo.</p>
+        <div class="pillar-tags">
+          <span class="ptag">Acciones</span>
+          <span class="ptag">ETFs</span>
+          <span class="ptag">DCA</span>
+          <span class="ptag">Largo plazo</span>
+        </div>
+        <br>
+        <a href="#recursos" class="pillar-link">Ver brokers →</a>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">🏦</span>
+        <h3>Organiza tu dinero</h3>
+        <p>Ten claridad total sobre lo que entra, lo que sale y lo que crece. Patrimonio neto, seguimiento de inversiones y metas financieras reales.</p>
+        <div class="pillar-tags">
+          <span class="ptag">Patrimonio neto</span>
+          <span class="ptag">Portafolio</span>
+          <span class="ptag">Metas financieras</span>
+        </div>
+        <br>
+        <a href="#herramientas" class="pillar-link">Ver herramientas →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ HERRAMIENTAS ══════════════════════════════ -->
+<section id="herramientas">
+  <div class="wrap">
+    <div class="rv">
+      <div class="lbl">Herramientas</div>
+      <div class="h2">Recursos para tomar mejores decisiones.</div>
+      <p class="sub">Plantillas, guías y dashboards que uso personalmente. Sin costo, sin trampa. Diseñados para que cualquiera pueda usarlos.</p>
+    </div>
+    <div class="tools-grid rv">
+
+      <div class="tool-card">
+        <div class="tool-card-top">
+          <div class="tool-label">Finanzas personales</div>
+          <div class="tool-badge tb-template">Plantilla</div>
+        </div>
+        <h3>Dashboard de Presupuesto Personal</h3>
+        <p>Controla tus ingresos, gastos y ahorro mensual en un solo lugar. Te muestra exactamente a dónde va tu dinero y cómo mejorar tu balance.</p>
+        <div class="tool-card-footer">
+          <span class="tool-cta" href="#">Ver plantilla →</span>
+          <span class="tool-meta">Excel · Power BI</span>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-card-top">
+          <div class="tool-label">Inversiones</div>
+          <div class="tool-badge tb-template">Plantilla</div>
+        </div>
+        <h3>Tracker de Portafolio de Inversiones</h3>
+        <p>Sigue el desempeño de tus acciones en Colombia y EE.UU. desde una sola hoja. Calcula tu rendimiento real descontando inflación, sin fórmulas complicadas.</p>
+        <div class="tool-card-footer">
+          <span class="tool-cta" href="#">Ver plantilla →</span>
+          <span class="tool-meta">Excel · BVC · NYSE</span>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-card-top">
+          <div class="tool-label">Patrimonio</div>
+          <div class="tool-badge tb-template">Plantilla</div>
+        </div>
+        <h3>Calculadora de Patrimonio Neto</h3>
+        <p>Lo que tienes menos lo que debes. Una vista clara de tu patrimonio real hoy y cómo proyectarlo a futuro. El primer número que todo inversor debe conocer.</p>
+        <div class="tool-card-footer">
+          <span class="tool-cta" href="#">Ver plantilla →</span>
+          <span class="tool-meta">Excel</span>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-card-top">
+          <div class="tool-label">Guía práctica</div>
+          <div class="tool-badge tb-guide">Guía</div>
+        </div>
+        <h3>Cómo empezar a invertir en Colombia</h3>
+        <p>Desde cero: qué es una acción, qué es un ETF, cómo elegir un broker y cómo hacer tu primera compra sin cometer los errores más comunes.</p>
+        <div class="tool-card-footer">
+          <span class="tool-cta" href="#">Leer guía →</span>
+          <span class="tool-meta">Para principiantes</span>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-card-top">
+          <div class="tool-label">Guía práctica · LATAM</div>
+          <div class="tool-badge tb-guide">Guía</div>
+        </div>
+        <h3>Cómo recibir dólares en Colombia</h3>
+        <p>La estructura óptima para freelancers y contratistas: cómo abrir una cuenta en dólares, a qué tasa convertir y cómo evitar perder plata en el proceso.</p>
+        <div class="tool-card-footer">
+          <span class="tool-cta" href="#">Leer guía →</span>
+          <span class="tool-meta">Wise · Global66</span>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-card-top">
+          <div class="tool-label">Estrategia de inversión</div>
+          <div class="tool-badge tb-guide">Guía</div>
+        </div>
+        <h3>La estrategia DCA explicada paso a paso</h3>
+        <p>Cómo invertir una cantidad fija cada mes sin importar si el mercado sube o baja — y por qué esto funciona mejor que intentar adivinar el momento perfecto.</p>
+        <div class="tool-card-footer">
+          <span class="tool-cta" href="#">Leer guía →</span>
+          <span class="tool-meta">Largo plazo · Sin especulación</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ EDUCACIÓN ══════════════════════════════════ -->
+<section id="educacion">
+  <div class="wrap">
+    <div class="rv">
+      <div class="lbl">Aprende</div>
+      <div class="h2">Finanzas sin complicaciones.</div>
+      <p class="sub">Artículos claros sobre los temas que más importan. Sin tecnicismos innecesarios — solo lo que necesitas saber para tomar mejores decisiones.</p>
+    </div>
+    <div class="articles-grid rv">
+
+      <div class="article-card">
+        <span class="article-tag">Fundamentos</span>
+        <h3>Los 5 errores financieros más comunes en Colombia</h3>
+        <p>Desde no tener fondo de emergencia hasta dejar el dinero en una cuenta corriente. Los errores que todos cometemos y cómo evitarlos.</p>
+        <div class="article-footer"><span class="prox">Próximamente</span></div>
+      </div>
+
+      <div class="article-card">
+        <span class="article-tag">Ahorro</span>
+        <h3>Fondo de emergencia: cuánto necesitas y cómo armarlo</h3>
+        <p>La base de cualquier plan financiero. Aprende a calcular cuánto necesitas, dónde guardarlo y cómo construirlo sin que afecte tu vida.</p>
+        <div class="article-footer"><span class="prox">Próximamente</span></div>
+      </div>
+
+      <div class="article-card">
+        <span class="article-tag">Inversión</span>
+        <h3>ETFs para principiantes: la forma más fácil de empezar</h3>
+        <p>Un ETF te permite invertir en cientos de empresas con un solo clic. Qué son, cómo funcionan y cuáles tienen más sentido para alguien en LATAM.</p>
+        <div class="article-footer"><span class="prox">Próximamente</span></div>
+      </div>
+
+      <div class="article-card">
+        <span class="article-tag">Brokers</span>
+        <h3>Cómo usar un broker desde Colombia sin complicarte</h3>
+        <p>Guía paso a paso para abrir una cuenta en Trii o XTB, hacer tu primera compra y entender qué estás comprando exactamente.</p>
+        <div class="article-footer"><span class="prox">Próximamente</span></div>
+      </div>
+
+      <div class="article-card">
+        <span class="article-tag">Inversión a largo plazo</span>
+        <h3>¿Por qué invertir poco a poco es mejor que esperar el momento perfecto?</h3>
+        <p>La estrategia que usan los mejores inversores del mundo — y que puedes aplicar desde Colombia con tan solo $50.000 al mes.</p>
+        <div class="article-footer"><span class="prox">Próximamente</span></div>
+      </div>
+
+      <div class="article-card">
+        <span class="article-tag">Acciones Colombia · BVC</span>
+        <h3>Cómo evaluar si una acción colombiana vale la pena</h3>
+        <p>Sin fórmulas intimidantes. Las preguntas simples que debes hacerte antes de comprar cualquier acción en la Bolsa de Valores de Colombia.</p>
+        <div class="article-footer"><span class="prox">Próximamente</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ RECURSOS ═══════════════════════════════════ -->
+<section id="recursos">
+  <div class="wrap">
+    <div class="rv">
+      <div class="lbl">Recursos curados</div>
+      <div class="h2">Las plataformas que yo uso.</div>
+      <p class="sub">No recomiendo lo que no conozco. Esta es una selección honesta de las plataformas que forman parte de mi estrategia financiera personal.</p>
+    </div>
+
+    <div class="disclosure rv">
+      <span style="flex-shrink:0;">⚠</span>
+      <span><strong>Aviso importante:</strong> Algunos enlaces incluyen códigos de referido que me generan un pequeño beneficio si los usas — sin costo adicional para ti. Esto <em>no</em> es asesoría financiera. Evalúa cada plataforma según tu situación personal antes de invertir.</span>
+    </div>
+
+
+    <!-- ── QUIZ INTRO ────────────────── -->
+    <div class="quiz-intro-card rv">
+      <div class="quiz-intro-icon">🎯</div>
+      <div class="quiz-intro-body">
+        <h3>¿No sabes cuál plataforma te conviene?</h3>
+        <p>Responde 10 preguntas breves sobre tus objetivos y tolerancia al riesgo. Al final te mostraré exactamente qué plataformas se adaptan a tu perfil, con sus códigos de referido.</p>
+      </div>
+      <div class="quiz-intro-cta">
+        <button class="btn btn-primary" onclick="openQuiz()">Descubrir mi perfil →</button>
+      </div>
+    </div>
+
+    <!-- ── QUIZ WIDGET ────────────────── -->
+    <div class="quiz-wrap" id="quizWrap">
+
+      <!-- Welcome -->
+      <div class="qscreen active" id="qsWelcome" style="background:var(--bg1);text-align:center;">
+        <div style="font-size:40px;margin-bottom:16px;">📊</div>
+        <div style="font-family:var(--display);font-size:22px;font-weight:700;letter-spacing:-.025em;margin-bottom:10px;">Perfil de inversión</div>
+        <p style="font-size:14.5px;color:var(--text2);max-width:440px;margin:0 auto 28px;font-weight:300;line-height:1.7;">10 preguntas breves sobre tus objetivos, horizonte de tiempo y tolerancia al riesgo. Menos de 5 minutos.</p>
+        <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:32px;">
+          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px 16px;text-align:left;min-width:150px;">
+            <div style="font-family:var(--mono);font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;">Duración</div>
+            <div style="font-size:13.5px;font-weight:300;">Menos de 5 min</div>
+          </div>
+          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px 16px;text-align:left;min-width:150px;">
+            <div style="font-family:var(--mono);font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;">Resultado</div>
+            <div style="font-size:13.5px;font-weight:300;">Conservador, Moderado o Crecimiento</div>
+          </div>
+          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px 16px;text-align:left;min-width:150px;">
+            <div style="font-family:var(--mono);font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;">Al terminar</div>
+            <div style="font-size:13.5px;font-weight:300;">Plataformas recomendadas para ti</div>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="startQuiz()">Comenzar →</button>
+          <button class="q-restart" onclick="closeQuiz()">Cerrar ✕</button>
+        </div>
+        <p style="font-family:var(--mono);font-size:10.5px;color:var(--text3);margin-top:20px;max-width:480px;margin-left:auto;margin-right:auto;">⚠ Este cuestionario es orientativo, no constituye asesoría financiera formal.</p>
+      </div>
+
+      <!-- Questions -->
+      <div class="qscreen" id="qsQuestion" style="background:var(--bg);">
+        <div class="q-progress-bar"><div class="q-progress-fill" id="qProgressFill" style="width:0%"></div></div>
+        <div style="padding:36px 44px 0;">
+          <div class="q-header-row">
+            <div class="q-num" id="qNum">01</div>
+            <div class="q-counter">de <span id="qTotal">10</span> preguntas</div>
+            <div style="margin-left:auto;"><button class="q-restart" onclick="closeQuiz()">Cerrar ✕</button></div>
+          </div>
+          <div class="q-text" id="qText"></div>
+          <div class="q-opts" id="qOpts"></div>
+          <div class="q-footer">
+            <button class="q-btn" id="btnNext" onclick="nextQ()" disabled>
+              <span id="btnNextLabel">Siguiente</span> →
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="qscreen" id="qsResults" style="background:var(--bg);">
+        <div style="padding:36px 44px;">
+          <div style="font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--text3);margin-bottom:20px;">Tu perfil de inversión</div>
+
+          <div class="result-header">
+            <div class="result-ring-wrap">
+              <div class="ring-box">
+                <svg viewBox="0 0 96 96">
+                  <circle class="ring-bg2" cx="48" cy="48" r="42"/>
+                  <circle class="ring-fill2" id="ringFill2" cx="48" cy="48" r="42" style="stroke-dasharray:0 264;"/>
+                </svg>
+                <div class="ring-pct" id="ringPct2">0%</div>
+              </div>
+            </div>
+            <div class="result-body">
+              <div class="result-badge" id="resBadge">Conservador</div>
+              <div class="result-name" id="resName">Perfil Conservador</div>
+              <div class="result-desc" id="resDesc"></div>
+              <div class="result-pills" id="resPills"></div>
+            </div>
+          </div>
+
+          <div class="result-section-title">Características de tu perfil</div>
+          <div class="result-chars" id="resChars"></div>
+
+          <div class="result-section-title">Instrumentos sugeridos</div>
+          <div class="result-chars" id="resRecs"></div>
+
+          <div class="result-section-title">Plataformas recomendadas para ti</div>
+          <div class="result-plat-grid" id="resPlatGrid"></div>
+
+          <div class="result-restart-row">
+            <button class="q-restart" onclick="closeQuiz()">Cerrar ✕</button>
+            <button class="q-restart" onclick="startQuiz()">↺ Repetir test</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /quiz-wrap -->
+
+    <div class="res-tabs rv">
+      <button class="res-tab active" onclick="switchTab('brokers',this)">Para invertir</button>
+      <button class="res-tab" onclick="switchTab('ahorro',this)">Para ahorrar</button>
+      <button class="res-tab" onclick="switchTab('dolares',this)">Para recibir dólares</button>
+      <button class="res-tab" onclick="switchTab('investigacion',this)">Para investigar</button>
+    </div>
+
+    <!-- Para invertir -->
+    <div class="res-panel active" id="tab-brokers">
+      <div class="res-grid">
+
+        <div class="res-card">
+          <div class="res-top">
+            <div class="res-name">Trii</div>
+            <div class="badges"><span class="badge b-green">Colombia · BVC</span><span class="badge b-warm">⭐ Mi favorita</span></div>
+          </div>
+          <p class="res-desc">La opción más sencilla para empezar a invertir en acciones colombianas. Comisiones muy bajas, apertura 100% digital y acceso directo a la Bolsa de Valores de Colombia. Perfecta para quien empieza.</p>
+          <div class="res-foot">
+            <div class="res-detail">Mín. recomendado $1.000.000 COP · Bono: $5.000 COP</div>
+          </div>
+          <div class="code-row">
+            <span class="res-detail">Código:</span>
+            <span class="code-val">aa_4m59</span>
+            <button class="copy-btn" onclick="copyCode('aa_4m59',this)">Copiar</button>
+            <a href="#" class="res-link">Abrir cuenta ↗</a>
+          </div>
+        </div>
+
+        <div class="res-card">
+          <div class="res-top">
+            <div class="res-name">XTB</div>
+            <div class="badges"><span class="badge b-blue">Internacional</span><span class="badge b-green">0% comisión</span></div>
+          </div>
+          <p class="res-desc">Mi plataforma principal para invertir en acciones y ETFs internacionales. Cero comisión hasta €100.000/mes, regulación europea sólida y una interfaz muy cómoda. Acciones fraccionadas desde $10 USD — ideal para empezar sin mucho capital.</p>
+          <div class="res-foot">
+            <div class="res-detail">Mín. recomendado $50 USD · Más de 5.800 instrumentos</div>
+          </div>
+          <div class="code-row">
+            <a href="#" class="res-link">Abrir cuenta ↗</a>
+          </div>
+        </div>
+
+        <div class="res-card">
+          <div class="res-top">
+            <div class="res-name">Hapi</div>
+            <div class="badges"><span class="badge b-blue">Mercado EE.UU.</span><span class="badge b-green">Sin comisiones</span></div>
+          </div>
+          <p class="res-desc">Acceso al mercado estadounidense desde Colombia sin comisiones, sin mínimo y con fracciones de acciones. Una entrada práctica al S&P 500 sin necesitar una cuenta bancaria en EE.UU.</p>
+          <div class="res-foot">
+            <div class="res-detail">Mín. recomendado $200 USD · Bono: $10 USD</div>
+          </div>
+          <div class="code-row">
+            <span class="res-detail">Código:</span>
+            <span class="code-val">ANDALA21</span>
+            <button class="copy-btn" onclick="copyCode('ANDALA21',this)">Copiar</button>
+            <a href="#" class="res-link">Abrir cuenta ↗</a>
+          </div>
+        </div>
+
+        <div class="res-card">
+          <div class="res-top">
+            <div class="res-name">Insights</div>
+            <div class="badges"><span class="badge b-blue">ETFs temáticos</span><span class="badge b-green">SIPC</span></div>
+          </div>
+          <p class="res-desc">Buena opción si quieres invertir en ETFs temáticos como tecnología, salud o energía limpia. Regulado en EE.UU. con protección SIPC. Bono de bienvenida de $10 USD al abrir tu cuenta.</p>
+          <div class="res-foot">
+            <div class="res-detail">Mín. $10 USD · Bono: $10 USD</div>
+          </div>
+          <div class="code-row">
+            <span class="res-detail">Código:</span>
+            <span class="code-val">AA9737</span>
+            <button class="copy-btn" onclick="copyCode('AA9737',this)">Copiar</button>
+            <a href="#" class="res-link">Abrir cuenta ↗</a>
+          </div>
+        </div>
+
+        <div class="res-card">
+          <div class="res-top">
+            <div class="res-name">Binance</div>
+            <div class="badges"><span class="badge b-rose">Alto riesgo</span><span class="badge b-warm">Criptomonedas</span></div>
+          </div>
+          <p class="res-desc">Si ya tienes tus finanzas básicas ordenadas y quieres una exposición pequeña a criptomonedas, Binance ofrece las comisiones más bajas del mercado (0,10%). Empieza solo con el mercado spot y con una fracción pequeña de tu portafolio total.</p>
+          <div class="risk-box">⚠ Las criptomonedas son activos de muy alto riesgo. Su precio puede caer más del 80% en poco tiempo. Nunca inviertas dinero que no puedas permitirte perder.</div>
+          <div class="code-row">
+            <span class="res-detail">Descuento:</span>
+            <span class="code-val">94547225</span>
+            <button class="copy-btn" onclick="copyCode('94547225',this)">Copiar</button>
+            <a href="#" class="res-link">Abrir cuenta ↗</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Para ahorrar -->
+    <div class="res-panel" id="tab-ahorro">
+      <div class="res-grid">
+
+        <div class="res-card">
+          <div class="res-top">
+            <div class="res-name">RappiCuenta</div>
+            <div class="badges"><span class="badge b-green">9% E.A.</span><span class="badge b-green">Sin cuota</span></div>
+          </div>
+          <p class="res-desc">Mi reemplazo para la cuenta de ahorros tradicional. Genera 9% E.A. en los "Bolsillos" sin cuota de manejo ni cobros ocultos. Si todavía tienes plata dormida en un banco que te cobra mensual, este es el primer cambio que debes hacer.</p>
+          <div class="res-foot">
+            <div class="res-detail">Sin mínimo · Bono: hasta $100.000 COP</div>
+          </div>
+          <div class="code-row">
+            <span class="res-detail">Código:</span>
+            <span class="code-val">andres442121</span>
+            <button class="copy-btn" onclick="copyCode('andres442121',this)">Copiar</button>
+            <a href="#" class="res-link">Abrir cuenta ↗</a>
+          </div>
+        </div>
+
+        <div class="res-card">
+          <div class="res-top">
+            <div class="res-name">Tyba</div>
+            <div class="badges"><span class="badge b-blue">Fondos de inversión</span><span class="badge b-green">Conservador</span></div>
+          </div>
+          <p class="res-desc">Fondos de inversión de Credicorp Capital. Para un perfil conservador, elige solo el fondo de renta fija o monetario (CDTs, TES). Es una buena opción para guardar tu fondo de emergencia y ganar más que en una cuenta corriente. <strong>Ojo:</strong> también tienen fondos de acciones con más riesgo — elige el correcto.</p>
+          <div class="res-foot">
+            <div class="res-detail">Mín. $10.000 COP · Bono: $10.000 Tybs</div>
+          </div>
+          <div class="code-row">
+            <span class="res-detail">Código:</span>
+            <span class="code-val">AAL985239</span>
+            <button class="copy-btn" onclick="copyCode('AAL985239',this)">Copiar</button>
+            <a href="#" class="res-link">Abrir cuenta ↗</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Para recibir dólares -->
+    <div class="res-panel" id="tab-dolares">
+      <div class="res-grid">
+
+        <div class="res-card">
+          <div class="res-top">
+            <div class="res-name">Global66</div>
+            <div class="badges"><span class="badge b-blue">Cuenta USD</span><span class="badge b-green">SWIFT · ACH</span></div>
+          </div>
+          <p class="res-desc">La pieza clave de mi estructura para recibir dólares. Te da una cuenta bancaria virtual en EE.UU. que acepta transferencias internacionales. Perfecta para freelancers y contratistas que trabajan con clientes del exterior. Lo combino con Wise para convertir a mejor tasa antes de pasar al banco local.</p>
+          <div class="res-foot">
+            <div class="res-detail">Sin mínimo · Sin cuota de manejo</div>
+          </div>
+          <div class="code-row">
+            <span class="res-detail">Código:</span>
+            <span class="code-val">ANDALA1241</span>
+            <button class="copy-btn" onclick="copyCode('ANDALA1241',this)">Copiar</button>
+            <a href="#" class="res-link">Abrir cuenta ↗</a>
+          </div>
+        </div>
+
+        <div class="res-card">
+          <div class="res-top">
+            <div class="res-name">Littio</div>
+            <div class="badges"><span class="badge b-blue">Cuenta USD</span><span class="badge b-warm">USDC</span></div>
+          </div>
+          <p class="res-desc">Alternativa para guardar dólares en formato digital (USDC). Permite recibir transferencias en USD y mantener saldo en dólares sin necesitar un banco en EE.UU. Útil como complemento a Global66 si ya tienes experiencia con activos digitales.</p>
+          <div class="res-foot">
+            <div class="res-detail">Sin mínimo · Cuenta en dólares digitales</div>
+          </div>
+          <div class="code-row">
+            <span class="res-detail">Código:</span>
+            <span class="code-val">XMGC</span>
+            <button class="copy-btn" onclick="copyCode('XMGC',this)">Copiar</button>
+            <a href="#" class="res-link">Abrir cuenta ↗</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Para investigar -->
+    <div class="res-panel" id="tab-investigacion">
+      <div class="res-grid">
+
+        <div class="res-card">
+          <div class="res-top">
+            <div class="res-name">StockAnalysis.com</div>
+            <div class="badges"><span class="badge b-blue">Acciones EE.UU.</span><span class="badge b-green">Muy económico</span></div>
+          </div>
+          <p class="res-desc">La herramienta más completa que he encontrado para analizar acciones internacionales a un precio razonable. Financieros históricos, valoración, screener y datos de ganancias. Suficiente para el 95% de los inversores individuales.</p>
+          <div class="res-foot">
+            <div class="res-detail">$6,50 USD/mes · 10% de descuento con código PRO10</div>
+          </div>
+          <div class="code-row">
+            <span class="res-detail">Código:</span>
+            <span class="code-val">PRO10</span>
+            <button class="copy-btn" onclick="copyCode('PRO10',this)">Copiar</button>
+            <a href="#" class="res-link">Ver plataforma ↗</a>
+          </div>
+        </div>
+
+        <div class="res-card">
+          <div class="res-top">
+            <div class="res-name">TradingView</div>
+            <div class="badges"><span class="badge b-green">Plan gratuito</span></div>
+          </div>
+          <p class="res-desc">Para seguir el precio de tus acciones en tiempo real — incluyendo la BVC. El plan gratuito es más que suficiente si eres un inversor a largo plazo. No necesitas el plan de pago a menos que quieras alertas automáticas.</p>
+          <div class="res-foot">
+            <div class="res-detail">Gratuito · Plan de pago desde $12 USD/mes</div>
+          </div>
+          <div class="code-row">
+            <a href="#" class="res-link">Ver plataforma ↗</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ PROYECTOS AVANZADOS ════════════════════════ -->
+<section id="proyectos">
+  <div class="wrap">
+    <div class="rv">
+      <div class="lbl">Para los curiosos</div>
+      <div class="h2">Herramientas más avanzadas.</div>
+      <p class="sub">Si ya tienes lo básico cubierto y quieres ir más profundo — estos proyectos son para ti. Están diseñados para inversores con experiencia.</p>
+    </div>
+    <div class="adv-grid rv">
+
+      <a href="#" class="adv-row" style="color:inherit;">
+        <div class="adv-num">01</div>
+        <div class="adv-body">
+          <h4>Valoración de Acciones — Múltiples Modelos</h4>
+          <p>¿Cómo saber si una acción está cara o barata? Este modelo consolida cuatro métodos de valoración distintos para llegar a un precio objetivo más robusto.</p>
+          <div class="adv-tags"><span class="adv-tag">Excel</span><span class="adv-tag">DCF</span><span class="adv-tag">Múltiplos</span><span class="adv-tag">Valoración</span></div>
+        </div>
+        <div class="adv-arr">↗</div>
+      </a>
+
+      <a href="#" class="adv-row" style="color:inherit;">
+        <div class="adv-num">02</div>
+        <div class="adv-body">
+          <h4>Dashboard de Estados Financieros</h4>
+          <p>Análisis histórico de los estados financieros de una empresa colombiana — balance, P&G y flujo de caja en cuatro años, visualizados en Power BI.</p>
+          <div class="adv-tags"><span class="adv-tag">Power BI</span><span class="adv-tag">Análisis Financiero</span><span class="adv-tag">Colombia</span></div>
+        </div>
+        <div class="adv-arr">↗</div>
+      </a>
+
+      <a href="#" class="adv-row" style="color:inherit;">
+        <div class="adv-num">03</div>
+        <div class="adv-body">
+          <h4>Screener Fundamental de Acciones — BVC</h4>
+          <p>Herramienta automatizada para filtrar y ordenar acciones de la BVC por calidad financiera y valoración. Usa Power Query y Claude AI para estructurar los datos automáticamente.</p>
+          <div class="adv-tags"><span class="adv-tag">Excel · VBA</span><span class="adv-tag">Power Query</span><span class="adv-tag">Claude AI</span><span class="adv-tag">BVC</span></div>
+        </div>
+        <div class="adv-arr">↗</div>
+      </a>
+
+      <a href="#" class="adv-row" style="color:inherit;">
+        <div class="adv-num">04</div>
+        <div class="adv-body">
+          <h4>Dashboard de Trading Técnico</h4>
+          <p>Visualización de indicadores técnicos para el Dow Jones construida sobre datos SQL. Para quienes quieren entender el análisis técnico en la práctica.</p>
+          <div class="adv-tags"><span class="adv-tag">Tableau</span><span class="adv-tag">SQL</span><span class="adv-tag">Análisis Técnico</span></div>
+        </div>
+        <div class="adv-arr">↗</div>
+      </a>
+
+      <a href="#" class="adv-row" style="color:inherit;">
+        <div class="adv-num">05</div>
+        <div class="adv-body">
+          <h4>Dashboard de Bienes Raíces</h4>
+          <p>KPIs operativos y financieros de un portafolio inmobiliario en Power BI. Para inversores en finca raíz que quieren seguimiento serio de sus activos.</p>
+          <div class="adv-tags"><span class="adv-tag">Power BI</span><span class="adv-tag">Bienes Raíces</span><span class="adv-tag">En construcción</span></div>
+        </div>
+        <div class="adv-arr">↗</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ SOBRE MÍ ════════════════════════════════════ -->
+<section id="sobre-mi">
+  <div class="wrap">
+    <div class="rv"><div class="lbl">Sobre mí</div></div>
+    <div class="about-grid rv">
+      <div class="about-body">
+        <h2>No soy un gurú.<br>Soy alguien que<br>aprendió en serio.</h2>
+        <p>
+          Soy <strong>Andrés Felipe Alarcón</strong>, analista financiero con más de <strong>seis años de experiencia</strong> en empresas multinacionales y de real estate en Colombia y EE.UU. Mi trabajo diario es trabajar con datos financieros, modelos y estrategias de inversión.
+        </p>
+        <p>
+          Pero esta página no habla de mi trabajo corporativo — habla de lo que aprendí aplicándolo a mis propias finanzas. Invierto en la Bolsa de Valores de Colombia y en el mercado estadounidense desde hace años, usando una estrategia simple: comprar buenas empresas a buen precio, de forma constante y a largo plazo.
+        </p>
+        <p>
+          Construí estas herramientas y guías porque las personas a mi alrededor — amigos, familia, colegas — me preguntaban siempre las mismas cosas: cómo empezar a invertir, qué plataforma usar, cómo organizar su dinero. Decidí poner todo en un solo lugar, con honestidad y sin venderles nada.
+        </p>
+        <p>
+          Si algo que encuentras aquí te ayuda, me alegra. Si tienes preguntas, <strong>escríbeme</strong> — respondo.
+        </p>
+        <div class="about-links">
+          <a href="https://www.linkedin.com/in/aalarconfp" class="alink" target="_blank">↗ LinkedIn</a>
+          <a href="#herramientas" class="alink">Ver herramientas</a>
+          <a href="#contacto" class="alink">Escribirme</a>
+        </div>
+      </div>
+      <div class="about-side">
+        <div class="acard">
+          <h4>Basado en</h4>
+          <div style="font-size:15px;color:var(--text2);margin-top:6px;">📍 Medellín, Colombia</div>
+        </div>
+        <div class="acard">
+          <h4>Experiencia</h4>
+          <div class="big-n">6+</div>
+          <div class="big-l">Años en análisis financiero</div>
+        </div>
+        <div class="acard">
+          <h4>Enfoque de inversión</h4>
+          <div class="pills" style="margin-top:6px;">
+            <span class="pill">Largo plazo</span>
+            <span class="pill">Valor</span>
+            <span class="pill">DCA</span>
+            <span class="pill">Sin especulación</span>
+          </div>
+        </div>
+        <div class="acard">
+          <h4>Mercados donde invierto</h4>
+          <div class="pills" style="margin-top:6px;">
+            <span class="pill">BVC · Colombia</span>
+            <span class="pill">NYSE · EE.UU.</span>
+          </div>
+        </div>
+        <div class="acard">
+          <h4>Idiomas</h4>
+          <div class="pills" style="margin-top:6px;">
+            <span class="pill">Español (Nativo)</span>
+            <span class="pill">Inglés (Bilingüe)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ CONTACTO ════════════════════════════════════ -->
+<section id="contacto" style="padding-bottom:120px;">
+  <div class="wrap">
+    <div class="contact-box rv">
+      <div class="lbl" style="justify-content:center;">Hablemos</div>
+      <h2>¿Tienes una pregunta sobre finanzas?</h2>
+      <p>Si algo de lo que hay aquí te generó dudas, si quieres saber por dónde empezar, o simplemente quieres conversar sobre inversiones — escríbeme. Sin compromiso, sin venta.</p>
+      <div class="contact-row">
+        <a href="mailto:aalarconfp@gmail.com" class="btn btn-primary">✉ Enviar correo</a>
+        <button class="email-copy" id="copyEmailBtn" onclick="copyEmail()">📋 aalarconfp@gmail.com</button>
+        <a href="https://www.linkedin.com/in/aalarconfp" target="_blank" class="btn btn-ghost">↗ LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══════════════════════════════════════ -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-copy">© 2026 Andrés Felipe Alarcón · Finanzas Personales para LATAM</div>
+    <div class="foot-links">
+      <a href="#empieza">Empieza</a>
+      <a href="#herramientas">Herramientas</a>
+      <a href="#recursos">Recursos</a>
+      <a href="https://www.linkedin.com/in/aalarconfp" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function switchTab(id, btn) {
+  document.querySelectorAll('.res-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.res-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + id).classList.add('active');
+}
+function toggleMenu() {
+  document.getElementById('mobMenu').classList.toggle('open');
+}
+function copyCode(code, btn) {
+  navigator.clipboard.writeText(code).catch(() => {
+    const el = document.createElement('textarea');
+    el.value = code; document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el);
+  });
+  const orig = btn.textContent;
+  btn.textContent = '✓'; btn.style.color = 'var(--green)';
+  setTimeout(() => { btn.textContent = orig; btn.style.color = ''; }, 2000);
+}
+function copyEmail() {
+  const email = 'aalarconfp@gmail.com';
+  navigator.clipboard.writeText(email).catch(() => {
+    const el = document.createElement('textarea');
+    el.value = email; document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el);
+  });
+  const btn = document.getElementById('copyEmailBtn');
+  btn.textContent = '✓ Copiado'; btn.classList.add('copied');
+  setTimeout(() => { btn.textContent = '📋 aalarconfp@gmail.com'; btn.classList.remove('copied'); }, 2500);
+}
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.06, rootMargin: '0px 0px -36px 0px' });
+document.querySelectorAll('.rv').forEach((el, i) => {
+  el.style.transitionDelay = (i % 4) * 0.07 + 's';
+  obs.observe(el);
+});
+document.addEventListener('click', e => {
+  const m = document.getElementById('mobMenu');
+  if (m.classList.contains('open') && !e.target.closest('nav') && !e.target.closest('#mobMenu'))
+    m.classList.remove('open');
+});
+
+// ── QUIZ ──────────────────────────────────────────────────
+const QUESTIONS = [
+  { q: '¿Cuál es tu objetivo principal al invertir?', opts: [
+    { t: 'Preservar mi capital y evitar pérdidas', v: 1 },
+    { t: 'Crecimiento moderado con algo de seguridad', v: 2 },
+    { t: 'Maximizar retornos aunque implique volatilidad', v: 3 }
+  ]},
+  { q: '¿Cuánto tiempo estás dispuesto a mantener tu inversión?', opts: [
+    { t: 'Menos de 1 año — necesito liquidez', v: 1 },
+    { t: 'Entre 1 y 5 años', v: 2 },
+    { t: 'Más de 5 años — pienso en largo plazo', v: 3 }
+  ]},
+  { q: 'Si el mercado cae un 20% en un mes, ¿qué harías?', opts: [
+    { t: 'Vender para evitar pérdidas mayores', v: 1 },
+    { t: 'Mantener mis posiciones sin cambios', v: 2 },
+    { t: 'Aprovechar y comprar más a mejor precio', v: 3 }
+  ]},
+  { q: '¿Cuál es tu experiencia con inversiones?', opts: [
+    { t: 'Principiante — prefiero algo simple y seguro', v: 1 },
+    { t: 'Intermedio — conozco acciones y fondos', v: 2 },
+    { t: 'Avanzado — manejo portafolios activamente', v: 3 }
+  ]},
+  { q: '¿Cómo describes tu situación financiera actual?', opts: [
+    { t: 'Necesito acceder a mi dinero con frecuencia', v: 1 },
+    { t: 'Tengo ahorros pero también gastos regulares', v: 2 },
+    { t: 'Tengo capital disponible sin necesidad inmediata', v: 3 }
+  ]},
+  { q: '¿Cómo reaccionas emocionalmente ante la volatilidad del mercado?', opts: [
+    { t: 'Me genera mucha ansiedad y afecta mis decisiones', v: 1 },
+    { t: 'Me preocupa, pero no tomo decisiones impulsivas', v: 2 },
+    { t: 'No me preocupa — es parte natural del mercado', v: 3 }
+  ]},
+  { q: '¿Qué porcentaje de tus ahorros estás dispuesto a invertir?', opts: [
+    { t: 'Menos del 20%', v: 1 },
+    { t: 'Entre el 20% y el 50%', v: 2 },
+    { t: 'Más del 50%', v: 3 }
+  ]},
+  { q: '¿Tienes deudas significativas en este momento?', opts: [
+    { t: 'Sí, tengo deudas importantes que me preocupan', v: 1 },
+    { t: 'Tengo algunas deudas pero son manejables', v: 2 },
+    { t: 'No tengo deudas o son mínimas', v: 3 }
+  ]},
+  { q: '¿Cuánto tiempo puedes dedicar a revisar tus inversiones?', opts: [
+    { t: 'Prefiero algo automático que no requiera seguimiento', v: 1 },
+    { t: 'Puedo revisar una o dos veces por mes', v: 2 },
+    { t: 'Sigo los mercados regularmente y me gusta analizar', v: 3 }
+  ]},
+  { q: '¿Cuál es tu objetivo financiero a largo plazo?', opts: [
+    { t: 'Seguridad y protección del capital', v: 1 },
+    { t: 'Equilibrio entre seguridad y crecimiento', v: 2 },
+    { t: 'Crecimiento agresivo y acumulación de riqueza', v: 3 }
+  ]}
+];
+
+const QPROFILES = {
+  conservative: {
+    label: 'Conservador', cls: 'conservative', ringColor: '#059669',
+    desc: 'Priorizas la seguridad y la preservación de capital. Prefieres rendimientos predecibles aunque sean más bajos, y toleras poco la volatilidad.',
+    chars: ['Baja tolerancia al riesgo','Preferencia por activos seguros y predecibles','Necesitas acceso frecuente a tu capital','Prioridad: proteger lo que tienes'],
+    recs: ['Fondos de inversión colectiva (FIC)','Depósitos a plazo y CDTs','Ahorro en dólares (USDC)','Cuentas de alto rendimiento'],
+    platforms: [
+      { name:'Tyba', cat:'Fondos de Inversión Colectiva', logo:'https://logo.clearbit.com/tyba.com.co', why:'FIC conservadores con respaldo de Credicorp Capital. Ideal para dar el primer paso.', codeLabel:'Código referido', code:'AAL985239', url:'https://tyba.com.co/', bonus:'$10.000 Tybs al invertir' },
+      { name:'RappiCuenta', cat:'Cuenta de Ahorros · 9% E.A.', logo:'https://logo.clearbit.com/rappipay.co', why:'9% E.A. en Bolsillos, sin cuota de manejo. Perfecto si aún estás pagando comisiones en tu banco.', codeLabel:'Código referido', code:'andres442121', url:'https://www.rappipay.co/rappicuenta/', bonus:'Hasta $100.000 COP' },
+      { name:'Littio', cat:'Ahorro en Dólares Digitales', logo:'https://logo.clearbit.com/littio.com', why:'Dolariza tus ahorros con USDC. Sin complicaciones, con tarjeta incluida.', codeLabel:'Código referido', code:'XMGC', url:'https://www.littio.com', bonus:'$10 USDC al depositar' }
+    ]
+  },
+  moderate: {
+    label: 'Moderado', cls: 'moderate', ringColor: '#d97706',
+    desc: 'Buscas un equilibrio entre crecimiento y seguridad. Aceptas cierta volatilidad si el potencial de retorno lo justifica. Tienes paciencia para el mediano plazo.',
+    chars: ['Tolerancia moderada al riesgo','Horizonte de inversión de 1 a 5 años','Equilibrio entre seguridad y crecimiento','Flexibilidad para ajustar estrategia'],
+    recs: ['Carteras diversificadas acciones/bonos','ETFs temáticos e indexados','Acciones fraccionadas sin comisión','Fondos balanceados internacionales'],
+    platforms: [
+      { name:'XTB', cat:'Acciones Internacionales · ETFs', logo:'https://logo.clearbit.com/xtb.com', why:'Miles de activos, 0% comisión hasta €100K/mes. Plataforma regulada en Europa, ideal para DCA.', codeLabel:'Acceso', code:'Disponible en Colombia', url:'https://www.xtb.com', bonus:'0% comisión hasta €100K/mes' },
+      { name:'Hapi', cat:'Acciones USA · Sin comisiones', logo:'https://logo.clearbit.com/hapi.com', why:'Fracciones de acciones del S&P 500 desde Colombia. Sin comisiones, perfecto para DCA mensual.', codeLabel:'Código referido', code:'ANDALA21', url:'#', bonus:'$10 USD al abrir cuenta' },
+      { name:'Insights', cat:'ETFs Temáticos · SIPC', logo:'https://logo.clearbit.com/insightswm.com', why:'ETFs de tecnología, energía limpia y salud. Regulada y asegurada por el SIPC de EE.UU.', codeLabel:'Código referido', code:'AA9737', url:'#', bonus:'$10 USD al invertir' }
+    ]
+  },
+  aggressive: {
+    label: 'Crecimiento', cls: 'aggressive', ringColor: '#dc2626',
+    desc: 'Buscas maximizar retornos a largo plazo y aceptas la volatilidad como parte del proceso. Tienes experiencia o disposición a aprender análisis de activos individuales.',
+    chars: ['Alta tolerancia al riesgo','Horizonte de inversión largo (+5 años)','Capacidad para resistir caídas sin pánico','Enfoque en acumulación de riqueza'],
+    recs: ['Acciones individuales de crecimiento','Mercado colombiano (BVC)','ETFs de sectores de alto crecimiento','Criptomonedas (porción pequeña del portafolio)'],
+    platforms: [
+      { name:'Trii', cat:'Acciones Colombianas · BVC', logo:'https://logo.clearbit.com/trii.com.co', why:'La mejor opción para acciones colombianas. Comisiones mínimas y apertura 100% digital.', codeLabel:'Código referido', code:'aa_4m59', url:'https://trii.co/?referrals=aa_4m59', bonus:'$5.000 COP en tu primera inversión' },
+      { name:'XTB', cat:'Acciones Internacionales · ETFs', logo:'https://logo.clearbit.com/xtb.com', why:'Miles de activos globales con 0% comisión. Plataforma profesional y regulada en Europa.', codeLabel:'Acceso', code:'Disponible en Colombia', url:'https://www.xtb.com', bonus:'0% comisión hasta €100K/mes' },
+      { name:'Binance', cat:'Criptomonedas', logo:'https://logo.clearbit.com/binance.com', why:'Para la porción de cripto en tu portafolio — solo spot, con comisiones mínimas. Posición pequeña.', codeLabel:'Código 50% descuento', code:'94547225', url:'#', bonus:'50% dto. en comisiones' }
+    ]
+  }
+};
+
+let qCur = 0, qAnswers = [], qSel = null;
+
+
+function qImgErr(el) {
+  var first = (el.alt || '?')[0];
+  el.style.display = 'none';
+  el.parentElement.innerHTML = '<span class="rplat-logo-fb">' + first + '</span>';
+}
+
+function openQuiz() {
+  const w = document.getElementById('quizWrap');
+  w.classList.add('open');
+  showQScreen('qsWelcome');
+  w.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function closeQuiz() {
+  document.getElementById('quizWrap').classList.remove('open');
+  qCur = 0; qAnswers = []; qSel = null;
+}
+function showQScreen(id) {
+  document.querySelectorAll('.qscreen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+function startQuiz() {
+  qCur = 0; qAnswers = []; qSel = null;
+  document.getElementById('qTotal').textContent = QUESTIONS.length;
+  showQScreen('qsQuestion');
+  loadQQuestion();
+}
+function loadQQuestion() {
+  const q = QUESTIONS[qCur];
+  const pct = ((qCur + 1) / QUESTIONS.length) * 100;
+  document.getElementById('qProgressFill').style.width = pct + '%';
+  document.getElementById('qNum').textContent = String(qCur + 1).padStart(2, '0');
+  document.getElementById('qText').textContent = q.q;
+  document.getElementById('btnNextLabel').textContent = qCur === QUESTIONS.length - 1 ? 'Ver mi perfil' : 'Siguiente';
+  const opts = document.getElementById('qOpts');
+  opts.innerHTML = '';
+  q.opts.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'q-opt';
+    btn.innerHTML = '<div class="q-radio"><div class="q-radio-dot"></div></div><span class="q-opt-label">' + opt.t + '</span>';
+    btn.onclick = () => {
+      document.querySelectorAll('.q-opt').forEach(b => b.classList.remove('sel'));
+      btn.classList.add('sel');
+      qSel = opt.v;
+      document.getElementById('btnNext').disabled = false;
+    };
+    opts.appendChild(btn);
+  });
+  qSel = null;
+  document.getElementById('btnNext').disabled = true;
+}
+function nextQ() {
+  if (qSel === null) return;
+  qAnswers.push(qSel);
+  if (qCur < QUESTIONS.length - 1) { qCur++; loadQQuestion(); }
+  else { showQResults(); }
+}
+function showQResults() {
+  const sum = qAnswers.reduce((a, b) => a + b, 0);
+  const avg = sum / qAnswers.length;
+  let profKey, pct;
+  if (avg <= 1.67) { profKey = 'conservative'; pct = Math.round((avg / 1.67) * 100); }
+  else if (avg <= 2.33) { profKey = 'moderate'; pct = Math.round(((avg - 1.67) / 0.66) * 100); }
+  else { profKey = 'aggressive'; pct = Math.round(((avg - 2.33) / 0.67) * 100); }
+  pct = Math.max(10, Math.min(100, pct));
+
+  const p = QPROFILES[profKey];
+  const circum = 2 * Math.PI * 42;
+  const ring = document.getElementById('ringFill2');
+  setTimeout(() => {
+    ring.style.strokeDasharray = (pct / 100 * circum) + ' ' + circum;
+    ring.style.stroke = p.ringColor;
+  }, 300);
+  document.getElementById('ringPct2').textContent = pct + '%';
+  document.getElementById('ringPct2').style.color = p.ringColor;
+
+  const badge = document.getElementById('resBadge');
+  badge.textContent = '● ' + p.label;
+  badge.className = 'result-badge ' + p.cls;
+  document.getElementById('resName').textContent = 'Perfil ' + p.label;
+  document.getElementById('resDesc').textContent = p.desc;
+  document.getElementById('resPills').innerHTML =
+    '<span class="result-pill">Puntuación: ' + sum + '/' + (QUESTIONS.length * 3) + '</span>' +
+    '<span class="result-pill">Promedio: ' + avg.toFixed(1) + '/3.0</span>';
+
+  const chars = document.getElementById('resChars');
+  chars.innerHTML = '';
+  p.chars.forEach(c => {
+    chars.innerHTML += '<div class="result-char"><div class="result-char-dot ' + p.cls + '"></div><span>' + c + '</span></div>';
+  });
+  const recs = document.getElementById('resRecs');
+  recs.innerHTML = '';
+  p.recs.forEach(r => {
+    recs.innerHTML += '<div class="result-char"><div class="result-char-dot ' + p.cls + '"></div><span>' + r + '</span></div>';
+  });
+
+  const grid = document.getElementById('resPlatGrid');
+  grid.innerHTML = '';
+  p.platforms.forEach(pl => {
+    const noCode = pl.code === 'Disponible en Colombia';
+    const codeBlock = noCode
+      ? '<div class="rplat-code-row"><div><div class="rplat-code-label">' + pl.codeLabel + '</div><div class="rplat-code-val">' + pl.code + '</div></div></div>'
+      : '<div class="rplat-code-row"><div><div class="rplat-code-label">' + pl.codeLabel + '</div><div class="rplat-code-val">' + pl.code + '</div></div><button class="copy-btn" onclick="copyCode(' + "'" + pl.code + "'" + ',this)">Copiar</button></div>';
+    grid.innerHTML += '<div class="rplat-card">' +
+      '<div class="rplat-header">' +
+        '<div class="rplat-logo"><img src="' + pl.logo + '" alt="' + pl.name[0] + '" onerror="qImgErr(this)"></div>' +
+        '<div><div class="rplat-name">' + pl.name + '</div><div class="rplat-cat">' + pl.cat + '</div></div>' +
+      '</div>' +
+      '<div class="rplat-why">' + pl.why + '</div>' +
+      codeBlock +
+      '<a href="' + pl.url + '" target="_blank" rel="noopener" class="rplat-btn">Abrir cuenta →</a>' +
+    '</div>';
+  });
+
+  showQScreen('qsResults');
+  document.getElementById('qsResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+</script>
+</body>
+</html>
