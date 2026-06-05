@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Andrés Alarcón — Finanzas Personales para COL-LATAM</title>
+<title>Finanzas Personales e Inversiones | COL-LATAM</title>
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -178,13 +179,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
 .adv-grid{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,0.06);}
 .adv-row{background:var(--bg1);padding:22px 32px;display:grid;grid-template-columns:44px 1fr auto;gap:20px;align-items:center;transition:background .18s;}
 .adv-row:hover{background:var(--bg2);}
-.adv-row:hover .adv-arr{opacity:1;transform:translate(2px,-2px);}
+.adv-row:hover .adv-arr{color:var(--accent);transform:translate(2px,-2px);}
 .adv-num{font-family:var(--mono);font-size:12px;color:var(--text3);}
 .adv-body h4{font-family:var(--display);font-size:15.5px;font-weight:600;letter-spacing:-.02em;margin-bottom:3px;}
 .adv-body p{font-size:13px;color:var(--text2);font-weight:300;}
 .adv-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px;}
 .adv-tag{font-family:var(--mono);font-size:9.5px;color:var(--text3);background:var(--bg1);border:1px solid var(--border);padding:2px 7px;border-radius:4px;}
-.adv-arr{font-size:16px;color:var(--text3);opacity:0;transition:opacity .18s,transform .18s;flex-shrink:0;}
+.adv-arr{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--text3);opacity:1;transition:opacity .18s,transform .18s;flex-shrink:0;white-space:nowrap;}
 
 /* ═══════════════════════════════════
    ABOUT
@@ -219,7 +220,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
 /* ═══════════════════════════════════
    OTROS PROYECTOS
 ═══════════════════════════════════ */
-.ext-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.ext-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
 .ext-card{background:var(--bg1);border:1px solid var(--border);border-radius:var(--r);padding:24px 22px 20px;display:flex;flex-direction:column;gap:12px;text-decoration:none;color:inherit;transition:border-color .18s,background .18s,box-shadow .18s;box-shadow:0 1px 4px rgba(0,0,0,0.05);}
 .ext-card:hover{border-color:var(--border2);background:var(--bg2);box-shadow:0 4px 20px rgba(0,0,0,0.09);}
 .ext-card-top{display:flex;justify-content:space-between;align-items:flex-start;}
@@ -373,7 +374,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
     </div>
     <div class="hero-trust">
       <div class="trust-item">
-        <strong>7+</strong>
+        <strong>6+</strong>
         <span>Años en finanzas</span>
       </div>
       <div class="trust-item">
@@ -550,7 +551,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
         <span class="article-tag">Fundamentos</span>
         <h3>Los 5 errores financieros más comunes en Colombia</h3>
         <p>Desde no tener fondo de emergencia hasta dejar el dinero en una cuenta corriente. Los errores que todos cometemos y cómo evitarlos.</p>
-        <div class="article-footer"><span class="tool-cta" href="#">Ver →</span></div>
+        <div class="article-footer"><a href="articulo-errores-financieros-colombia.html" style="text-decoration:none;" class="tool-cta">Ver →</a></div>
       </div>
 
       <div class="article-card">
@@ -605,7 +606,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
 
     <div class="disclosure rv">
       <span style="flex-shrink:0;">⚠</span>
-      <span><strong>Aviso importante:</strong> Algunos enlaces incluyen códigos de beneficio que tambien me benefician si los usas — sin costo adicional para ti. Esto <em>no</em> es asesoría financiera. Evalúa cada plataforma según tu situación personal antes de invertir.</span>
+      <span><strong>Aviso importante:</strong> Algunos enlaces incluyen códigos de beneficio que me generan un pequeño beneficio si los usas — sin costo adicional para ti. Esto <em>no</em> es asesoría financiera. Evalúa cada plataforma según tu situación personal antes de invertir.</span>
     </div>
 
 
@@ -945,7 +946,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
           <p>¿Cómo saber si una acción está cara o barata? Este modelo consolida cuatro métodos de valoración distintos para llegar a un precio objetivo más robusto.</p>
           <div class="adv-tags"><span class="adv-tag">Excel</span><span class="adv-tag">DCF</span><span class="adv-tag">Múltiplos</span><span class="adv-tag">Valoración</span></div>
         </div>
-        <div class="adv-arr">↗</div>
+        <div class="adv-arr">Ver →</div>
       </a>
 
       <a href="financial-statements-dashboard.html" class="adv-row" style="color:inherit;">
@@ -955,7 +956,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
           <p>Análisis histórico de los estados financieros de una empresa colombiana — balance, P&G y flujo de caja en cuatro años, visualizados en Power BI.</p>
           <div class="adv-tags"><span class="adv-tag">Power BI</span><span class="adv-tag">Análisis Financiero</span><span class="adv-tag">Colombia</span></div>
         </div>
-        <div class="adv-arr">↗</div>
+        <div class="adv-arr">Ver →</div>
       </a>
 
       <a href="stock-fundamental-screener.html" class="adv-row" style="color:inherit;">
@@ -965,7 +966,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
           <p>Herramienta automatizada para filtrar y ordenar acciones de la BVC por calidad financiera y valoración. Usa Power Query y Claude AI para estructurar los datos automáticamente.</p>
           <div class="adv-tags"><span class="adv-tag">Excel · VBA</span><span class="adv-tag">Power Query</span><span class="adv-tag">Claude AI</span><span class="adv-tag">BVC</span></div>
         </div>
-        <div class="adv-arr">↗</div>
+        <div class="adv-arr">Ver →</div>
       </a>
 
       <a href="#" class="adv-row" style="color:inherit;">
@@ -975,7 +976,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
           <p>Modelo de valoración para proyectos de finca raíz: flujo de caja, VPN, TIR y análisis de sensibilidad. Para inversores que quieren evaluar rentabilidad antes de comprometer capital.</p>
           <div class="adv-tags"><span class="adv-tag">Power BI</span><span class="adv-tag">Bienes Raíces</span><span class="adv-tag">VPN · TIR</span><span class="adv-tag">Próximamente</span></div>
         </div>
-        <div class="adv-arr">↗</div>
+        <div class="adv-arr">Ver →</div>
       </a>
 
     </div>
@@ -992,7 +993,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
       <div class="about-body">
         <h2>No soy un gurú.<br>Soy alguien que<br>aprendió en serio.</h2>
         <p>
-          Soy <strong>Andrés Felipe Alarcón</strong>, Profesional en administración especializado en finanzas con más de <strong>siete años de experiencia</strong> en empresas multinacionales y de inversiones en Colombia y EE.UU. Mi dia a dia es trabajar en finanzas corporativas, procesos contables, modelos y estrategias de inversión.
+          Soy <strong>Andrés Felipe Alarcón</strong>, Profesional en administración especializado en finanzas con más de <strong>seis años de experiencia</strong> en empresas multinacionales y de inversiones en Colombia y EE.UU. Mi dia a dia es trabajar en finanzas corporativas, procesos contables, modelos y estrategias de inversión.
         </p>
         <p>
           Pero esta página no habla de mi trabajo corporativo — habla de lo que aprendí aplicándolo a mis propias finanzas. Invierto en la Bolsa de Valores de Estados Unidos y Colombia desde hace años, usando una estrategia simple: comprar buenas empresas a buen precio, de forma constante y a largo plazo.
@@ -1016,7 +1017,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
         </div>
         <div class="acard">
           <h4>Experiencia</h4>
-          <div class="big-n">7+</div>
+          <div class="big-n">6+</div>
           <div class="big-l">Años en análisis financiero</div>
         </div>
         <div class="acard">
@@ -1054,7 +1055,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
     <div class="rv">
       <div class="lbl">También en</div>
       <div class="h2">Otros proyectos.</div>
-      <p class="sub" style="margin-bottom:32px;">Trabajo fuera de este sitio — consultoría corporativa, asesoría crediticia e inmobiliaria, y otros.</p>
+      <p class="sub" style="margin-bottom:32px;">Trabajo fuera de este sitio — consultoría corporativa, asesoría crediticia, visualización de datos y contenido en redes.</p>
     </div>
     <div class="ext-grid rv">
 
@@ -1066,7 +1067,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
         <div>
           <div class="ext-sub">Consultoría</div>
           <div class="ext-title">Finanzas Corporativas</div>
-          <div class="ext-desc">Modelos de control financiero, estructura de datos, sistemas contables y reportes financieros para empresas.</div>
+          <div class="ext-desc">Modelos financieros, proyecciones, análisis de inversión y reportes para empresas e inversionistas institucionales.</div>
           <span class="ext-tag">aalarconfp.github.io/portfolio</span>
         </div>
       </a>
@@ -1079,7 +1080,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
         <div>
           <div class="ext-sub">Asesoría · Bienes Raíces</div>
           <div class="ext-title">HyA Capital</div>
-          <div class="ext-desc">Asesoría crediticia y análisis de inversión en finca raíz. Estructuración financiera y evaluación de proyectos inmobiliarios.</div>
+          <div class="ext-desc">Asesoría crediticia y análisis de inversión en finca raíz. Crédito hipotecario, estructuración financiera y evaluación de proyectos inmobiliarios.</div>
           <span class="ext-tag">hyacapital.com</span>
         </div>
       </a>
@@ -1092,8 +1093,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
         <div>
           <div class="ext-sub">Red social</div>
           <div class="ext-title">@aalarconfp en X</div>
-          <div class="ext-desc">Opiniones sobre finanzas personales, finanzas corporativas y herramientas de inversión.</div>
+          <div class="ext-desc">Contenido sobre inversiones, finanzas personales, mercado colombiano y herramientas financieras. Sin filtros.</div>
           <span class="ext-tag">x.com/aalarconfp</span>
+        </div>
+      </a>
+
+      <a href="https://public.tableau.com/app/profile/andres.alarconfp/vizzes" target="_blank" rel="noopener" class="ext-card">
+        <div class="ext-card-top">
+          <span class="ext-icon" style="font-size:20px;">📊</span>
+          <span class="ext-arr">↗</span>
+        </div>
+        <div>
+          <div class="ext-sub">Visualización de datos</div>
+          <div class="ext-title">Tableau Public</div>
+          <div class="ext-desc">Dashboards interactivos y visualizaciones financieras publicadas en Tableau Public.</div>
+          <span class="ext-tag">tableau.com · andres.alarconfp</span>
         </div>
       </a>
 
