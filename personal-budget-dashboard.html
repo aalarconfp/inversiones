@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard de Presupuesto Personal — Andrés Felipe Alarcón</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:      #ffffff;
+      --bg1:     #f7f8fc;
+      --bg2:     #eef0f7;
+      --bg3:     #e2e5ef;
+      --border:  rgba(0,0,0,0.08);
+      --border2: rgba(0,0,0,0.16);
+      --accent:  #2563eb;
+      --warm:    #9a6f00;
+      --green:   #059669;
+      --rose:    #dc2626;
+      --text:    #0f1117;
+      --text2:   #4b5563;
+      --text3:   #9ca3af;
+      --navy:    #0d1b2e;
+      --mono:    'JetBrains Mono', monospace;
+      --sans:    'DM Sans', sans-serif;
+      --display: 'Syne', sans-serif;
+      --r:       10px;
+      --hero-accent: #9a6f00;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;line-height:1.65;-webkit-font-smoothing:antialiased;}
+
+    /* ── NAV ── */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid var(--border);}
+    .nav-in{max-width:900px;margin:0 auto;padding:0 32px;height:58px;display:flex;align-items:center;justify-content:space-between;}
+    .nav-brand{font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:-.02em;color:var(--text);text-decoration:none;}
+    .nav-back{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);text-decoration:none;transition:color .18s;}
+    .nav-back:hover{color:var(--text);}
+
+    /* ── HERO ── */
+    .hero{background:var(--navy);padding:96px 32px 52px;border-top:5px solid var(--hero-accent);}
+    .hero-in{max-width:900px;margin:0 auto;}
+    .breadcrumb{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#64748b;margin-bottom:28px;display:flex;align-items:center;gap:6px;}
+    .breadcrumb a{color:#94a3b8;text-decoration:none;transition:color .18s;}
+    .breadcrumb a:hover{color:#fff;}
+    .cat-label{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(154,111,0,.75);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+    .cat-label::before{content:'';width:18px;height:1px;background:rgba(154,111,0,.6);}
+    h1{font-family:var(--display);font-size:clamp(32px,5vw,52px);font-weight:700;color:#fff;line-height:1.08;letter-spacing:-.025em;margin-bottom:24px;}
+    .meta-row{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:20px;}
+    .meta-item{font-family:var(--mono);font-size:10px;color:#64748b;letter-spacing:.1em;text-transform:uppercase;}
+    .meta-item span{color:rgba(255,255,255,.7);}
+    .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:28px;}
+    .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:4px;font-weight:500;border:1px solid transparent;}
+    .tag-tool{background:#fef3c7;color:#92400e;border-color:#fcd34d;}
+    .tag-fin{background:#fee2e2;color:#991b1b;border-color:#fca5a5;}
+    .tag-data{background:#dbeafe;color:#1e40af;border-color:#93c5fd;}
+    .tag-other{background:#d1fae5;color:#065f46;border-color:#6ee7b7;}
+    .action-links{display:flex;gap:10px;flex-wrap:wrap;}
+    .btn-hero{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-radius:6px;transition:all .2s;font-weight:500;}
+    .btn-hero.primary{background:#fff;color:var(--navy);}
+    .btn-hero.primary:hover{background:#f1f5f9;}
+    .btn-hero.ghost{border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.65);}
+    .btn-hero.ghost:hover{border-color:rgba(255,255,255,.45);color:#fff;}
+
+    /* ── CONTENT ── */
+    .page-wrap{max-width:900px;margin:0 auto;padding:56px 32px 80px;}
+    .project-body{display:flex;flex-direction:column;gap:44px;}
+
+    h2{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--text2);margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+    p{font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:12px;font-weight:300;}
+    p strong{color:var(--text);font-weight:500;}
+    ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;}
+    ul li{font-size:14px;color:var(--text2);padding-left:20px;position:relative;line-height:1.7;font-weight:300;}
+    ul li::before{content:'—';position:absolute;left:0;color:var(--text3);}
+    ul li strong{color:var(--text);font-weight:500;}
+
+    /* ── EMBED ── */
+    .embed-wrap{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+    .embed-bar{background:var(--bg1);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;}
+    .embed-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#34d399;margin-right:6px;}
+    .embed-bar-l{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.06em;}
+    .embed-bar-r{font-family:var(--mono);font-size:10px;color:var(--text3);}
+    .embed-wrap iframe{width:100%;height:480px;border:none;display:block;}
+
+    /* ── RULE GRID (50/30/20) ── */
+    .rule-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;}
+    .rule-card{background:var(--bg1);border:1px solid var(--border);border-radius:var(--r);padding:20px 18px;text-align:center;}
+    .rule-pct{font-family:var(--display);font-size:36px;font-weight:700;letter-spacing:-.03em;line-height:1;margin-bottom:6px;}
+    .rule-label{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);}
+    .rule-card.blue .rule-pct{color:#0ea5e9;}
+    .rule-card.orange .rule-pct{color:#f97316;}
+    .rule-card.violet .rule-pct{color:#8b5cf6;}
+
+    /* ── SOURCE BOX ── */
+    .source-box{display:inline-flex;align-items:center;gap:14px;padding:10px 16px;border:1px solid var(--border);background:var(--bg1);border-radius:6px;margin-top:16px;}
+    .source-label{font-family:var(--mono);font-size:9.5px;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;}
+    .source-box a{font-family:var(--mono);font-size:11px;color:var(--accent);text-decoration:none;font-weight:500;}
+    .source-box a:hover{text-decoration:underline;}
+
+    .note{font-style:italic;font-size:13px;color:var(--text3);border-left:2px solid var(--border);padding-left:14px;margin-top:12px;line-height:1.7;}
+
+    /* ── OTHER PROJECTS ── */
+    .related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:4px;}
+    .related-card{background:var(--bg1);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;text-decoration:none;color:inherit;display:flex;justify-content:space-between;align-items:center;transition:all .18s;}
+    .related-card:hover{border-color:var(--border2);background:var(--bg2);}
+    .related-card-body h4{font-family:var(--display);font-size:14px;font-weight:700;letter-spacing:-.02em;margin-bottom:3px;}
+    .related-card-body p{font-size:12px;color:var(--text3);margin:0;font-weight:300;}
+    .related-arr{font-size:14px;color:var(--text3);flex-shrink:0;margin-left:12px;transition:all .18s;}
+    .related-card:hover .related-arr{color:var(--accent);transform:translate(2px,-2px);}
+
+    /* ── FOOTER ── */
+    footer{border-top:1px solid var(--border);background:var(--navy);padding:24px 32px;}
+    .foot-in{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+    .foot-copy{font-family:var(--mono);font-size:10px;color:#64748b;}
+    .foot-back{font-family:var(--mono);font-size:11px;color:#64748b;text-decoration:none;letter-spacing:.08em;transition:color .18s;}
+    .foot-back:hover{color:#fff;}
+
+    @media(max-width:720px){
+      .hero{padding:88px 20px 44px;}
+      .page-wrap{padding:40px 20px 60px;}
+      .nav-in{padding:0 20px;}
+      .rule-grid{grid-template-columns:1fr;}
+      .related-grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-in">
+      <a href="index.html" class="nav-brand">Andrés Felipe Alarcón</a>
+      <a href="index.html" class="nav-back">← Volver al inicio</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-in">
+      <div class="breadcrumb">
+        <a href="index.html">Inicio</a>
+        <span>/</span>
+        <span>Herramientas</span>
+        <span>/</span>
+        <span>Dashboard de Presupuesto</span>
+      </div>
+      <div class="cat-label">Herramientas — 01</div>
+      <h1>Dashboard de<br>Presupuesto Personal</h1>
+      <div class="meta-row">
+        <span class="meta-item">Herramienta <span>Power BI</span></span>
+        <span class="meta-item">Fuente <span>Money Pro · Excel</span></span>
+        <span class="meta-item">Estado <span style="color:#34d399;">● Activo</span></span>
+      </div>
+      <div class="tags">
+        <span class="tag tag-tool">Power BI</span>
+        <span class="tag tag-fin">Presupuesto</span>
+        <span class="tag tag-fin">Análisis Financiero</span>
+        <span class="tag tag-other">Patrimonio Neto</span>
+        <span class="tag tag-other">Finanzas Personales</span>
+        <span class="tag tag-data">Data Analytics</span>
+        <span class="tag tag-fin">Estrategia Financiera</span>
+      </div>
+      <div class="action-links">
+        <a href="https://app.powerbi.com/view?r=eyJrIjoiNzhiZGFlNGYtNDAxMy00ODU3LTg4MzgtZmIwYjg5NDg1MTg1IiwidCI6Ijk5ZjdiNTVlLTljYmUtNDY3Yi04MTQzLTkxOTc4MjkxOGFmYiIsImMiOjR9" target="_blank" class="btn-hero primary">↗ Ver dashboard en vivo</a>
+        <a href="https://youtu.be/vPJNdx-KqZU" target="_blank" class="btn-hero ghost">▶ Walkthrough 5 min</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+    <div class="project-body">
+
+      <!-- EMBED -->
+      <div>
+        <div class="embed-wrap">
+          <div class="embed-bar">
+            <span class="embed-bar-l"><span class="embed-dot"></span>Power BI · En vivo</span>
+            <span class="embed-bar-r">Dashboard Personal Finance (muestra)</span>
+          </div>
+          <iframe
+            title="Dashboard Personal Finance"
+            src="https://app.powerbi.com/view?r=eyJrIjoiNzhiZGFlNGYtNDAxMy00ODU3LTg4MzgtZmIwYjg5NDg1MTg1IiwidCI6Ijk5ZjdiNTVlLTljYmUtNDY3Yi04MTQzLTkxOTc4MjkxOGFmYiIsImMiOjR9"
+            allowfullscreen="true">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- OVERVIEW -->
+      <div>
+        <h2>Descripción general</h2>
+        <p>
+          Este dashboard fue diseñado para tener una <strong>visión completa de las finanzas personales</strong>,
+          combinando datos contables reales, metas de presupuesto y seguimiento de ejecución en una sola interfaz.
+        </p>
+        <p>
+          El objetivo es <strong>mejorar la toma de decisiones financieras personales</strong> a través de indicadores
+          claros, visuales y comparativos — mostrando mes a mes si los ingresos, gastos y ahorros están alineados con
+          las metas definidas.
+        </p>
+      </div>
+
+      <!-- DATA -->
+      <div>
+        <h2>Datos y metodología</h2>
+        <p>
+          Los datos contables se registran con la app <strong>Money Pro</strong>, rastreando ingresos,
+          gastos y movimientos de inversión. Luego se <strong>exportan y estructuran en Excel</strong>
+          como fuente directa para Power BI mediante integración dinámica.
+        </p>
+        <ul>
+          <li><strong>Ingresos</strong> — Todos los flujos de entrada por fuente y categoría</li>
+          <li><strong>Gastos</strong> — Gasto categorizado entre costos fijos y variables</li>
+          <li><strong>Ahorro / Inversiones</strong> — Compras de activos, ventas y variaciones de posición neta</li>
+        </ul>
+        <div class="source-box">
+          <span class="source-label">Fuente de datos</span>
+          <a href="https://money.pro/es/iphone/" target="_blank">↗ Money Pro App</a>
+        </div>
+      </div>
+
+      <!-- METODOLOGÍA 50/30/20 -->
+      <div>
+        <h2>Metodología de presupuesto — Regla 50/30/20</h2>
+        <p>
+          El presupuesto se construye en Excel sobre los ingresos personales y metas de ahorro,
+          usando el <strong>framework 50/30/20</strong> como modelo base de asignación:
+        </p>
+        <div class="rule-grid">
+          <div class="rule-card blue">
+            <div class="rule-pct">50%</div>
+            <div class="rule-label">Gastos básicos</div>
+          </div>
+          <div class="rule-card orange">
+            <div class="rule-pct">30%</div>
+            <div class="rule-label">Personal / Discrecional</div>
+          </div>
+          <div class="rule-card violet">
+            <div class="rule-pct">20%</div>
+            <div class="rule-label">Ahorro e inversión</div>
+          </div>
+        </div>
+        <p class="note">Las asignaciones se ajustan a la estructura de ingresos y metas reales — la regla 50/30/20 es un punto de partida, no una restricción rígida.</p>
+      </div>
+
+      <!-- COMPONENTES -->
+      <div>
+        <h2>Componentes del dashboard</h2>
+        <p>
+          Compara <strong>metas vs. ejecución real</strong>, mostrando KPIs mensuales, acumulados (YTD)
+          y anuales en todas las categorías financieras.
+        </p>
+        <ul>
+          <li><strong>Gráficos comparativos</strong> — Ingresos, gastos y ahorro vs. metas presupuestadas</li>
+          <li><strong>Botones interactivos</strong> — Alterna entre % de Meta de Ingreso, % de Presupuesto y % de Meta de Patrimonio</li>
+          <li><strong>Desglose por categoría</strong> — Vista detallada por mes y desempeño YTD</li>
+          <li><strong>Resúmenes anuales</strong> — Por categoría, contraparte y posición financiera</li>
+          <li><strong>Gráficos de tendencia</strong> — Evolución de ingresos, gastos y ahorro en el tiempo</li>
+        </ul>
+      </div>
+
+      <!-- VALOR -->
+      <div>
+        <h2>Valor de negocio</h2>
+        <p>
+          Este dashboard le da a cualquier persona o asesor financiero una <strong>visión estructurada
+          y basada en datos de la salud financiera personal</strong> — reemplazando revisiones manuales
+          en hojas de cálculo por una herramienta interactiva que detecta desvíos del presupuesto
+          y hace seguimiento al crecimiento del patrimonio neto en tiempo real.
+        </p>
+        <p>
+          Construido como una <strong>plantilla reutilizable</strong>, adaptable a cualquier estructura
+          de ingresos, categorías de gasto y objetivos de ahorro personales.
+        </p>
+      </div>
+
+      <!-- OTROS PROYECTOS -->
+      <div>
+        <h2>Otras herramientas</h2>
+        <div class="related-grid">
+          <a href="portfolio-dashboard.html" class="related-card">
+            <div class="related-card-body">
+              <h4>Tracker de Portafolio</h4>
+              <p>BVC · NYSE · COL &amp; USA equities</p>
+            </div>
+            <span class="related-arr">↗</span>
+          </a>
+          <a href="stock-valuation-dashboard.html" class="related-card">
+            <div class="related-card-body">
+              <h4>Valoración de Acciones</h4>
+              <p>DCF · Graham · Múltiplos · Excel</p>
+            </div>
+            <span class="related-arr">↗</span>
+          </a>
+          <a href="financial-statements-dashboard.html" class="related-card">
+            <div class="related-card-body">
+              <h4>Estados Financieros</h4>
+              <p>Power BI · Supersociedades · Colombia</p>
+            </div>
+            <span class="related-arr">↗</span>
+          </a>
+          <a href="stock-fundamental-screener.html" class="related-card">
+            <div class="related-card-body">
+              <h4>Screener BVC</h4>
+              <p>Power Query · VBA · Claude AI</p>
+            </div>
+            <span class="related-arr">↗</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="foot-in">
+      <span class="foot-copy">© 2026 Andrés Felipe Alarcón · Finanzas Personales para COL-LATAM</span>
+      <a href="index.html" class="foot-back">← Volver al inicio</a>
+    </div>
+  </footer>
+
+</body>
+</html>

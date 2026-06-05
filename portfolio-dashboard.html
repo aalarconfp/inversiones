@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio Dashboard — Andrés Felipe Alarcón</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#ffffff;--bg1:#f7f8fc;--bg2:#eef0f7;--bg3:#e2e5ef;
+      --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.16);
+      --accent:#2563eb;--warm:#9a6f00;--green:#059669;--rose:#dc2626;
+      --text:#0f1117;--text2:#4b5563;--text3:#9ca3af;--navy:#0d1b2e;
+      --mono:'JetBrains Mono',monospace;--sans:'DM Sans',sans-serif;--display:'Syne',sans-serif;
+      --r:10px;--hero-accent:#059669;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;line-height:1.65;-webkit-font-smoothing:antialiased;}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid var(--border);}
+    .nav-in{max-width:900px;margin:0 auto;padding:0 32px;height:58px;display:flex;align-items:center;justify-content:space-between;}
+    .nav-brand{font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:-.02em;color:var(--text);text-decoration:none;}
+    .nav-back{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);text-decoration:none;transition:color .18s;}
+    .nav-back:hover{color:var(--text);}
+
+    .hero{background:var(--navy);padding:96px 32px 52px;border-top:5px solid var(--hero-accent);}
+    .hero-in{max-width:900px;margin:0 auto;}
+    .breadcrumb{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#64748b;margin-bottom:28px;display:flex;align-items:center;gap:6px;}
+    .breadcrumb a{color:#94a3b8;text-decoration:none;transition:color .18s;}
+    .breadcrumb a:hover{color:#fff;}
+    .cat-label{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(5,150,105,.75);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+    .cat-label::before{content:'';width:18px;height:1px;background:rgba(5,150,105,.6);}
+    h1{font-family:var(--display);font-size:clamp(32px,5vw,52px);font-weight:700;color:#fff;line-height:1.08;letter-spacing:-.025em;margin-bottom:24px;}
+    .meta-row{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:20px;}
+    .meta-item{font-family:var(--mono);font-size:10px;color:#64748b;letter-spacing:.1em;text-transform:uppercase;}
+    .meta-item span{color:rgba(255,255,255,.7);}
+    .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:28px;}
+    .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:4px;font-weight:500;border:1px solid transparent;}
+    .tag-tool{background:#fef3c7;color:#92400e;border-color:#fcd34d;}
+    .tag-fin{background:#fee2e2;color:#991b1b;border-color:#fca5a5;}
+    .tag-data{background:#dbeafe;color:#1e40af;border-color:#93c5fd;}
+    .tag-other{background:#d1fae5;color:#065f46;border-color:#6ee7b7;}
+    .action-links{display:flex;gap:10px;flex-wrap:wrap;}
+    .btn-hero{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-radius:6px;transition:all .2s;font-weight:500;}
+    .btn-hero.primary{background:#fff;color:var(--navy);}
+    .btn-hero.primary:hover{background:#f1f5f9;}
+    .btn-hero.ghost{border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.65);}
+    .btn-hero.ghost:hover{border-color:rgba(255,255,255,.45);color:#fff;}
+
+    .page-wrap{max-width:900px;margin:0 auto;padding:56px 32px 80px;}
+    .project-body{display:flex;flex-direction:column;gap:44px;}
+    h2{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--text2);margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+    p{font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:12px;font-weight:300;}
+    p strong{color:var(--text);font-weight:500;}
+    ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;}
+    ul li{font-size:14px;color:var(--text2);padding-left:20px;position:relative;line-height:1.7;font-weight:300;}
+    ul li::before{content:'—';position:absolute;left:0;color:var(--text3);}
+    ul li strong{color:var(--text);font-weight:500;}
+
+    .embed-wrap{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+    .embed-bar{background:var(--bg1);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;}
+    .embed-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#34d399;margin-right:6px;}
+    .embed-bar-l{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.06em;}
+    .embed-bar-r{font-family:var(--mono);font-size:10px;color:var(--text3);}
+    .embed-wrap iframe{width:100%;height:460px;border:none;display:block;}
+
+    .disclaimer{background:#fefce8;border:1px solid #fde68a;border-left:3px solid #f59e0b;border-radius:6px;padding:14px 18px;font-family:var(--mono);font-size:10px;line-height:1.7;color:#78350f;letter-spacing:.02em;}
+    .disclaimer strong{color:#92400e;}
+
+    .pipeline{display:flex;align-items:center;gap:0;flex-wrap:wrap;margin:16px 0 6px;}
+    .pipeline-step{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:7px 12px;font-family:var(--mono);font-size:10px;color:var(--text2);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;}
+    .pipeline-step.hl{background:#d1fae5;border-color:#6ee7b7;color:#065f46;}
+    .pipeline-arrow{font-family:var(--mono);font-size:11px;color:var(--text3);padding:0 5px;}
+
+    .source-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;}
+    .source-box{flex:1;min-width:180px;display:flex;align-items:center;gap:14px;padding:10px 16px;border:1px solid var(--border);background:var(--bg1);border-radius:6px;}
+    .source-label{font-family:var(--mono);font-size:9.5px;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;}
+    .source-box a{font-family:var(--mono);font-size:11px;color:var(--accent);text-decoration:none;font-weight:500;}
+    .source-box a:hover{text-decoration:underline;}
+    .source-box span.val{font-family:var(--mono);font-size:11px;color:var(--text2);}
+
+    .note{font-style:italic;font-size:13px;color:var(--text3);border-left:2px solid var(--border);padding-left:14px;margin-top:12px;line-height:1.7;}
+
+    .related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:4px;}
+    .related-card{background:var(--bg1);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;text-decoration:none;color:inherit;display:flex;justify-content:space-between;align-items:center;transition:all .18s;}
+    .related-card:hover{border-color:var(--border2);background:var(--bg2);}
+    .related-card-body h4{font-family:var(--display);font-size:14px;font-weight:700;letter-spacing:-.02em;margin-bottom:3px;}
+    .related-card-body p{font-size:12px;color:var(--text3);margin:0;font-weight:300;}
+    .related-arr{font-size:14px;color:var(--text3);flex-shrink:0;margin-left:12px;transition:all .18s;}
+    .related-card:hover .related-arr{color:var(--accent);transform:translate(2px,-2px);}
+
+    footer{border-top:1px solid var(--border);background:var(--navy);padding:24px 32px;}
+    .foot-in{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+    .foot-copy{font-family:var(--mono);font-size:10px;color:#64748b;}
+    .foot-back{font-family:var(--mono);font-size:11px;color:#64748b;text-decoration:none;letter-spacing:.08em;transition:color .18s;}
+    .foot-back:hover{color:#fff;}
+
+    @media(max-width:720px){.hero{padding:88px 20px 44px;}.page-wrap{padding:40px 20px 60px;}.nav-in{padding:0 20px;}.related-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-in">
+      <a href="index.html" class="nav-brand">Andrés Felipe Alarcón</a>
+      <a href="index.html" class="nav-back">← Back to home</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-in">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a><span>/</span>
+        <span>Herramientas</span><span>/</span>
+        <span>Portfolio Dashboard</span>
+      </div>
+      <div class="cat-label">Herramientas — 02</div>
+      <h1>Portfolio<br>Dashboard</h1>
+      <div class="meta-row">
+        <span class="meta-item">Tool <span>Excel · Power Query · Power Pivot</span></span>
+        <span class="meta-item">Source <span>Portfolio Performance</span></span>
+        <span class="meta-item">Markets <span>COL &amp; USA Equities</span></span>
+      </div>
+      <div class="tags">
+        <span class="tag tag-tool">Power Query</span>
+        <span class="tag tag-tool">Power Pivot</span>
+        <span class="tag tag-fin">Portfolio Tracking</span>
+        <span class="tag tag-fin">Price Targets</span>
+        <span class="tag tag-data">Data Pipeline</span>
+        <span class="tag tag-data">DAX</span>
+        <span class="tag tag-other">BVC · NYSE</span>
+      </div>
+      <div class="action-links">
+        <a href="#dashboard-embed" class="btn-hero primary">↗ View Live Dashboard</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+    <div class="project-body">
+
+      <!-- EMBED -->
+      <div id="dashboard-embed">
+        <div class="embed-wrap">
+          <div class="embed-bar">
+            <span class="embed-bar-l"><span class="embed-dot"></span>Excel Online · Live — Portfolio Dashboard</span>
+          </div>
+          <iframe width="402" height="346" frameborder="0" scrolling="no"
+            src="https://1drv.ms/x/c/588107c1db5a7c98/IQQ8awsr3cWqTIQ_HFgKy1ogAWLnUzkgeXQh8NmSm8gmdGs?em=2&ActiveCell='Portfolio'!A1&wdHideGridlines=True&wdHideHeaders=True&wdInConfigurator=True&wdInConfigurator=True">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- DISCLAIMER -->
+      <div>
+        <div class="disclaimer">
+          <strong>Disclaimer:</strong> Securities, brokers, and numeric values shown in this dashboard are illustrative.
+          Nothing in this project constitutes investment advice or a recommendation to buy or sell any financial instrument.
+          Past performance is not indicative of future results.
+        </div>
+      </div>
+
+      <!-- OVERVIEW -->
+      <div>
+        <h2>Overview</h2>
+        <p>
+          Managing investments across two countries means dealing with <strong>two currencies,
+          multiple brokers, and data scattered across different apps and files</strong>. This
+          dashboard brings everything together in one place — a single Excel workbook that
+          gives a clear, up-to-date picture of the entire portfolio at a glance.
+        </p>
+        <p>
+          It covers both <strong>Colombian equities (BVC)</strong> and <strong>US equities
+          (NYSE)</strong>, automatically converting between pesos and dollars using the
+          live exchange rate, and adjusting returns for inflation so the numbers reflect
+          real purchasing power — not just nominal gains.
+        </p>
+        <p>
+          An automated data pipeline (built with Power Query and Power Pivot)
+          pulls from multiple sources and refreshes the entire model in one click — no manual
+          copy-pasting, no reconciliation errors.
+        </p>
+        <p class="note">
+          Supports dual equity markets and multiple brokerage accounts. Designed to accommodate
+          alternative investments with minor configuration adjustments.
+        </p>
+      </div>
+
+      <!-- DATA PIPELINE -->
+      <div>
+        <h2>Data Sources &amp; Pipeline</h2>
+        <p>
+          All data flows in automatically from five sources. Each source feeds a specific
+          layer of the analysis — from live positions and returns, to exchange rates,
+          inflation figures, and price targets.
+        </p>
+        <div class="pipeline">
+          <div class="pipeline-step">Raw Data Sources</div>
+          <div class="pipeline-arrow">→</div>
+          <div class="pipeline-step hl">Power Query Cleanup</div>
+          <div class="pipeline-arrow">→</div>
+          <div class="pipeline-step hl">Power Pivot Model</div>
+          <div class="pipeline-arrow">→</div>
+          <div class="pipeline-step hl">DAX Measures</div>
+          <div class="pipeline-arrow">→</div>
+          <div class="pipeline-step">Dashboard</div>
+        </div>
+        <ul style="margin-top:20px;">
+          <li>
+            <strong>Portfolio Performance (app)</strong> — Main data source: position-level
+            reports covering holdings, market values, gains/losses, dividends, fees, and returns
+            separately for Colombian (COP) and US (USD) positions.
+          </li>
+          <li>
+            <strong>Exchange Rate &amp; Colombian Inflation</strong> — From Banco de la República.
+            Live COP/USD rate translates all positions to a single currency; the IPC inflation
+            index calculates real returns on Colombian holdings.
+          </li>
+          <li>
+            <strong>US Inflation</strong> — Monthly CPI from FRED (St. Louis Fed), used to
+            adjust returns on US positions for the effect of dollar inflation.
+          </li>
+          <li>
+            <strong>Sector &amp; Industry Data</strong> — External files classifying each stock
+            by sector and industry, enabling portfolio breakdowns by market segment.
+          </li>
+          <li>
+            <strong>Price Targets</strong> — Valuation files for both markets with target prices,
+            fair value estimates, buy thresholds, and risk levels per position.
+          </li>
+        </ul>
+        <div class="source-row">
+          <div class="source-box"><span class="source-label">Primary</span><span class="val">Portfolio Performance</span></div>
+          <div class="source-box"><span class="source-label">Macro COP</span><a href="https://www.banrep.gov.co/" target="_blank">↗ Banco de la República</a></div>
+          <div class="source-box"><span class="source-label">Macro USD</span><a href="https://fred.stlouisfed.org/" target="_blank">↗ FRED · St. Louis Fed</a></div>
+        </div>
+      </div>
+
+      <!-- VALUE -->
+      <div>
+        <h2>What This Dashboard Solves</h2>
+        <p>
+          A portfolio split across two countries, two currencies, and multiple brokers
+          produces no natural single view of performance. Piecing it together manually is
+          slow, inconsistent, and easy to get wrong.
+        </p>
+        <ul>
+          <li><strong>One view, two markets</strong> — Colombian and US positions side-by-side, converted to a common currency via the live exchange rate</li>
+          <li><strong>Real returns</strong> — Performance figures adjusted for inflation — you see actual gains, not numbers inflated by price levels</li>
+          <li><strong>Strategy built in</strong> — Every position shows its price target, distance from fair value, and buy/cut thresholds</li>
+          <li><strong>One-click refresh</strong> — All data sources update automatically; no copy-pasting between accounts</li>
+          <li><strong>Easy to extend</strong> — Adding a new stock, broker, or asset class only requires updating source files</li>
+        </ul>
+        <p class="note">
+          Built for an individual investor managing positions across BVC and NYSE. The same
+          structure scales to additional markets, currencies, or asset classes by connecting new data sources.
+        </p>
+      </div>
+
+      <!-- RELATED -->
+      <div>
+        <h2>Other Tools</h2>
+        <div class="related-grid">
+          <a href="personal-budget-dashboard.html" class="related-card">
+            <div class="related-card-body"><h4>Dashboard de Presupuesto</h4><p>Power BI · Money Pro · 50/30/20</p></div>
+            <span class="related-arr">↗</span>
+          </a>
+          <a href="stock-valuation-dashboard.html" class="related-card">
+            <div class="related-card-body"><h4>Stock Valuation</h4><p>DCF · Graham · Multiples · Excel</p></div>
+            <span class="related-arr">↗</span>
+          </a>
+          <a href="financial-statements-dashboard.html" class="related-card">
+            <div class="related-card-body"><h4>Financial Statements</h4><p>Power BI · Supersociedades · Colombia</p></div>
+            <span class="related-arr">↗</span>
+          </a>
+          <a href="stock-fundamental-screener.html" class="related-card">
+            <div class="related-card-body"><h4>BVC Screener</h4><p>Power Query · VBA · Claude AI</p></div>
+            <span class="related-arr">↗</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="foot-in">
+      <span class="foot-copy">© 2026 Andrés Felipe Alarcón · Finanzas Personales para COL-LATAM</span>
+      <a href="index.html" class="foot-back">← Back to home</a>
+    </div>
+  </footer>
+
+</body>
+</html>

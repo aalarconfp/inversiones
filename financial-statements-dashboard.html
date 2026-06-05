@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard de Estados Financieros — Andrés Felipe Alarcón</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#ffffff;--bg1:#f7f8fc;--bg2:#eef0f7;--bg3:#e2e5ef;--border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.16);--accent:#2563eb;--warm:#9a6f00;--green:#059669;--rose:#dc2626;--text:#0f1117;--text2:#4b5563;--text3:#9ca3af;--navy:#0d1b2e;--mono:'JetBrains Mono',monospace;--sans:'DM Sans',sans-serif;--display:'Syne',sans-serif;--r:10px;--hero-accent:#dc2626;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;line-height:1.65;-webkit-font-smoothing:antialiased;}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid var(--border);}
+    .nav-in{max-width:900px;margin:0 auto;padding:0 32px;height:58px;display:flex;align-items:center;justify-content:space-between;}
+    .nav-brand{font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:-.02em;color:var(--text);text-decoration:none;}
+    .nav-back{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);text-decoration:none;transition:color .18s;}
+    .nav-back:hover{color:var(--text);}
+
+    .hero{background:var(--navy);padding:96px 32px 52px;border-top:5px solid var(--hero-accent);}
+    .hero-in{max-width:900px;margin:0 auto;}
+    .breadcrumb{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#64748b;margin-bottom:28px;display:flex;align-items:center;gap:6px;}
+    .breadcrumb a{color:#94a3b8;text-decoration:none;transition:color .18s;}
+    .breadcrumb a:hover{color:#fff;}
+    .cat-label{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(220,38,38,.7);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+    .cat-label::before{content:'';width:18px;height:1px;background:rgba(220,38,38,.5);}
+    h1{font-family:var(--display);font-size:clamp(32px,5vw,52px);font-weight:700;color:#fff;line-height:1.08;letter-spacing:-.025em;margin-bottom:24px;}
+    .meta-row{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:20px;}
+    .meta-item{font-family:var(--mono);font-size:10px;color:#64748b;letter-spacing:.1em;text-transform:uppercase;}
+    .meta-item span{color:rgba(255,255,255,.7);}
+    .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:28px;}
+    .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:4px;font-weight:500;border:1px solid transparent;}
+    .tag-tool{background:#fef3c7;color:#92400e;border-color:#fcd34d;}
+    .tag-fin{background:#fee2e2;color:#991b1b;border-color:#fca5a5;}
+    .tag-data{background:#dbeafe;color:#1e40af;border-color:#93c5fd;}
+    .tag-other{background:#d1fae5;color:#065f46;border-color:#6ee7b7;}
+    .action-links{display:flex;gap:10px;flex-wrap:wrap;}
+    .btn-hero{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-radius:6px;transition:all .2s;font-weight:500;}
+    .btn-hero.primary{background:#fff;color:var(--navy);}
+    .btn-hero.primary:hover{background:#f1f5f9;}
+    .btn-hero.ghost{border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.65);}
+    .btn-hero.ghost:hover{border-color:rgba(255,255,255,.45);color:#fff;}
+
+    .page-wrap{max-width:900px;margin:0 auto;padding:56px 32px 80px;}
+    .project-body{display:flex;flex-direction:column;gap:44px;}
+    h2{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--text2);margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+    p{font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:12px;font-weight:300;}
+    p strong{color:var(--text);font-weight:500;}
+    ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;}
+    ul li{font-size:14px;color:var(--text2);padding-left:20px;position:relative;line-height:1.7;font-weight:300;}
+    ul li::before{content:'—';position:absolute;left:0;color:var(--text3);}
+    ul li strong{color:var(--text);font-weight:500;}
+
+    .embed-wrap{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+    .embed-bar{background:var(--bg1);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;}
+    .embed-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#34d399;margin-right:6px;}
+    .embed-bar-l{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.06em;}
+    .embed-bar-r{font-family:var(--mono);font-size:10px;color:var(--text3);}
+    .embed-wrap iframe{width:100%;height:480px;border:none;display:block;}
+
+    .source-box{display:inline-flex;align-items:center;gap:14px;padding:10px 16px;border:1px solid var(--border);background:var(--bg1);border-radius:6px;margin-top:16px;}
+    .source-label{font-family:var(--mono);font-size:9.5px;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;}
+    .source-box a{font-family:var(--mono);font-size:11px;color:var(--accent);text-decoration:none;font-weight:500;}
+    .source-box a:hover{text-decoration:underline;}
+
+    .note{font-style:italic;font-size:13px;color:var(--text3);border-left:2px solid var(--border);padding-left:14px;margin-top:12px;line-height:1.7;}
+
+    .related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:4px;}
+    .related-card{background:var(--bg1);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;text-decoration:none;color:inherit;display:flex;justify-content:space-between;align-items:center;transition:all .18s;}
+    .related-card:hover{border-color:var(--border2);background:var(--bg2);}
+    .related-card-body h4{font-family:var(--display);font-size:14px;font-weight:700;letter-spacing:-.02em;margin-bottom:3px;}
+    .related-card-body p{font-size:12px;color:var(--text3);margin:0;font-weight:300;}
+    .related-arr{font-size:14px;color:var(--text3);flex-shrink:0;margin-left:12px;transition:all .18s;}
+    .related-card:hover .related-arr{color:var(--accent);transform:translate(2px,-2px);}
+
+    footer{border-top:1px solid var(--border);background:var(--navy);padding:24px 32px;}
+    .foot-in{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+    .foot-copy{font-family:var(--mono);font-size:10px;color:#64748b;}
+    .foot-back{font-family:var(--mono);font-size:11px;color:#64748b;text-decoration:none;letter-spacing:.08em;transition:color .18s;}
+    .foot-back:hover{color:#fff;}
+
+    @media(max-width:720px){.hero{padding:88px 20px 44px;}.page-wrap{padding:40px 20px 60px;}.nav-in{padding:0 20px;}.related-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-in">
+      <a href="index.html" class="nav-brand">Andrés Felipe Alarcón</a>
+      <a href="index.html" class="nav-back">← Volver al inicio</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-in">
+      <div class="breadcrumb">
+        <a href="index.html">Inicio</a><span>/</span>
+        <span>Herramientas Avanzadas</span><span>/</span>
+        <span>Estados Financieros</span>
+      </div>
+      <div class="cat-label">Herramientas Avanzadas — 02</div>
+      <h1>Dashboard de<br>Estados Financieros</h1>
+      <div class="meta-row">
+        <span class="meta-item">Herramienta <span>Power BI</span></span>
+        <span class="meta-item">Fuente <span>Supersociedades</span></span>
+        <span class="meta-item">Estado <span style="color:#34d399;">● Activo</span></span>
+      </div>
+      <div class="tags">
+        <span class="tag tag-tool">Power BI</span>
+        <span class="tag tag-fin">Análisis Financiero</span>
+        <span class="tag tag-fin">Desempeño Financiero</span>
+        <span class="tag tag-fin">Ratios Financieros</span>
+        <span class="tag tag-other">Control Financiero</span>
+        <span class="tag tag-data">Data Analytics</span>
+      </div>
+      <div class="action-links">
+        <a href="https://app.powerbi.com/view?r=eyJrIjoiZGM0ZTBmOTAtMzViNS00ZTcyLWI0NWEtNjRmNGQzODU5OGUxIiwidCI6Ijk5ZjdiNTVlLTljYmUtNDY3Yi04MTQzLTkxOTc4MjkxOGFmYiIsImMiOjR9&pageName=40c9b8ebcdb417d0a74d" target="_blank" class="btn-hero primary">↗ Ver dashboard en vivo</a>
+        <a href="https://www.youtube.com/watch?v=0HnyB-jIQlg" target="_blank" class="btn-hero ghost">▶ Walkthrough 5 min</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+    <div class="project-body">
+
+      <!-- EMBED -->
+      <div>
+        <div class="embed-wrap">
+          <div class="embed-bar">
+            <span class="embed-bar-l"><span class="embed-dot"></span>Power BI · En vivo</span>
+            <span class="embed-bar-r">Dashboard Financiero Terpel</span>
+          </div>
+          <iframe
+            title="Dashboard Financiero Terpel"
+            src="https://app.powerbi.com/view?r=eyJrIjoiZGM0ZTBmOTAtMzViNS00ZTcyLWI0NWEtNjRmNGQzODU5OGUxIiwidCI6Ijk5ZjdiNTVlLTljYmUtNDY3Yi04MTQzLTkxOTc4MjkxOGFmYiIsImMiOjR9&pageName=40c9b8ebcdb417d0a74d"
+            allowfullscreen="true">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- OVERVIEW -->
+      <div>
+        <h2>Descripción general</h2>
+        <p>
+          Este dashboard ofrece un análisis estructurado del <strong>desempeño financiero de Terpel</strong>
+          a lo largo de los últimos cuatro años. El proyecto surgió porque la acción parecía
+          <strong>subvalorada en años recientes</strong>, requiriendo una revisión rigurosa de
+          tendencias históricas e indicadores financieros para respaldar una decisión de inversión informada.
+        </p>
+        <p>
+          El pipeline de datos es <strong>completamente automatizado y reutilizable</strong> — cualquier
+          empresa colombiana registrada en Supersociedades puede cargarse sin reconstruir el modelo,
+          reduciendo el tiempo de análisis de días a horas.
+        </p>
+        <p class="note">
+          La interfaz del dashboard está en español, reflejando el contexto colombiano. Solo datos históricos;
+          las proyecciones hacia adelante requieren integración con un modelo financiero separado.
+        </p>
+      </div>
+
+      <!-- DATA -->
+      <div>
+        <h2>Datos y metodología</h2>
+        <p>
+          Datos provenientes de la <strong>Superintendencia de Sociedades (Supersociedades)</strong>,
+          autoridad oficial de reporte financiero corporativo de Colombia. Los datos brutos fueron
+          <strong>extraídos, limpiados y estructurados en Excel con Power Query</strong>,
+          luego modelados y visualizados en Power BI.
+        </p>
+        <ul>
+          <li><strong>Balance General</strong> — Vista histórica de 4 años de activos, pasivos y patrimonio</li>
+          <li><strong>Estado de Resultados</strong> — Evolución de ingresos, EBITDA y utilidad neta</li>
+        </ul>
+        <div class="source-box">
+          <span class="source-label">Fuente oficial</span>
+          <a href="https://siis.ia.supersociedades.gov.co/#/massivereports" target="_blank">↗ Supersociedades — SIIS Reportes Masivos</a>
+        </div>
+      </div>
+
+      <!-- COMPONENTS -->
+      <div>
+        <h2>Componentes del dashboard</h2>
+        <p>Vista completa de la evolución financiera, rentabilidad y estructura de capital — adecuada para revisiones anuales o mensuales de salud financiera.</p>
+        <ul>
+          <li><strong>Resumen de posición financiera</strong> — Indicadores anuales a través de balance y estado de resultados</li>
+          <li><strong>Análisis horizontal</strong> — Variación año a año en todas las líneas principales</li>
+          <li><strong>Ratios financieros clave</strong> — Rentabilidad, eficiencia operacional, liquidez y solvencia</li>
+          <li><strong>Desglose de flujo de caja</strong> — Actividades operativas, de inversión y de financiamiento</li>
+          <li><strong>Free Cash Flow (FCF)</strong> — Caja neta disponible para accionistas y prestamistas</li>
+        </ul>
+        <p class="note">Puede convertirse de vista anual a mensual o trimestral sin cambios estructurales al modelo.</p>
+      </div>
+
+      <!-- VALUE -->
+      <div>
+        <h2>Valor de negocio</h2>
+        <p>
+          Este dashboard respalda directamente el <strong>análisis de inversión, la evaluación crediticia
+          y el reporte gerencial</strong> — los tres principales casos de uso del análisis estructurado de
+          estados financieros. Para un CFO o equipo de finanzas, reemplaza el reporte manual en Excel con
+          una <strong>vista interactiva y siempre actualizada</strong> de la salud de la empresa.
+        </p>
+      </div>
+
+      <!-- RELATED -->
+      <div>
+        <h2>Otras herramientas avanzadas</h2>
+        <div class="related-grid">
+          <a href="stock-valuation-dashboard.html" class="related-card">
+            <div class="related-card-body"><h4>Valoración de Acciones</h4><p>DCF · Graham · Múltiplos · Excel</p></div>
+            <span class="related-arr">↗</span>
+          </a>
+          <a href="stock-fundamental-screener.html" class="related-card">
+            <div class="related-card-body"><h4>Screener BVC</h4><p>Power Query · VBA · Claude AI</p></div>
+            <span class="related-arr">↗</span>
+          </a>
+          <a href="portfolio-dashboard.html" class="related-card">
+            <div class="related-card-body"><h4>Portfolio Dashboard</h4><p>Excel · BVC · NYSE · COL &amp; USA</p></div>
+            <span class="related-arr">↗</span>
+          </a>
+          <a href="personal-budget-dashboard.html" class="related-card">
+            <div class="related-card-body"><h4>Presupuesto Personal</h4><p>Power BI · 50/30/20 · Money Pro</p></div>
+            <span class="related-arr">↗</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="foot-in">
+      <span class="foot-copy">© 2026 Andrés Felipe Alarcón · Finanzas Personales para COL-LATAM</span>
+      <a href="index.html" class="foot-back">← Volver al inicio</a>
+    </div>
+  </footer>
+
+</body>
+</html>
