@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BVC Fundamental Screener — Andrés Felipe Alarcón</title>
+  <title>Screener Fundamental BVC | Finanzas Personales e Inversiones</title>
+  <link rel="icon" type="image/png" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -142,36 +143,36 @@
   <nav>
     <div class="nav-in">
       <a href="index.html" class="nav-brand">Andrés Felipe Alarcón</a>
-      <a href="index.html" class="nav-back">← Back to home</a>
+      <a href="index.html" class="nav-back">← Volver al inicio</a>
     </div>
   </nav>
 
   <div class="hero">
     <div class="hero-in">
       <div class="breadcrumb">
-        <a href="index.html">Home</a><span>/</span>
+        <a href="index.html">Inicio</a><span>/</span>
         <span>Herramientas Avanzadas</span><span>/</span>
-        <span>BVC Screener</span>
+        <span>Screener BVC</span>
       </div>
       <div class="cat-label">Herramientas Avanzadas — 03</div>
-      <h1>Stock Market<br>Fundamental BVC Screener</h1>
+      <h1>Screener Fundamental<br>de Acciones BVC</h1>
       <div class="meta-row">
-        <span class="meta-item">Tool <span>Excel · Power Query · Power Pivot · VBA</span></span>
-        <span class="meta-item">Source <span>TradingView · Claude AI</span></span>
-        <span class="meta-item">Scope <span>Colombian Equities (BVC)</span></span>
+        <span class="meta-item">Herramienta <span>Excel · Power Query · Power Pivot · VBA</span></span>
+        <span class="meta-item">Fuente <span>TradingView · Claude AI</span></span>
+        <span class="meta-item">Mercado <span>Acciones Colombia (BVC)</span></span>
       </div>
       <div class="tags">
         <span class="tag tag-tool">Excel</span>
         <span class="tag tag-tool">Power Query</span>
         <span class="tag tag-tool">Power Pivot</span>
         <span class="tag tag-tool">VBA</span>
-        <span class="tag tag-fin">Stock Screener</span>
-        <span class="tag tag-fin">Fundamental Analysis</span>
-        <span class="tag tag-data">Data Pipeline</span>
+        <span class="tag tag-fin">Screener de Acciones</span>
+        <span class="tag tag-fin">Análisis Fundamental</span>
+        <span class="tag tag-data">Pipeline de Datos</span>
         <span class="tag tag-teal">BVC · Colombia</span>
       </div>
       <div class="action-links">
-        <a href="bvc-terminal-screener.html" target="_blank" class="btn-hero primary">↗ View Live Screener</a>
+        <a href="bvc-terminal-screener.html" target="_blank" class="btn-hero primary">↗ Ver screener en vivo</a>
         <a href="YOUR_YOUTUBE_URL" target="_blank" class="btn-hero ghost">▶ Walkthrough</a>
       </div>
     </div>
@@ -184,8 +185,8 @@
       <div>
         <div class="embed-wrap">
           <div class="embed-bar">
-            <span class="embed-bar-l"><span class="embed-dot"></span>Live — Fundamental BVC Screener · Data Updated 2026</span>
-            <a href="bvc-terminal-screener.html" target="_blank" class="embed-bar-link">↗ Open full screen</a>
+            <span class="embed-bar-l"><span class="embed-dot"></span>En vivo — Screener Fundamental BVC · Datos actualizados 2026</span>
+            <a href="bvc-terminal-screener.html" target="_blank" class="embed-bar-link">↗ Abrir en pantalla completa</a>
           </div>
           <iframe
             title="BVC Fundamental Screener — Andrés Felipe Alarcón"
@@ -198,7 +199,7 @@
         <!-- EMBED: Excel Backend -->
         <div class="embed-wrap">
           <div class="embed-bar">
-            <span class="embed-bar-l"><span class="embed-dot"></span>Excel Online · Backend</span>
+            <span class="embed-bar-l"><span class="embed-dot"></span>Excel Online · Backend del modelo</span>
             <span style="font-family:var(--mono);font-size:10px;color:var(--text3);">Power Query · Power Pivot · VBA</span>
           </div>
           <iframe
@@ -212,76 +213,77 @@
 
       <!-- OVERVIEW -->
       <div>
-        <h2>Overview</h2>
+        <h2>Descripción general</h2>
         <p>
-          This screener systematically ranks the <strong>~30 most liquid equities on the Bolsa de
-          Valores de Colombia (BVC)</strong> by five fundamental ratios, producing a composite score
-          that objectively identifies the top 10 stocks with the best combination of valuation,
-          profitability, yield, and leverage at any given point in time.
+          Este screener clasifica sistemáticamente las <strong>~30 acciones más líquidas de la Bolsa de
+          Valores de Colombia (BVC)</strong> según cinco ratios fundamentales, generando un puntaje
+          compuesto que identifica objetivamente las 10 acciones con la mejor combinación de
+          valoración, rentabilidad, dividendo y apalancamiento en un momento dado.
         </p>
         <p>
-          It solves a specific challenge in the Colombian market: <strong>data accessibility</strong>.
-          Unlike US equities, BVC stocks lack a centralized, structured data export. This workflow
-          bridges that gap by combining a custom TradingView screener with Claude AI for structured
-          extraction, feeding a fully automated Power Query / Power Pivot pipeline in Excel.
+          Resuelve un reto específico del mercado colombiano: <strong>la accesibilidad a los datos</strong>.
+          A diferencia de las acciones de EE.UU., las acciones de la BVC no tienen una exportación
+          de datos estructurada y centralizada. Este flujo de trabajo cierra esa brecha combinando
+          un screener personalizado de TradingView con Claude AI para la extracción estructurada,
+          alimentando un pipeline automatizado de Power Query / Power Pivot en Excel.
         </p>
         <p>
-          The dashboard supports <strong>period-over-period comparison</strong>, tracking which stocks
-          have entered or exited the Top 10 between analysis dates — enabling a systematic, bias-free
-          approach to portfolio rebalancing decisions on the BVC.
+          El dashboard permite la <strong>comparación período a período</strong>, rastreando qué acciones
+          han entrado o salido del Top 10 entre fechas de análisis — facilitando un enfoque sistemático
+          y libre de sesgos para decisiones de rebalanceo del portafolio en la BVC.
         </p>
       </div>
 
       <!-- RANKING METHODOLOGY -->
       <div>
-        <h2>Ranking Methodology</h2>
+        <h2>Metodología de ranking</h2>
         <p>
-          Each stock is ranked independently on five fundamental dimensions. The individual ranks are
-          summed into a <strong>composite score</strong> — the lower the score, the better the overall
-          fundamental quality. The 10 stocks with the lowest composite scores form the Top 10.
+          Cada acción se clasifica de forma independiente en cinco dimensiones fundamentales. Los rankings
+          individuales se suman en un <strong>puntaje compuesto</strong> — a menor puntaje, mejor calidad
+          fundamental general. Las 10 acciones con los puntajes compuestos más bajos conforman el Top 10.
         </p>
         <div class="ratio-grid">
           <div class="ratio-card">
             <div class="ratio-abbr">RPG</div>
-            <div class="ratio-name">Price / Earnings</div>
-            <div class="ratio-desc">Valuation multiple. Lower = cheaper relative to earnings.</div>
+            <div class="ratio-name">Precio / Utilidad</div>
+            <div class="ratio-desc">Múltiplo de valoración. Menor = más barato en relación con las ganancias.</div>
           </div>
           <div class="ratio-card">
             <div class="ratio-abbr">P/VL</div>
-            <div class="ratio-name">Price / Book Value</div>
-            <div class="ratio-desc">Asset-based valuation. Lower = trading closer to net assets.</div>
+            <div class="ratio-name">Precio / Valor en Libros</div>
+            <div class="ratio-desc">Valoración basada en activos. Menor = cotiza más cerca del valor neto de los activos.</div>
           </div>
           <div class="ratio-card">
             <div class="ratio-abbr">Yield</div>
-            <div class="ratio-name">Dividend Yield</div>
-            <div class="ratio-desc">Income return. Higher = more attractive for income-oriented investors.</div>
+            <div class="ratio-name">Rendimiento por Dividendo</div>
+            <div class="ratio-desc">Retorno por ingresos. Mayor = más atractivo para inversores enfocados en dividendos.</div>
           </div>
           <div class="ratio-card">
             <div class="ratio-abbr">ROE</div>
-            <div class="ratio-name">Return on Equity</div>
-            <div class="ratio-desc">Profitability. Higher = more return per peso of equity.</div>
+            <div class="ratio-name">Retorno sobre Patrimonio</div>
+            <div class="ratio-desc">Rentabilidad. Mayor = más retorno por peso de patrimonio invertido.</div>
           </div>
           <div class="ratio-card">
             <div class="ratio-abbr">D/EBIT</div>
-            <div class="ratio-name">Debt / EBIT</div>
-            <div class="ratio-desc">Solvency. Lower = less time to repay debt from operating earnings.</div>
+            <div class="ratio-name">Deuda / EBIT</div>
+            <div class="ratio-desc">Solvencia. Menor = menos tiempo para repagar la deuda con las ganancias operativas.</div>
           </div>
         </div>
         <p style="margin-top:16px;">
-          Stocks with negative EBIT (ETB, CONCONCRET, ENKA) are excluded from the Debt/EBIT ranking
-          as the ratio is not meaningful. Additional exclusions apply for <strong>insufficient trading
-          volume</strong> (ELCONDOR, BBVACOL, CNEC, VILLAS, PFVILLAS), ensuring the screener reflects
-          only investable securities.
+          Las acciones con EBIT negativo (ETB, CONCONCRET, ENKA) se excluyen del ranking de Deuda/EBIT
+          porque el ratio no es significativo en esos casos. Se aplican exclusiones adicionales por
+          <strong>volumen de negociación insuficiente</strong> (ELCONDOR, BBVACOL, CNEC, VILLAS,
+          PFVILLAS), asegurando que el screener refleje solo valores invertibles.
         </p>
       </div>
 
       <!-- DATA PIPELINE -->
       <div>
-        <h2>Data Pipeline</h2>
+        <h2>Pipeline de Datos</h2>
         <p>
-          BVC fundamental data is sourced from a <strong>custom saved screener on TradingView</strong>.
-          Because TradingView does not offer a structured export for this screener, the extraction
-          step uses a screenshot-to-data workflow powered by Claude AI.
+          Los datos fundamentales de la BVC provienen de un <strong>screener personalizado guardado en TradingView</strong>.
+          Dado que TradingView no ofrece exportación estructurada para este screener, el paso de
+          extracción usa un flujo de captura de pantalla procesado por Claude AI.
         </p>
         <div class="pipeline">
           <div class="pipeline-step">TradingView</div>
@@ -297,60 +299,60 @@
           <div class="pipeline-step">Dashboard</div>
         </div>
         <ul style="margin-top:20px;">
-          <li><strong>TradingView Custom Screener</strong> — Saved view filtering BVC equities with the five fundamental ratios pre-configured, updated in real time</li>
-          <li><strong>Claude AI</strong> — Receives the screenshot(s) and outputs a structured Excel-compatible file with normalized column headers and cleaned numeric data</li>
+          <li><strong>Screener personalizado TradingView</strong> — Vista guardada que filtra acciones de la BVC con los cinco ratios fundamentales preconfigurados, actualizada en tiempo real</li>
+          <li><strong>Claude AI</strong> — Recibe la(s) captura(s) de pantalla y genera un archivo compatible con Excel con encabezados normalizados y datos numéricos limpios</li>
           <li><strong>Power Query (M)</strong> — Loads the exported file, promotes headers, converts types, and builds five individual ratio ranking queries</li>
-          <li><strong>Best Ratio Stock query</strong> — Merges all five rankings into a composite score, sorts ascending, and selects the Top 10</li>
-          <li><strong>Power Pivot</strong> — Relational data model linking current and historical snapshots; DAX measures support period-over-period comparison</li>
-          <li><strong>VBA Macro</strong> — Saves the current PivotTable as a named snapshot (e.g., <em>Pivottable1_03-30-26</em>) into a historical data table</li>
+          <li><strong>Best Ratio Stock query</strong> — Combina los cinco rankings en un puntaje compuesto, ordena de menor a mayor y selecciona el Top 10</li>
+          <li><strong>Power Pivot</strong> — Modelo relacional que conecta snapshots actuales e históricos; las medidas DAX permiten la comparación período a período</li>
+          <li><strong>VBA Macro</strong> — Guarda la tabla dinámica actual como un snapshot con nombre (p.ej., <em>Pivottable1_03-30-26</em>) en la tabla de datos históricos</li>
         </ul>
         <div class="source-row">
-          <div class="source-box"><span class="source-label">Market Data</span><a href="https://www.tradingview.com/screener/fYMpLxHw/" target="_blank">↗ TradingView BVC Screener</a></div>
-          <div class="source-box"><span class="source-label">AI Extraction</span><a href="https://claude.ai" target="_blank">↗ Claude (Anthropic)</a></div>
+          <div class="source-box"><span class="source-label">Datos de mercado</span><a href="https://www.tradingview.com/screener/fYMpLxHw/" target="_blank">↗ TradingView BVC Screener</a></div>
+          <div class="source-box"><span class="source-label">Extracción IA</span><a href="https://claude.ai" target="_blank">↗ Claude (Anthropic)</a></div>
         </div>
       </div>
 
       <!-- UPDATE WORKFLOW -->
       <div>
-        <h2>Update Workflow</h2>
+        <h2>Proceso de actualización</h2>
         <p>
-          The screener is designed to be refreshed in under five minutes per analysis period,
-          with no structural changes to the workbook.
+          El screener está diseñado para actualizarse en menos de cinco minutos por período de análisis,
+          sin cambios estructurales al libro de Excel.
         </p>
         <div class="workflow">
           <div class="workflow-step">
             <div class="step-num">01</div>
             <div>
-              <div class="step-title">Capture TradingView Screenshot</div>
-              <div class="step-desc">Open the saved custom screener on TradingView and take two screenshots covering all displayed columns. Save with the analysis date in the filename (e.g., <em>TradingView Data BVC 2026-03-30</em>).</div>
+              <div class="step-title">Capturar pantalla de TradingView</div>
+              <div class="step-desc">Abre el screener personalizado guardado en TradingView y toma dos capturas de pantalla cubriendo todas las columnas. Guarda el archivo con la fecha de análisis en el nombre (p.ej., <em>TradingView Data BVC 2026-03-30</em>).</div>
             </div>
           </div>
           <div class="workflow-step">
             <div class="step-num">02</div>
             <div>
-              <div class="step-title">Extract Data via Claude AI</div>
-              <div class="step-desc">Upload the screenshots to Claude. Claude reads the table, normalizes headers, handles edge cases (negative values, missing data), and outputs a structured file: <em>best-view-data-[date].xlsx</em>.</div>
+              <div class="step-title">Extraer datos con Claude AI</div>
+              <div class="step-desc">Sube las capturas a Claude. Claude lee la tabla, normaliza los encabezados, maneja casos especiales (valores negativos, datos faltantes) y genera el archivo estructurado: <em>best-view-data-[fecha].xlsx</em>.</div>
             </div>
           </div>
           <div class="workflow-step">
             <div class="step-num">03</div>
             <div>
-              <div class="step-title">Update Power Query Source</div>
-              <div class="step-desc">In the <em>Best Ratio Stock</em> Power Query, update the file path in the M source line to point to the new data file. Validate the query executes without errors.</div>
+              <div class="step-title">Actualizar la fuente en Power Query</div>
+              <div class="step-desc">En la consulta <em>Best Ratio Stock</em> de Power Query, actualiza la ruta del archivo en la línea de origen M para apuntar al nuevo archivo. Valida que la consulta se ejecute sin errores.</div>
             </div>
           </div>
           <div class="workflow-step">
             <div class="step-num">04</div>
             <div>
-              <div class="step-title">Refresh &amp; Validate Dashboard</div>
-              <div class="step-desc">Close Power Query and refresh all queries. The PivotTable and ranking dashboard update automatically. Validate that the Top 10 composite scores are correctly sorted.</div>
+              <div class="step-title">Actualizar y validar el dashboard</div>
+              <div class="step-desc">Cierra Power Query y actualiza todas las consultas. La tabla dinámica y el dashboard de ranking se actualizan automáticamente. Valida que los puntajes compuestos del Top 10 estén correctamente ordenados.</div>
             </div>
           </div>
           <div class="workflow-step">
             <div class="step-num">05</div>
             <div>
-              <div class="step-title">Archive Period Snapshot via VBA</div>
-              <div class="step-desc">Run the VBA macro to save the current PivotTable as a named snapshot in the historical data table. Update the <em>Best Ratio Stock Previous Period</em> query to reference the snapshot, then refresh to display the period-over-period Top 10 comparison.</div>
+              <div class="step-title">Archivar snapshot del período con VBA</div>
+              <div class="step-desc">Ejecuta la macro VBA para guardar la tabla dinámica actual como snapshot en la tabla histórica. Actualiza la consulta <em>Best Ratio Stock Período Anterior</em> para referenciar el snapshot y recarga para mostrar la comparación de Top 10 período a período.</div>
             </div>
           </div>
         </div>
@@ -358,71 +360,71 @@
 
       <!-- DASHBOARD SECTIONS -->
       <div>
-        <h2>Dashboard Views</h2>
+        <h2>Vistas del dashboard</h2>
         <p>
-          The workbook is organized into <strong>four analytical views</strong>, each addressing a
-          distinct phase of the investment selection process.
+          El libro está organizado en <strong>cuatro vistas analíticas</strong>, cada una dirigida a
+          una fase distinta del proceso de selección de inversiones.
         </p>
         <div class="sheet-grid">
           <div class="sheet-card">
-            <div class="sheet-num">View 01</div>
-            <div class="sheet-title">Full Universe Rankings</div>
-            <div class="sheet-desc">Complete ranking of ~30 BVC equities sorted by composite fundamental score. Displays all five ratio ranks, individual values, sector classification, portfolio membership, and analyst signals (Buy / Hold / Sell). Conditionally formatted to highlight Top 10.</div>
+            <div class="sheet-num">Vista 01</div>
+            <div class="sheet-title">Ranking del universo completo</div>
+            <div class="sheet-desc">Ranking completo de ~30 acciones de la BVC ordenadas por puntaje fundamental compuesto. Muestra los cinco rankings de ratio, valores individuales, clasificación por sector, pertenencia al portafolio y señales de analistas (Comprar / Mantener / Vender). Formato condicional para destacar el Top 10.</div>
           </div>
           <div class="sheet-card">
-            <div class="sheet-num">View 02</div>
-            <div class="sheet-title">Top 10 Selector</div>
-            <div class="sheet-desc">Focused view of the current Top 10 with composite score breakdowns. Includes portfolio-overlap indicators and dividend event flags — supporting buy/add decisions ahead of ex-dividend dates.</div>
+            <div class="sheet-num">Vista 02</div>
+            <div class="sheet-title">Selector Top 10</div>
+            <div class="sheet-desc">Vista enfocada en el Top 10 actual con desglose de puntajes compuestos. Incluye indicadores de solapamiento con el portafolio y alertas de eventos de dividendo — apoya decisiones de compra antes de fechas de ex-dividendo.</div>
           </div>
           <div class="sheet-card">
-            <div class="sheet-num">View 03</div>
-            <div class="sheet-title">Period-over-Period Comparison</div>
-            <div class="sheet-desc">Side-by-side comparison of current and previous period's Top 10. Tracks which stocks have entered, remained in, or dropped out of the selection — providing a systematic basis for portfolio rebalancing.</div>
+            <div class="sheet-num">Vista 03</div>
+            <div class="sheet-title">Comparación período a período</div>
+            <div class="sheet-desc">Comparación lado a lado del Top 10 del período actual y anterior. Rastrea qué acciones entraron, permanecieron o salieron de la selección — base sistemática para el rebalanceo del portafolio.</div>
           </div>
           <div class="sheet-card">
-            <div class="sheet-num">View 04</div>
-            <div class="sheet-title">Historical Snapshots Archive</div>
-            <div class="sheet-desc">VBA-generated table accumulating all past analysis periods in a single structured dataset. Enables long-term trend analysis of ranking movements and strategy signal consistency across market cycles.</div>
+            <div class="sheet-num">Vista 04</div>
+            <div class="sheet-title">Archivo de snapshots históricos</div>
+            <div class="sheet-desc">Tabla generada por VBA que acumula todos los períodos de análisis anteriores en un dataset estructurado. Permite el análisis de tendencias a largo plazo de los movimientos en el ranking y la consistencia de las señales de estrategia a través de ciclos de mercado.</div>
           </div>
         </div>
       </div>
 
       <!-- BUSINESS VALUE -->
       <div>
-        <h2>Business Value</h2>
+        <h2>¿Por qué usar este screener?</h2>
         <p>
-          The Colombian equity market presents a structural data challenge: unlike US exchanges,
-          BVC companies lack a single, API-accessible source of clean fundamental data. This screener
-          creates a <strong>repeatable, low-cost solution</strong> to that problem by combining
-          free-tier TradingView data with AI-assisted extraction — eliminating the need for expensive
-          data subscriptions while maintaining analytical rigor.
+          El mercado accionario colombiano presenta un reto estructural de datos: a diferencia de las bolsas
+          de EE.UU., las empresas de la BVC no tienen una fuente única y accesible por API con datos
+          fundamentales limpios. Este screener crea una <strong>solución repetible y de bajo costo</strong>
+          a ese problema, combinando datos de TradingView (capa gratuita) con extracción asistida por
+          IA — eliminando la necesidad de suscripciones costosas sin sacrificar rigor analítico.
         </p>
         <p>
-          For a self-directed investor with BVC exposure, the dashboard replaces subjective stock
-          selection with a <strong>disciplined, rules-based process</strong>. The composite ranking
-          forces all five fundamental dimensions to be considered simultaneously, preventing
-          over-indexing on any single metric such as yield or P/E alone.
+          Para un inversor autónomo con exposición a la BVC, el dashboard reemplaza la selección subjetiva
+          de acciones con un <strong>proceso disciplinado y basado en reglas</strong>. El ranking
+          compuesto obliga a considerar las cinco dimensiones fundamentales simultáneamente, evitando
+          el sesgo de concentrarse en una sola métrica como el dividendo o el P/U.
         </p>
         <ul>
-          <li><strong>Universe coverage</strong> — Screens the full investable BVC universe (~30 liquid equities) in a single update cycle</li>
-          <li><strong>Objective ranking</strong> — Composite score eliminates selection bias by weighting all five ratios equally</li>
-          <li><strong>AI-powered data bridge</strong> — Claude extraction removes the manual data-entry bottleneck unique to BVC market data</li>
-          <li><strong>Portfolio integration</strong> — Cross-references screener output against held positions and upcoming dividend dates</li>
-          <li><strong>Audit trail</strong> — VBA snapshot archive preserves every analysis period for back-testing and accountability</li>
-          <li><strong>Rebalancing discipline</strong> — Period comparison view surfaces rotation signals based on fundamentals, not price momentum</li>
+          <li><strong>Cobertura del universo</strong> — Filtra todo el universo invertible de la BVC (~30 acciones líquidas) en un solo ciclo de actualización</li>
+          <li><strong>Ranking objetivo</strong> — El puntaje compuesto elimina el sesgo de selección al ponderar los cinco ratios de forma igual</li>
+          <li><strong>Puente de datos con IA</strong> — La extracción con Claude elimina el cuello de botella de entrada manual de datos, único del mercado BVC</li>
+          <li><strong>Integración con el portafolio</strong> — Cruza los resultados del screener con las posiciones actuales y fechas próximas de dividendos</li>
+          <li><strong>Trazabilidad</strong> — El archivo de snapshots VBA preserva cada período de análisis para backtesting y rendición de cuentas</li>
+          <li><strong>Disciplina de rebalanceo</strong> — La vista comparativa de períodos expone señales de rotación basadas en fundamentales, no en momentum de precio</li>
         </ul>
       </div>
 
       <!-- DISCLAIMER -->
       <div>
         <div class="disclaimer">
-          <strong>Important notice:</strong> This page does not constitute investment advice. All analysis presented here is for educational purposes only — investing involves risk, including the possible loss of capital. Each individual should assess their own risk profile before making any investment decision. Portfolio positions shown are randomized and for illustrative purposes only; they do not reflect any real holdings or recommendations.
+          <strong>Aviso importante:</strong> Esta página no constituye asesoría de inversión. Todo el análisis aquí presentado tiene fines educativos — invertir implica riesgo, incluyendo la posible pérdida del capital. Cada persona debe evaluar su propio perfil de riesgo antes de tomar cualquier decisión de inversión. Las posiciones del portafolio mostradas son aleatorias e ilustrativas; no reflejan posiciones reales ni recomendaciones.
         </div>
       </div>
 
       <!-- RELATED -->
       <div>
-        <h2>Related Projects</h2>
+        <h2>Otras herramientas</h2>
         <div class="related-grid">
           <a href="stock-valuation-dashboard.html" class="related-card">
             <div class="related-card-body"><h4>Stock Valuation</h4><p>DCF · Graham · Multiples · US Equities</p></div>
@@ -449,7 +451,7 @@
   <footer>
     <div class="foot-in">
       <span class="foot-copy">© 2026 Andrés Felipe Alarcón · Finanzas Personales para COL-LATAM</span>
-      <a href="index.html" class="foot-back">← Back to home</a>
+      <a href="index.html" class="foot-back">← Volver al inicio</a>
     </div>
   </footer>
 
