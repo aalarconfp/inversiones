@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Screener Fundamental BVC | Finanzas Personales e Inversiones</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:      #ffffff;
+      --bg1:     #f7f8fc;
+      --bg2:     #eef0f7;
+      --bg3:     #e2e5ef;
+      --border:  rgba(0,0,0,0.08);
+      --border2: rgba(0,0,0,0.16);
+      --accent:  #2563eb;
+      --teal:    #0d9488;
+      --green:   #059669;
+      --rose:    #dc2626;
+      --amber:   #d97706;
+      --text:    #0f1117;
+      --text2:   #4b5563;
+      --text3:   #9ca3af;
+      --navy:    #0d1b2e;
+      --mono:    'JetBrains Mono', monospace;
+      --sans:    'DM Sans', sans-serif;
+      --display: 'Syne', sans-serif;
+      --r:       8px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 400;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(20px) saturate(1.5);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-in {
+      max-width: 1160px; margin: 0 auto; padding: 0 32px;
+      height: 56px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand { font-family: var(--display); font-weight: 700; font-size: 14px; letter-spacing: -.02em; color: var(--text); text-decoration: none; }
+    .nav-back  { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--text3); text-decoration: none; transition: color .18s; }
+    .nav-back:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      border-top: 5px solid var(--teal);
+      padding: 80px 32px 36px;
+    }
+    .hero-in {
+      max-width: 1160px; margin: 0 auto;
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap;
+    }
+    .hero-eyebrow {
+      font-family: var(--mono); font-size: 10px; letter-spacing: .18em;
+      text-transform: uppercase; color: rgba(13,148,136,.75);
+      margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+    }
+    .hero-eyebrow::before { content: ''; width: 18px; height: 1px; background: rgba(13,148,136,.6); }
+    .hero-title {
+      font-family: var(--display); font-size: clamp(24px, 3.2vw, 40px);
+      font-weight: 700; line-height: 1.08; color: #fff; letter-spacing: -.025em; margin-bottom: 10px;
+    }
+    .hero-title .dim { color: rgba(255,255,255,.38); font-weight: 400; }
+    .hero-sub {
+      font-family: var(--mono); font-size: 10px; letter-spacing: .08em;
+      color: #64748b; text-transform: uppercase; line-height: 1.6;
+    }
+
+    /* stats */
+    .hero-stats { display: flex; gap: 0; border-left: 1px solid rgba(255,255,255,.08); flex-shrink: 0; }
+    .hero-stat  { padding: 0 28px; border-right: 1px solid rgba(255,255,255,.08); }
+    .hero-stat:last-child { border-right: none; padding-right: 0; }
+    .stat-val { font-family: var(--display); font-size: 32px; font-weight: 700; color: #fff; line-height: 1; letter-spacing: -.03em; }
+    .stat-lbl { font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: #64748b; margin-top: 5px; }
+
+    /* ── MAIN ── */
+    .main { max-width: 1160px; margin: 0 auto; padding: 36px 32px 60px; }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 18px; flex-wrap: wrap; gap: 12px;
+    }
+    .section-label { display: flex; align-items: center; gap: 12px; }
+    .section-num   { font-family: var(--mono); font-size: 10px; color: var(--text3); letter-spacing: .14em; }
+    .section-title { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--text2); }
+
+    /* ── TABS ── */
+    .tabs { display: flex; gap: 0; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+    .tab {
+      font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
+      padding: 7px 18px; cursor: pointer; color: var(--text3); background: var(--bg);
+      border-right: 1px solid var(--border); transition: all .15s; white-space: nowrap; user-select: none;
+    }
+    .tab:last-child { border-right: none; }
+    .tab:hover:not(.active) { background: var(--bg2); color: var(--text2); }
+    .tab.active { background: var(--navy); color: #fff; }
+
+    /* ── LEGEND ── */
+    .legend {
+      display: flex; gap: 20px; align-items: center; flex-wrap: wrap; margin-bottom: 14px;
+    }
+    .legend-item {
+      display: flex; align-items: center; gap: 6px;
+      font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--text3);
+    }
+
+    /* ── TABLE ── */
+    .table-wrap { border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    thead { background: var(--bg1); }
+    thead th {
+      font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--text3); padding: 10px 14px; text-align: right;
+      border-bottom: 1px solid var(--border); white-space: nowrap;
+      cursor: pointer; user-select: none; transition: color .15s;
+    }
+    thead th:first-child { text-align: left; }
+    thead th:hover { color: var(--text); }
+    thead th.sorted { color: var(--navy); }
+    .sort-arr { margin-left: 3px; opacity: .3; font-size: 10px; }
+    thead th.sorted .sort-arr { opacity: 1; }
+
+    tbody tr { border-bottom: 1px solid var(--border); transition: background .12s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--bg1); }
+
+    td {
+      padding: 9px 14px; text-align: right;
+      font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--text2); white-space: nowrap;
+    }
+    td:first-child {
+      text-align: left; font-family: var(--sans); font-weight: 500; color: var(--text);
+    }
+
+    /* ticker cell */
+    .ticker-cell { display: flex; align-items: center; gap: 7px; }
+    .port-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+    .port-dot.off { background: var(--bg3); }
+    .star { font-size: 11px; color: #f59e0b; margin-left: 1px; }
+
+    /* rank pill */
+    .rank {
+      display: inline-block; font-family: var(--mono); font-size: 9px;
+      padding: 1px 5px; border-radius: 3px; margin-left: 4px; vertical-align: middle;
+    }
+    .rank-top { background: #d1fae5; color: #065f46; }
+    .rank-mid { background: var(--bg2); color: var(--text3); }
+    .rank-bot { background: #fee2e2; color: #991b1b; }
+
+    /* signal badges */
+    .badge {
+      display: inline-block; font-family: var(--mono); font-size: 9px; letter-spacing: .06em;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 4px;
+    }
+    .badge-buy  { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; }
+    .badge-sell { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+    .badge-hold { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+
+    .note-text {
+      font-family: var(--mono); font-size: 10px; color: var(--text3);
+      text-align: left; white-space: normal; max-width: 140px;
+    }
+
+    /* sector table */
+    .sector-table thead th { text-align: right; }
+    .sector-table thead th:first-child { text-align: left; }
+    .sector-table td { text-align: right; }
+    .sector-table td:first-child { text-align: left; font-family: var(--sans); color: var(--text); }
+
+    /* ── FOOTER NOTE ── */
+    .footer-note {
+      margin-top: 14px; padding: 12px 16px;
+      border-left: 3px solid var(--teal); background: #f0fdfa;
+      border-radius: 0 6px 6px 0;
+      font-family: var(--mono); font-size: 10px; letter-spacing: .03em;
+      color: #0f766e; line-height: 1.7;
+    }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--border); background: var(--navy); padding: 22px 32px; margin-top: 20px; }
+    .footer-inner { max-width: 1160px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .footer-copy { font-family: var(--mono); font-size: 10px; color: #64748b; }
+    .footer-back { font-family: var(--mono); font-size: 11px; color: #64748b; text-decoration: none; letter-spacing: .08em; transition: color .18s; }
+    .footer-back:hover { color: #fff; }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 900px) {
+      .hero { padding: 80px 20px 32px; }
+      .hero-in { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .hero-stats { border-left: none; border-top: 1px solid rgba(255,255,255,.08); padding-top: 20px; width: 100%; }
+      .hero-stat:first-child { padding-left: 0; }
+      .main { padding: 28px 20px 48px; }
+      .nav-in { padding: 0 20px; }
+      footer { padding: 20px; }
+      .section-header { flex-direction: column; align-items: flex-start; }
+      .tabs { width: 100%; overflow-x: auto; }
+    }
+    @media (max-width: 600px) {
+      table { font-size: 12px; }
+      td, thead th { padding: 7px 9px; }
+      .hero-stats { flex-wrap: wrap; }
+      .hero-stat { padding: 0 18px 0 0; border-right: none; }
+      .stat-val { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-in">
+    <a href="index.html" class="nav-brand">Finanzas Personales e Inversiones</a>
+    <a href="stock-fundamental-screener.html" class="nav-back">← Volver al screener</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-in">
+    <div>
+      <p class="hero-eyebrow">BVC · Bolsa de Valores de Colombia</p>
+      <h1 class="hero-title">Screener de Acciones — <span class="dim">Ratios Fundamentales</span></h1>
+      <p class="hero-sub">Muestra de screener · No constituye asesoría de inversión · Las posiciones del portafolio son aleatorias e ilustrativas</p>
+    </div>
+    <div class="hero-stats" id="heroStats">
+      <div class="hero-stat">
+        <div class="stat-val" id="statTotal">29</div>
+        <div class="stat-lbl">Total acciones</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-val" id="statTop10">10</div>
+        <div class="stat-lbl">Top 10</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-val" id="statPortfolio">—</div>
+        <div class="stat-lbl">Portafolio</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-val" id="statBuys">—</div>
+        <div class="stat-lbl">Señales compra</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="main">
+
+  <div class="section-header">
+    <div class="section-label">
+      <span class="section-num">01 /</span>
+      <span class="section-title">Ranking de acciones</span>
+    </div>
+    <div class="tabs" id="tabBar">
+      <div class="tab active" data-tab="all">Todas</div>
+      <div class="tab" data-tab="top10">Top 10</div>
+      <div class="tab" data-tab="portfolio">Portafolio</div>
+      <div class="tab" data-tab="sectors">Sectores</div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="port-dot"></div> En portafolio</div>
+    <div class="legend-item"><div class="port-dot off"></div> No en portafolio</div>
+    <div class="legend-item"><span class="star">★</span> Top 10</div>
+    <div class="legend-item"><span class="rank rank-top">#1</span> Top 30 %</div>
+    <div class="legend-item"><span class="rank rank-bot">#32</span> Último 30 %</div>
+  </div>
+
+  <div id="pane-all">
+    <div class="table-wrap">
+      <table id="tAll"><thead><tr id="hAll"></tr></thead><tbody id="bAll"></tbody></table>
+    </div>
+  </div>
+
+  <div id="pane-top10" class="hidden">
+    <div class="table-wrap">
+      <table><thead><tr id="hTop"></tr></thead><tbody id="bTop"></tbody></table>
+    </div>
+  </div>
+
+  <div id="pane-portfolio" class="hidden">
+    <div class="table-wrap">
+      <table><thead><tr id="hPort"></tr></thead><tbody id="bPort"></tbody></table>
+    </div>
+  </div>
+
+  <div id="pane-sectors" class="hidden">
+    <div class="table-wrap">
+      <table class="sector-table"><thead><tr id="hSec"></tr></thead><tbody id="bSec"></tbody></table>
+    </div>
+  </div>
+
+  <div class="footer-note" id="footerNote"></div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Andrés Felipe Alarcón · Screener Fundamental BVC</span>
+    <a class="footer-back" href="stock-fundamental-screener.html">← Volver al screener</a>
+  </div>
+</footer>
+
+<script>
+const STOCKS = [
+  {ticker:'MINEROS',   portfolio:0,top10:1,rpg:8.30,  pvl:2.51, yield:2.37, roe:31.78, debt:0.05,  rRpg:5, rPvl:30,rYield:26,rRoe:1, rDebt:1, strategy:'',     comment:'',                   signal:'Buy'},
+  {ticker:'TERPEL',    portfolio:1,top10:1,rpg:5.64,  pvl:1.03, yield:7.71, roe:20.25, debt:2.90,  rRpg:1, rPvl:19,rYield:7, rRoe:3, rDebt:3, strategy:'Buy',   comment:'',                   signal:'Sell'},
+  {ticker:'PROMIGAS',  portfolio:0,top10:1,rpg:6.63,  pvl:1.11, yield:8.33, roe:17.27, debt:6.42,  rRpg:4, rPvl:20,rYield:6, rRoe:6, rDebt:11,strategy:'',     comment:'',                   signal:'Hold'},
+  {ticker:'BVC',       portfolio:0,top10:1,rpg:9.90,  pvl:1.69, yield:9.71, roe:17.13, debt:5.70,  rRpg:13,rPvl:28,rYield:1, rRoe:7, rDebt:8, strategy:'',     comment:'',                   signal:''},
+  {ticker:'BHI',       portfolio:1,top10:1,rpg:10.00, pvl:0.95, yield:6.71, roe:16.27, debt:5.27,  rRpg:14,rPvl:16,rYield:11,rRoe:8, rDebt:8, strategy:'Hold',  comment:'Div Pago Mar 26',    signal:''},
+  {ticker:'ECOPETROL', portfolio:0,top10:1,rpg:11.07, pvl:0.91, yield:9.03, roe:10.76, debt:4.04,  rRpg:17,rPvl:14,rYield:2, rRoe:11,rDebt:4, strategy:'',     comment:'',                   signal:''},
+  {ticker:'PFCIBEST',  portfolio:1,top10:1,rpg:9.45,  pvl:1.68, yield:6.34, roe:17.47, debt:2.00,  rRpg:9, rPvl:27,rYield:12,rRoe:4, rDebt:8, strategy:'Buy',   comment:'Div Pago Mar 26',    signal:''},
+  {ticker:'EXITO',     portfolio:0,top10:1,rpg:8.33,  pvl:0.71, yield:1.58, roe:8.70,  debt:2.86,  rRpg:6, rPvl:10,rYield:27,rRoe:15,rDebt:2, strategy:'',     comment:'',                   signal:''},
+  {ticker:'GEB',       portfolio:1,top10:1,rpg:9.77,  pvl:1.35, yield:8.62, roe:13.84, debt:8.48,  rRpg:12,rPvl:22,rYield:5, rRoe:9, rDebt:13,strategy:'',     comment:'',                   signal:''},
+  {ticker:'GRUBOLIVAR',portfolio:1,top10:1,rpg:5.82,  pvl:0.53, yield:3.17, roe:8.87,  debt:43.82, rRpg:2, rPvl:8, rYield:24,rRoe:14,rDebt:8, strategy:'',     comment:'',                   signal:''},
+  {ticker:'PFGRUPOARG',portfolio:0,top10:0,rpg:9.18,  pvl:0.98, yield:5.40, roe:-4.97, debt:5.23,  rRpg:7, rPvl:17,rYield:15,rRoe:31,rDebt:9, strategy:'',     comment:'',                   signal:''},
+  {ticker:'PFCEMARGOS',portfolio:0,top10:0,rpg:33.52, pvl:1.57, yield:5.94, roe:4.40,  debt:4.31,  rRpg:27,rPvl:25,rYield:13,rRoe:23,rDebt:6, strategy:'',     comment:'',                   signal:''},
+  {ticker:'NUTRESA',   portfolio:0,top10:0,rpg:112.59,pvl:25.78,yield:0.00, roe:21.72, debt:7.33,  rRpg:28,rPvl:31,rYield:28,rRoe:2, rDebt:12,strategy:'',     comment:'',                   signal:''},
+  {ticker:'CELSIA',    portfolio:0,top10:0,rpg:24.22, pvl:1.47, yield:6.85, roe:5.97,  debt:5.09,  rRpg:25,rPvl:24,rYield:9, rRoe:21,rDebt:8, strategy:'',     comment:'',                   signal:''},
+  {ticker:'PFCORFICOL',portfolio:1,top10:0,rpg:15.34, pvl:0.48, yield:6.75, roe:3.22,  debt:12.82, rRpg:21,rPvl:6, rYield:10,rRoe:25,rDebt:8, strategy:'',     comment:'',                   signal:''},
+  {ticker:'CEMARGOS',  portfolio:0,top10:0,rpg:29.30, pvl:1.37, yield:5.94, roe:4.40,  debt:4.31,  rRpg:26,rPvl:23,rYield:14,rRoe:22,rDebt:5, strategy:'',     comment:'',                   signal:''},
+  {ticker:'ENKA',      portfolio:0,top10:0,rpg:0,     pvl:0.40, yield:8.89, roe:-0.11, debt:0,      rRpg:29,rPvl:4, rYield:3, rRoe:28,rDebt:15,strategy:'',     comment:'',                   signal:''},
+  {ticker:'CIBEST',    portfolio:0,top10:0,rpg:9.45,  pvl:1.68, yield:4.72, roe:17.47, debt:2.00,  rRpg:10,rPvl:26,rYield:16,rRoe:5, rDebt:8, strategy:'',     comment:'',                   signal:''},
+  {ticker:'PFAVAL',    portfolio:0,top10:0,rpg:9.37,  pvl:0.91, yield:3.72, roe:10.02, debt:15.43, rRpg:8, rPvl:15,rYield:21,rRoe:12,rDebt:8, strategy:'',     comment:'',                   signal:''},
+  {ticker:'CONCONCRET',portfolio:0,top10:0,rpg:0,     pvl:0.39, yield:0,    roe:-12.25,debt:0,      rRpg:32,rPvl:3, rYield:28,rRoe:32,rDebt:17,strategy:'',     comment:'',                   signal:''},
+  {ticker:'BOGOTA',    portfolio:0,top10:0,rpg:9.49,  pvl:0.76, yield:4.25, roe:8.23,  debt:20.53, rRpg:11,rPvl:11,rYield:19,rRoe:17,rDebt:8, strategy:'',     comment:'',                   signal:''},
+  {ticker:'GRUPOAVAL', portfolio:0,top10:0,rpg:10.18, pvl:0.99, yield:3.59, roe:10.02, debt:15.43, rRpg:15,rPvl:18,rYield:23,rRoe:13,rDebt:8, strategy:'',     comment:'',                   signal:''},
+  {ticker:'PFDAVVNDA', portfolio:1,top10:0,rpg:10.40, pvl:0.78, yield:3.76, roe:7.75,  debt:15.53, rRpg:16,rPvl:12,rYield:20,rRoe:20,rDebt:8, strategy:'Sell',  comment:'',                   signal:''},
+  {ticker:'GRUPOSURA', portfolio:0,top10:0,rpg:23.95, pvl:0.88, yield:2.88, roe:7.97,  debt:3.55,  rRpg:24,rPvl:13,rYield:25,rRoe:19,rDebt:8, strategy:'',     comment:'',                   signal:''},
+  {ticker:'PFGRUPSURA',portfolio:0,top10:0,rpg:19.02, pvl:0.70, yield:3.61, roe:7.97,  debt:3.55,  rRpg:23,rPvl:9, rYield:22,rRoe:18,rDebt:8, strategy:'',     comment:'',                   signal:''},
+  {ticker:'ISA',       portfolio:0,top10:0,rpg:12.79, pvl:1.74, yield:4.52, roe:13.74, debt:4.95,  rRpg:19,rPvl:29,rYield:17,rRoe:10,rDebt:7, strategy:'',     comment:'',                   signal:''},
+  {ticker:'ETB',       portfolio:0,top10:0,rpg:0,     pvl:0.10, yield:0,    roe:-1.07, debt:0,      rRpg:30,rPvl:1, rYield:28,rRoe:29,rDebt:14,strategy:'',     comment:'',                   signal:''},
+  {ticker:'CORFICOLCF',portfolio:1,top10:0,rpg:14.47, pvl:0.46, yield:7.32, roe:3.22,  debt:12.82, rRpg:20,rPvl:5, rYield:8, rRoe:24,rDebt:8, strategy:'Sell',  comment:'',                   signal:''},
+  {ticker:'GRUPOARGOS',portfolio:0,top10:0,rpg:11.57, pvl:1.24, yield:4.44, roe:-4.97, debt:5.23,  rRpg:18,rPvl:21,rYield:18,rRoe:30,rDebt:10,strategy:'',     comment:'',                   signal:''},
+];
+
+const SECTORS = [
+  {sector:'Consumo no duradero',     portfolio:0, rpg:112.59, pvl:25.78, yield:0,    roe:21.72, debt:7.33},
+  {sector:'Minerales energéticos',   portfolio:0, rpg:11.07,  pvl:0.91,  yield:9.03, roe:10.76, debt:4.04},
+  {sector:'Finanzas',                portfolio:1, rpg:12.06,  pvl:0.96,  yield:5.12, roe:10.43, debt:12.19},
+  {sector:'Minerales no energéticos',portfolio:0, rpg:18.37,  pvl:1.53,  yield:4.82, roe:6.13,  debt:3.83},
+  {sector:'Industrias de proceso',   portfolio:0, rpg:0,      pvl:0.40,  yield:8.89, roe:-0.11, debt:0},
+  {sector:'Comercio minorista',      portfolio:1, rpg:6.99,   pvl:0.87,  yield:4.65, roe:14.48, debt:2.88},
+  {sector:'Servicios públicos',      portfolio:1, rpg:13.35,  pvl:1.42,  yield:7.08, roe:12.71, debt:6.24},
+];
+
+const FOOTER    = '⚠ Ratio calculado. ETB, CONCONCRET y ENKA presentan EBIT negativo. PEI: fondo de inversión. 🚫 Excluidas por bajo volumen: ELCONDOR.CL, BBVACOL.CL, CNEC.CL, VILLAS.CL, PFVILLAS.CL';
+const DISCLAIMER = 'Aviso importante: Esta página no constituye asesoría de inversión. Todo el análisis presentado aquí tiene fines educativos — invertir implica riesgo, incluyendo la posible pérdida del capital. Cada persona debe evaluar su propio perfil de riesgo antes de tomar cualquier decisión de inversión. Las posiciones del portafolio mostradas son aleatorias e ilustrativas; no reflejan posiciones reales ni recomendaciones.';
+
+let sortKey = 'rpg'; let sortAsc = true;
+const stocks  = STOCKS.slice();
+const sectors = SECTORS.slice();
+const total   = () => stocks.length;
+
+const COLS = [
+  {key:'ticker',   label:'Ticker',      num:false},
+  {key:'rpg',      label:'RPG',         num:true,  rk:'rRpg'},
+  {key:'pvl',      label:'P / VL',      num:true,  rk:'rPvl'},
+  {key:'yield',    label:'Yield %',     num:true,  rk:'rYield'},
+  {key:'roe',      label:'ROE %',       num:true,  rk:'rRoe'},
+  {key:'debt',     label:'Deuda/EBIT',  num:true,  rk:'rDebt'},
+  {key:'strategy', label:'Señal',       num:false},
+  {key:'comment',  label:'Nota',        num:false},
+];
+
+function fmt(v){ const n = parseFloat(v); return isNaN(n) ? '—' : n.toFixed(2); }
+
+function rankCls(r){
+  if(!r) return 'rank-mid';
+  const t = total();
+  if(r <= Math.round(t * 0.3)) return 'rank-top';
+  if(r >= Math.round(t * 0.7)) return 'rank-bot';
+  return 'rank-mid';
+}
+
+function badge(s){
+  if(!s) return '';
+  const labels = {buy:'Comprar', sell:'Vender', hold:'Mantener'};
+  const m = {buy:'badge-buy', sell:'badge-sell', hold:'badge-hold'};
+  const k = s.toLowerCase();
+  return `<span class="badge ${m[k]||''}">${labels[k]||s}</span>`;
+}
+
+function buildHead(id, clickable){
+  const tr = document.getElementById(id);
+  tr.innerHTML = COLS.map(c => `
+    <th data-key="${c.key}" class="${c.key === sortKey && clickable ? 'sorted' : ''}">
+      ${c.label}${c.num && clickable ? `<span class="sort-arr">${c.key === sortKey ? (sortAsc ? '↑' : '↓') : '↕'}</span>` : ''}
+    </th>`).join('');
+  if(clickable) tr.querySelectorAll('th[data-key]').forEach(th => {
+    th.addEventListener('click', () => {
+      const k = th.dataset.key;
+      if(!COLS.find(c => c.key === k).num) return;
+      if(sortKey === k) sortAsc = !sortAsc; else { sortKey = k; sortAsc = true; }
+      renderAll();
+    });
+  });
+}
+
+function buildRows(id, data){
+  const sorted = [...data].sort((a, b) => {
+    const av = a[sortKey] ?? '', bv = b[sortKey] ?? '';
+    if(typeof av === 'string') return sortAsc ? av.localeCompare(bv) : bv.localeCompare(av);
+    return sortAsc ? av - bv : bv - av;
+  });
+  document.getElementById(id).innerHTML = sorted.map(s => `<tr>
+    <td><div class="ticker-cell">
+      <div class="port-dot ${s.portfolio ? '' : 'off'}"></div>
+      <span>${s.ticker}</span>
+      ${s.top10 ? '<span class="star">★</span>' : ''}
+    </div></td>
+    <td>${fmt(s.rpg)}<span class="rank ${rankCls(s.rRpg)}">#${s.rRpg || '—'}</span></td>
+    <td>${fmt(s.pvl)}<span class="rank ${rankCls(s.rPvl)}">#${s.rPvl || '—'}</span></td>
+    <td>${fmt(s.yield)}<span class="rank ${rankCls(s.rYield)}">#${s.rYield || '—'}</span></td>
+    <td>${fmt(s.roe)}<span class="rank ${rankCls(s.rRoe)}">#${s.rRoe || '—'}</span></td>
+    <td>${fmt(s.debt)}<span class="rank ${rankCls(s.rDebt)}">#${s.rDebt || '—'}</span></td>
+    <td>${badge(s.strategy) || badge(s.signal) || '<span style="color:var(--bg3)">—</span>'}</td>
+    <td class="note-text">${s.comment || ''}</td>
+  </tr>`).join('');
+}
+
+function buildSectors(){
+  document.getElementById('hSec').innerHTML = `
+    <th>Sector</th><th>RPG Prom</th><th>P/VL Prom</th><th>Yield % Prom</th><th>ROE % Prom</th><th>Deuda/EBIT Prom</th><th>Portafolio</th>`;
+  document.getElementById('bSec').innerHTML = sectors.map(s => `<tr>
+    <td>${s.sector}</td>
+    <td>${fmt(s.rpg)}</td><td>${fmt(s.pvl)}</td>
+    <td>${fmt(s.yield)}</td><td>${fmt(s.roe)}</td><td>${fmt(s.debt)}</td>
+    <td>${s.portfolio ? '<span class="badge badge-buy">Sí</span>' : '<span style="color:var(--bg3)">—</span>'}</td>
+  </tr>`).join('');
+}
+
+function updateHero(){
+  document.getElementById('statTotal').textContent     = stocks.length;
+  document.getElementById('statTop10').textContent     = stocks.filter(s => s.top10).length;
+  document.getElementById('statPortfolio').textContent = stocks.filter(s => s.portfolio).length;
+  document.getElementById('statBuys').textContent      = stocks.filter(s => s.strategy === 'Buy' || s.signal === 'Buy').length;
+}
+
+function renderAll(){
+  updateHero();
+  buildHead('hAll',  true); buildRows('bAll',  stocks);
+  buildHead('hTop',  true); buildRows('bTop',  stocks.filter(s => s.top10));
+  buildHead('hPort', true); buildRows('bPort', stocks.filter(s => s.portfolio));
+  buildSectors();
+  document.getElementById('footerNote').innerHTML =
+    `<div>${DISCLAIMER}</div><div style="margin-top:8px;opacity:.75;">${FOOTER}</div>`;
+}
+
+document.getElementById('tabBar').addEventListener('click', e => {
+  const t = e.target.closest('.tab');
+  if(!t) return;
+  document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+  t.classList.add('active');
+  ['all','top10','portfolio','sectors'].forEach(id => {
+    document.getElementById('pane-' + id).classList.toggle('hidden', id !== t.dataset.tab);
+  });
+});
+
+renderAll();
+</script>
+</body>
+</html>
