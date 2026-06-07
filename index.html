@@ -185,6 +185,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
 .adv-body p{font-size:13px;color:var(--text2);font-weight:300;}
 .adv-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px;}
 .adv-tag{font-family:var(--mono);font-size:9.5px;color:var(--text3);background:var(--bg1);border:1px solid var(--border);padding:2px 7px;border-radius:4px;}
+.adv-tag-alt{font-family:var(--mono);font-size:9.5px;color:#1e40af;background:#dbeafe;border:1px solid #93c5fd;padding:2px 7px;border-radius:4px;font-weight:500;}
 .adv-arr{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--text3);opacity:1;transition:opacity .18s,transform .18s;flex-shrink:0;white-space:nowrap;}
 
 /* ═══════════════════════════════════
@@ -725,7 +726,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
         <div class="res-card">
           <div class="res-top">
             <div class="res-name">Trii</div>
-            <div class="badges"><span class="badge b-green">Colombia · BVC</span><span class="badge b-warm">⭐ Mi favorita</span></div>
+            <div class="badges"><span class="badge b-green">Colombia · BVC</span><span class="badge b-warm">Preferida</span></div>
           </div>
           <p class="res-desc">La opción más sencilla para empezar a invertir en acciones colombianas. Comisiones muy bajas, apertura 100% digital y acceso directo a la Bolsa de Valores de Colombia. Perfecta para quien empieza.</p>
           <div class="res-foot">
@@ -942,9 +943,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
       <a href="stock-valuation-dashboard.html" class="adv-row" style="color:inherit;">
         <div class="adv-num">01</div>
         <div class="adv-body">
-          <h4>Valoración de Acciones — Múltiples Modelos</h4>
-          <p>¿Cómo saber si una acción está cara o barata? Este modelo consolida cuatro métodos de valoración distintos para llegar a un precio objetivo más robusto.</p>
-          <div class="adv-tags"><span class="adv-tag">Excel</span><span class="adv-tag">DCF</span><span class="adv-tag">Múltiplos</span><span class="adv-tag">Valoración</span></div>
+          <h4>Valoración de Acciones Múltiple — EE.UU.</h4>
+          <p>¿Cómo saber si una acción está cara o barata? Este modelo consolida cuatro métodos de valoración distintos — DCF, Graham, múltiplos comparables y múltiplos históricos — para llegar a un precio objetivo más robusto.</p>
+          <div class="adv-tags"><span class="adv-tag">Excel</span><span class="adv-tag">DCF</span><span class="adv-tag">Graham</span><span class="adv-tag">Múltiplos</span><span class="adv-tag">EE.UU.</span></div>
         </div>
         <div class="adv-arr">Ver →</div>
       </a>
@@ -952,9 +953,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
       <a href="financial-statements-dashboard.html" class="adv-row" style="color:inherit;">
         <div class="adv-num">02</div>
         <div class="adv-body">
-          <h4>Dashboard de Estados Financieros</h4>
-          <p>Análisis histórico de los estados financieros de una empresa colombiana — balance, P&G y flujo de caja en cuatro años, visualizados en Power BI.</p>
-          <div class="adv-tags"><span class="adv-tag">Power BI</span><span class="adv-tag">Análisis Financiero</span><span class="adv-tag">Colombia</span></div>
+          <h4>Dashboard de Estados Financieros — BVC</h4>
+          <p>Análisis histórico de los estados financieros de una empresa colombiana — balance, P&amp;G y flujo de caja en cuatro años, con ratios de rentabilidad, liquidez y solvencia visualizados en Power BI.</p>
+          <div class="adv-tags"><span class="adv-tag">Power BI</span><span class="adv-tag">Análisis Financiero</span><span class="adv-tag">Ratios</span><span class="adv-tag">BVC</span></div>
         </div>
         <div class="adv-arr">Ver →</div>
       </a>
@@ -962,8 +963,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
       <a href="stock-fundamental-screener.html" class="adv-row" style="color:inherit;">
         <div class="adv-num">03</div>
         <div class="adv-body">
-          <h4>Screener Fundamental de Acciones — BVC</h4>
-          <p>Herramienta automatizada para filtrar y ordenar acciones de la BVC por calidad financiera y valoración. Usa Power Query y Claude AI para estructurar los datos automáticamente.</p>
+          <h4>Screener Fundamental BVC</h4>
+          <p>Herramienta automatizada para filtrar y rankear acciones de la BVC por calidad fundamental: P/U, P/VL, Yield, ROE y Deuda/EBIT. Usa Power Query y Claude AI para estructurar los datos y generar el Top 10.</p>
           <div class="adv-tags"><span class="adv-tag">Excel · VBA</span><span class="adv-tag">Power Query</span><span class="adv-tag">Claude AI</span><span class="adv-tag">BVC</span></div>
         </div>
         <div class="adv-arr">Ver →</div>
@@ -972,9 +973,29 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
       <a href="#" class="adv-row" style="color:inherit;">
         <div class="adv-num">04</div>
         <div class="adv-body">
-          <h4>Valorador Financiero de Proyectos Inmobiliarios</h4>
-          <p>Modelo de valoración para proyectos de finca raíz: flujo de caja, VPN, TIR y análisis de sensibilidad. Para inversores que quieren evaluar rentabilidad antes de comprometer capital.</p>
-          <div class="adv-tags"><span class="adv-tag">Power BI</span><span class="adv-tag">Bienes Raíces</span><span class="adv-tag">VPN · TIR</span><span class="adv-tag">Próximamente</span></div>
+          <h4>Valorador de Bancos y Entidades Financieras — EE.UU.</h4>
+          <p>Estima el valor razonable de bancos y entidades financieras mediante métricas y modelos especializados del sector.</p>
+          <div class="adv-tags"><span class="adv-tag">Excel</span><span class="adv-tag">DCF</span><span class="adv-tag">P/TBV</span><span class="adv-tag">Sector Financiero</span><span class="adv-tag">EE.UU.</span></div>
+        </div>
+        <div class="adv-arr">Ver →</div>
+      </a>
+
+      <a href="#" class="adv-row" style="color:inherit;">
+        <div class="adv-num">05</div>
+        <div class="adv-body">
+          <h4>Valorador de Inversiones Finca Raíz — EE.UU. y Colombia</h4>
+          <p>Evalúa la rentabilidad y el potencial de inversión de proyectos inmobiliarios en distintos escenarios.</p>
+          <div class="adv-tags"><span class="adv-tag">Excel</span><span class="adv-tag">VPN · TIR</span><span class="adv-tag">Cap Rate</span><span class="adv-tag">EE.UU. · Colombia</span><span class="adv-tag-alt">Inversión Alternativa</span></div>
+        </div>
+        <div class="adv-arr">Ver →</div>
+      </a>
+
+      <a href="#" class="adv-row" style="color:inherit;">
+        <div class="adv-num">06</div>
+        <div class="adv-body">
+          <h4>Valorador de Portafolios de Crédito Privado</h4>
+          <p>Analiza el rendimiento y riesgo de préstamos hipotecarios privados y portafolios de crédito.</p>
+          <div class="adv-tags"><span class="adv-tag">Excel</span><span class="adv-tag">LTV</span><span class="adv-tag">Private Lending</span><span class="adv-tag">Deuda Hipotecaria</span><span class="adv-tag-alt">Inversión Alternativa</span></div>
         </div>
         <div class="adv-arr">Ver →</div>
       </a>
@@ -1005,7 +1026,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
           Si algo que encuentras aquí te ayuda, me alegra. Si tienes preguntas, <strong>escríbeme</strong> — respondo.
         </p>
         <div class="about-links">
-          <a href="https://www.linkedin.com/in/aalarconfp" class="alink" target="_blank">↗ LinkedIn</a>
           <a href="#herramientas" class="alink">Ver herramientas</a>
           <a href="#contacto" class="alink">Escribirme</a>
         </div>
@@ -1127,7 +1147,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
       <div class="contact-row">
         <a href="mailto:aalarconfp@gmail.com" class="btn btn-primary">✉ Enviar correo</a>
         <button class="email-copy" id="copyEmailBtn" onclick="copyEmail()">📋 aalarconfp@gmail.com</button>
-        <a href="https://www.linkedin.com/in/aalarconfp" target="_blank" class="btn btn-ghost">↗ LinkedIn</a>
       </div>
     </div>
   </div>
@@ -1142,7 +1161,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
       <a href="#herramientas">Herramientas</a>
       <a href="#proyectos">Avanzado</a>
       <a href="#otros-proyectos">Otros</a>
-      <a href="https://www.linkedin.com/in/aalarconfp" target="_blank">LinkedIn</a>
       <a href="https://x.com/aalarconfp" target="_blank">X</a>
     </div>
   </div>
