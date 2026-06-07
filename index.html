@@ -187,6 +187,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
 .adv-tag{font-family:var(--mono);font-size:9.5px;color:var(--text3);background:var(--bg1);border:1px solid var(--border);padding:2px 7px;border-radius:4px;}
 .adv-tag-alt{font-family:var(--mono);font-size:9.5px;color:#1e40af;background:#dbeafe;border:1px solid #93c5fd;padding:2px 7px;border-radius:4px;font-weight:500;}
 .adv-arr{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--text3);opacity:1;transition:opacity .18s,transform .18s;flex-shrink:0;white-space:nowrap;}
+.tool-cta-disabled{font-family:var(--mono);font-size:11px;color:var(--text3);display:inline-flex;align-items:center;gap:6px;cursor:default;opacity:.55;}
+.adv-row-disabled{background:var(--bg1);padding:22px 32px;display:grid;grid-template-columns:44px 1fr auto;gap:20px;align-items:center;opacity:.45;cursor:default;}
+.adv-row-disabled .adv-num{font-family:var(--mono);font-size:12px;color:var(--text3);}
+.adv-row-disabled .adv-body h4{font-family:var(--display);font-size:15.5px;font-weight:600;letter-spacing:-.02em;margin-bottom:3px;}
+.adv-row-disabled .adv-body p{font-size:13px;color:var(--text2);font-weight:300;}
+.adv-row-disabled .adv-arr{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--text3);flex-shrink:0;white-space:nowrap;}
+.coming-soon{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--text3);flex-shrink:0;white-space:nowrap;}
 
 /* ═══════════════════════════════════
    ABOUT
@@ -488,12 +495,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
         <h3>Calculadora de Patrimonio Neto</h3>
         <p>Lo que tienes menos lo que debes. Una vista clara de tu patrimonio real hoy y cómo proyectarlo a futuro. El primer número que todo inversor debe conocer.</p>
         <div class="tool-card-footer">
-          <span class="tool-cta" href="#">Ver plantilla →</span>
+          <span class="tool-cta-disabled">Ver plantilla →</span>
           <span class="tool-meta">Excel</span>
         </div>
       </div>
 
-      <div class="tool-card">
+      <a href="articulo-como-invertir-colombia.html" class="tool-card" style="text-decoration:none;color:inherit;">
         <div class="tool-card-top">
           <div class="tool-label">Guía práctica</div>
           <div class="tool-badge tb-guide">Guía</div>
@@ -501,10 +508,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
         <h3>Cómo empezar a invertir en Colombia</h3>
         <p>Desde cero: qué es una acción, qué es un ETF, cómo elegir un broker y cómo hacer tu primera compra sin cometer los errores más comunes.</p>
         <div class="tool-card-footer">
-          <span class="tool-cta" href="#">Leer guía →</span>
+          <span class="tool-cta">Leer guía →</span>
           <span class="tool-meta">Para principiantes</span>
         </div>
-      </div>
+      </a>
 
       <div class="tool-card">
         <div class="tool-card-top">
@@ -514,7 +521,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
         <h3>Cómo recibir dólares en Colombia</h3>
         <p>La estructura óptima para freelancers y contratistas: cómo abrir una cuenta en dólares, a qué tasa convertir y cómo evitar perder plata en el proceso.</p>
         <div class="tool-card-footer">
-          <span class="tool-cta" href="#">Leer guía →</span>
+          <span class="tool-cta-disabled">Leer guía →</span>
           <span class="tool-meta">Wise · Global66</span>
         </div>
       </div>
@@ -527,7 +534,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
         <h3>La estrategia DCA explicada paso a paso</h3>
         <p>Cómo invertir una cantidad fija cada mes sin importar si el mercado sube o baja — y por qué esto funciona mejor que intentar adivinar el momento perfecto.</p>
         <div class="tool-card-footer">
-          <span class="tool-cta" href="#">Leer guía →</span>
+          <span class="tool-cta-disabled">Leer guía →</span>
           <span class="tool-meta">Largo plazo · Sin especulación</span>
         </div>
       </div>
@@ -559,35 +566,35 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
         <span class="article-tag">Ahorro</span>
         <h3>Fondo de emergencia: cuánto necesitas y cómo armarlo</h3>
         <p>La base de cualquier plan financiero. Aprende a calcular cuánto necesitas, dónde guardarlo y cómo construirlo sin que afecte tu vida.</p>
-        <div class="article-footer"><span class="tool-cta" href="#">Ver →</span></div>
+        <div class="article-footer"><span class="tool-cta-disabled">Ver →</span></div>
       </div>
 
       <div class="article-card">
         <span class="article-tag">Inversión</span>
         <h3>ETFs para principiantes: la forma más fácil de empezar</h3>
         <p>Un ETF te permite invertir en cientos de empresas con un solo clic. Qué son, cómo funcionan y cuáles tienen más sentido para alguien en COL-LATAM.</p>
-        <div class="article-footer"><span class="tool-cta" href="#">Ver →</span></div>
+        <div class="article-footer"><span class="tool-cta-disabled">Ver →</span></div>
       </div>
 
       <div class="article-card">
         <span class="article-tag">Brokers</span>
         <h3>Cómo usar un broker desde Colombia sin complicarte</h3>
         <p>Guía paso a paso para abrir una cuenta en Trii o XTB, hacer tu primera compra y entender qué estás comprando exactamente.</p>
-        <div class="article-footer"><span class="tool-cta" href="#">Ver →</span></div>
+        <div class="article-footer"><span class="tool-cta-disabled">Ver →</span></div>
       </div>
 
       <div class="article-card">
         <span class="article-tag">Inversión a largo plazo</span>
         <h3>¿Por qué invertir poco a poco es mejor que esperar el momento perfecto?</h3>
         <p>La estrategia que usan los mejores inversores del mundo — y que puedes aplicar desde Colombia con tan solo $50.000 al mes.</p>
-        <div class="article-footer"><span class="tool-cta" href="#">Ver →</span></div>
+        <div class="article-footer"><span class="tool-cta-disabled">Ver →</span></div>
       </div>
 
       <div class="article-card">
         <span class="article-tag">Acciones Colombia · BVC</span>
         <h3>Cómo evaluar si una acción colombiana vale la pena</h3>
         <p>Sin fórmulas intimidantes. Las preguntas simples que debes hacerte antes de comprar cualquier acción en la Bolsa de Valores de Colombia.</p>
-        <div class="article-footer"><span class="tool-cta" href="#">Ver →</span></div>
+        <div class="article-footer"><span class="tool-cta-disabled">Ver →</span></div>
       </div>
 
     </div>
@@ -970,35 +977,35 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
         <div class="adv-arr">Ver →</div>
       </a>
 
-      <a href="#" class="adv-row" style="color:inherit;">
+      <div class="adv-row-disabled">
         <div class="adv-num">04</div>
         <div class="adv-body">
           <h4>Valorador de Bancos y Entidades Financieras — EE.UU.</h4>
           <p>Estima el valor razonable de bancos y entidades financieras mediante métricas y modelos especializados del sector.</p>
           <div class="adv-tags"><span class="adv-tag">Excel</span><span class="adv-tag">DCF</span><span class="adv-tag">P/TBV</span><span class="adv-tag">Sector Financiero</span><span class="adv-tag">EE.UU.</span></div>
         </div>
-        <div class="adv-arr">Ver →</div>
-      </a>
+        <div class="adv-arr coming-soon">Ver →</div>
+      </div>
 
-      <a href="#" class="adv-row" style="color:inherit;">
+      <div class="adv-row-disabled">
         <div class="adv-num">05</div>
         <div class="adv-body">
           <h4>Valorador de Inversiones Finca Raíz — EE.UU. y Colombia</h4>
           <p>Evalúa la rentabilidad y el potencial de inversión de proyectos inmobiliarios en distintos escenarios.</p>
           <div class="adv-tags"><span class="adv-tag">Excel</span><span class="adv-tag">VPN · TIR</span><span class="adv-tag">Cap Rate</span><span class="adv-tag">EE.UU. · Colombia</span><span class="adv-tag-alt">Inversión Alternativa</span></div>
         </div>
-        <div class="adv-arr">Ver →</div>
-      </a>
+        <div class="adv-arr coming-soon">Ver →</div>
+      </div>
 
-      <a href="#" class="adv-row" style="color:inherit;">
+      <div class="adv-row-disabled">
         <div class="adv-num">06</div>
         <div class="adv-body">
           <h4>Valorador de Portafolios de Crédito Privado</h4>
           <p>Analiza el rendimiento y riesgo de préstamos hipotecarios privados y portafolios de crédito.</p>
           <div class="adv-tags"><span class="adv-tag">Excel</span><span class="adv-tag">LTV</span><span class="adv-tag">Private Lending</span><span class="adv-tag">Deuda Hipotecaria</span><span class="adv-tag-alt">Inversión Alternativa</span></div>
         </div>
-        <div class="adv-arr">Ver →</div>
-      </a>
+        <div class="adv-arr coming-soon">Ver →</div>
+      </div>
 
     </div>
   </div>
