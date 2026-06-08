@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Valorador de Inversiones Finca Raíz | Finanzas Personales e Inversiones</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#ffffff;--bg1:#f7f8fc;--bg2:#eef0f7;--bg3:#e2e5ef;
+      --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.16);
+      --accent:#2563eb;--warm:#9a6f00;--green:#059669;--rose:#dc2626;
+      --text:#0f1117;--text2:#4b5563;--text3:#9ca3af;--navy:#0d1b2e;
+      --mono:'JetBrains Mono',monospace;--sans:'DM Sans',sans-serif;--display:'Syne',sans-serif;
+      --r:10px;--hero-accent:#d97706;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;line-height:1.65;-webkit-font-smoothing:antialiased;}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid var(--border);}
+    .nav-in{max-width:900px;margin:0 auto;padding:0 32px;height:58px;display:flex;align-items:center;justify-content:space-between;}
+    .nav-brand{font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:-.02em;color:var(--text);text-decoration:none;}
+    .nav-back{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);text-decoration:none;transition:color .18s;}
+    .nav-back:hover{color:var(--text);}
+
+    .hero{background:var(--navy);padding:96px 32px 52px;border-top:5px solid var(--hero-accent);}
+    .hero-in{max-width:900px;margin:0 auto;}
+    .breadcrumb{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#64748b;margin-bottom:28px;display:flex;align-items:center;gap:6px;}
+    .breadcrumb a{color:#94a3b8;text-decoration:none;transition:color .18s;}
+    .breadcrumb a:hover{color:#fff;}
+    .cat-label{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(217,119,6,.75);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+    .cat-label::before{content:'';width:18px;height:1px;background:rgba(217,119,6,.6);}
+    h1{font-family:var(--display);font-size:clamp(32px,5vw,52px);font-weight:700;color:#fff;line-height:1.08;letter-spacing:-.025em;margin-bottom:24px;}
+    .meta-row{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:20px;}
+    .meta-item{font-family:var(--mono);font-size:10px;color:#64748b;letter-spacing:.1em;text-transform:uppercase;}
+    .meta-item span{color:rgba(255,255,255,.7);}
+    .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:28px;}
+    .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:4px;font-weight:500;border:1px solid transparent;}
+    .tag-tool{background:#fef3c7;color:#92400e;border-color:#fcd34d;}
+    .tag-fin{background:#fee2e2;color:#991b1b;border-color:#fca5a5;}
+    .tag-data{background:#dbeafe;color:#1e40af;border-color:#93c5fd;}
+    .tag-other{background:#d1fae5;color:#065f46;border-color:#6ee7b7;}
+    .action-links{display:flex;gap:10px;flex-wrap:wrap;}
+    .btn-hero{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-radius:6px;transition:all .2s;font-weight:500;}
+    .btn-hero.primary{background:#fff;color:var(--navy);}
+    .btn-hero.primary:hover{background:#f1f5f9;}
+    .btn-hero.ghost{border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.65);}
+    .btn-hero.ghost:hover{border-color:rgba(255,255,255,.45);color:#fff;}
+
+    .page-wrap{max-width:900px;margin:0 auto;padding:56px 32px 80px;}
+    .project-body{display:flex;flex-direction:column;gap:44px;}
+    h2{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--text2);margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+    p{font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:12px;font-weight:300;}
+    p strong{color:var(--text);font-weight:500;}
+    ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;}
+    ul li{font-size:14px;color:var(--text2);padding-left:20px;position:relative;line-height:1.7;font-weight:300;}
+    ul li::before{content:'—';position:absolute;left:0;color:var(--text3);}
+    ul li strong{color:var(--text);font-weight:500;}
+
+    /* EMBED */
+    .embed-wrap{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+    .embed-bar{background:var(--bg1);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;}
+    .embed-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#34d399;margin-right:6px;}
+    .embed-bar-l{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.06em;}
+    .embed-bar-r{font-family:var(--mono);font-size:10px;color:var(--text3);}
+    .embed-wrap iframe{width:100%;height:520px;border:none;display:block;}
+
+    /* TABS */
+    .tab-nav{display:flex;gap:4px;margin-bottom:20px;border-bottom:1px solid var(--border);padding-bottom:0;}
+    .tab-btn{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:8px 16px;border:none;background:none;cursor:pointer;color:var(--text3);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s;}
+    .tab-btn.active{color:var(--text);border-bottom-color:var(--hero-accent);}
+    .tab-pane{display:none;}
+    .tab-pane.active{display:block;}
+
+    /* PIPELINE */
+    .pipeline{display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin:16px 0 6px;}
+    .pipeline-step{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:7px 12px;font-family:var(--mono);font-size:10px;color:var(--text2);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;}
+    .pipeline-step.hl{background:#dbeafe;border-color:#93c5fd;color:#1e40af;}
+    .pipeline-arrow{font-family:var(--mono);font-size:11px;color:var(--text3);padding:0 5px;}
+
+    /* IO COLUMNS */
+    .io-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;}
+    .io-col-label{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:8px;}
+    .io-list{display:flex;flex-direction:column;gap:6px;}
+    .io-chip{padding:7px 12px;border-radius:5px;font-family:var(--mono);font-size:10.5px;font-weight:400;letter-spacing:.04em;color:var(--text2);}
+    .io-chip.input{background:var(--bg2);border-left:2px solid #93c5fd;}
+    .io-chip.output{background:var(--bg2);border-left:2px solid #6ee7b7;}
+
+    /* SHEET GRID */
+    .sheet-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px;}
+    .sheet-card{background:var(--bg1);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;}
+    .sheet-num{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:6px;}
+    .sheet-title{font-family:var(--display);font-size:14px;font-weight:700;letter-spacing:-.02em;color:var(--text);margin-bottom:6px;}
+    .sheet-desc{font-size:13px;color:var(--text2);line-height:1.6;font-weight:300;}
+
+    /* METRICS ROW */
+    .metrics-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px;}
+    .metric-box{background:var(--bg1);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;}
+    .metric-label{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:4px;}
+    .metric-val{font-family:var(--display);font-size:20px;font-weight:700;letter-spacing:-.02em;color:var(--text);}
+    .metric-sub{font-family:var(--mono);font-size:9px;color:var(--text3);margin-top:2px;}
+
+    /* SENSITIVITY TABLE */
+    .sens-wrap{margin-top:16px;overflow-x:auto;}
+    .sens-table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:11px;}
+    .sens-table th{text-align:left;padding:8px 12px;background:var(--bg2);color:var(--text3);letter-spacing:.1em;text-transform:uppercase;font-size:9.5px;border-bottom:1px solid var(--border);}
+    .sens-table td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--text2);}
+    .sens-table tr:last-child td{border-bottom:none;}
+    .val-cons{color:var(--rose);font-weight:500;}
+    .val-base{color:var(--warm);font-weight:500;}
+    .val-opt{color:var(--green);font-weight:500;}
+
+    /* COST BAR */
+    .cost-chart{display:flex;flex-direction:column;gap:8px;margin-top:16px;}
+    .cost-row{display:flex;align-items:center;gap:10px;}
+    .cost-bar-outer{flex:1;height:22px;background:var(--bg2);border-radius:3px;overflow:hidden;}
+    .cost-bar-inner{height:100%;display:flex;align-items:center;padding-left:10px;font-family:var(--mono);font-size:10px;font-weight:500;border-radius:3px;}
+    .cost-name{font-family:var(--mono);font-size:10px;color:var(--text3);width:130px;text-align:right;flex-shrink:0;}
+
+    .note{font-style:italic;font-size:13px;color:var(--text3);border-left:2px solid var(--border);padding-left:14px;margin-top:12px;line-height:1.7;}
+
+    /* RELATED */
+    .related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:4px;}
+    .related-card{background:var(--bg1);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;text-decoration:none;color:inherit;display:flex;justify-content:space-between;align-items:center;transition:all .18s;}
+    .related-card:hover{border-color:var(--border2);background:var(--bg2);}
+    .related-card-body h4{font-family:var(--display);font-size:14px;font-weight:700;letter-spacing:-.02em;margin-bottom:3px;}
+    .related-card-body p{font-size:12px;color:var(--text3);margin:0;font-weight:300;}
+    .related-arr{font-size:14px;color:var(--text3);flex-shrink:0;margin-left:12px;transition:all .18s;}
+    .related-card:hover .related-arr{color:var(--accent);transform:translate(2px,-2px);}
+
+    footer{border-top:1px solid var(--border);background:var(--navy);padding:24px 32px;}
+    .foot-in{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+    .foot-copy{font-family:var(--mono);font-size:10px;color:#64748b;}
+    .foot-back{font-family:var(--mono);font-size:11px;color:#64748b;text-decoration:none;letter-spacing:.08em;transition:color .18s;}
+    .foot-back:hover{color:#fff;}
+
+    @media(max-width:720px){
+      .hero{padding:88px 20px 44px;}.page-wrap{padding:40px 20px 60px;}.nav-in{padding:0 20px;}
+      .sheet-grid{grid-template-columns:1fr;}.related-grid{grid-template-columns:1fr;}
+      .metrics-row{grid-template-columns:1fr 1fr;}.io-grid{grid-template-columns:1fr;}
+      .cost-name{width:80px;font-size:9px;}
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-in">
+      <a href="index.html" class="nav-brand">Andrés Felipe Alarcón</a>
+      <a href="index.html" class="nav-back">← Volver al inicio</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-in">
+      <div class="breadcrumb">
+        <a href="index.html">Inicio</a><span>/</span>
+        <span>Herramientas Avanzadas</span><span>/</span>
+        <span>Finca Raíz</span>
+      </div>
+      <div class="cat-label">Herramientas Avanzadas — 05</div>
+      <h1>Valorador de Inversiones<br>Finca Raíz</h1>
+      <div class="meta-row">
+        <span class="meta-item">Herramienta <span>Excel · Flujo de Caja Descontado</span></span>
+        <span class="meta-item">Mercado <span>EE.UU. · Colombia</span></span>
+        <span class="meta-item">Tipo <span>Desarrollo Residencial · Multifamily</span></span>
+      </div>
+      <div class="tags">
+        <span class="tag tag-tool">Excel</span>
+        <span class="tag tag-fin">VPN · TIR</span>
+        <span class="tag tag-fin">Cap Rate</span>
+        <span class="tag tag-fin">Cash-on-Cash Return</span>
+        <span class="tag tag-data">Flujo de Caja</span>
+        <span class="tag tag-other">EE.UU. · Colombia</span>
+        <span class="tag tag-other">Inversión Alternativa</span>
+      </div>
+      <div class="action-links">
+        <a href="#modelos" class="btn-hero primary">↓ Ver modelos</a>
+        <a href="#metodologia" class="btn-hero ghost">↗ Metodología</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+    <div class="project-body">
+
+      <!-- OVERVIEW -->
+      <div>
+        <h2>Descripción general</h2>
+        <p>
+          Este proyecto comprende <strong>dos modelos financieros independientes</strong> diseñados para evaluar inversiones inmobiliarias desde ángulos complementarios: la adquisición de propiedades en renta en el mercado estadounidense, y la prefactibilidad de proyectos de desarrollo residencial en Colombia.
+        </p>
+        <p>
+          Ambos modelos parten de supuestos editables y proyectan automáticamente los indicadores clave de rentabilidad —IRR, VAN, Cap Rate, margen del proyecto— usando metodología estándar de la industria. El objetivo es reemplazar el análisis intuitivo con un proceso estructurado, repetible y auditable antes de comprometer capital.
+        </p>
+        <p class="note">
+          Los modelos están diseñados para inversionistas individuales y pequeños desarrolladores. No se requiere experiencia avanzada en finanzas: los supuestos están claramente separados de los cálculos, y cada indicador incluye una referencia de mercado para interpretarlo.
+        </p>
+      </div>
+
+      <!-- TABS: DOS MODELOS -->
+      <div id="modelos">
+        <h2>Los dos modelos</h2>
+        <div class="tab-nav">
+          <button class="tab-btn active" onclick="switchTab('usa', this)">05A — Desarrollo Residencial · EE.UU.</button>
+          <button class="tab-btn" onclick="switchTab('col', this)">05B — Desarrollo Residencial · Colombia</button>
+        </div>
+
+        <!-- TAB USA -->
+        <div id="tab-usa" class="tab-pane active">
+          <p>
+            Modelo de desarrollo residencial para el mercado estadounidense. Evalúa la viabilidad de un proyecto de construcción multifamily desde la adquisición del terreno hasta la venta de las unidades, cubriendo costos de desarrollo, estructura de financiamiento con construction loan y retornos al inversionista. El caso base modela un proyecto de <strong>60 unidades · 80,000 SF vendibles · 15 meses de construcción</strong>.
+          </p>
+          <div class="embed-wrap" style="margin-bottom:28px;">
+            <div class="embed-bar">
+              <span class="embed-bar-l"><span class="embed-dot"></span>Vista interactiva del modelo</span>
+              <span class="embed-bar-r">Excel · OneDrive</span>
+            </div>
+            <iframe width="100%" height="420" frameborder="0" scrolling="no" src="https://1drv.ms/x/c/588107c1db5a7c98/IQSE7SCVbusfSZ4oB7HTUkwlAV9mWBpQtSop3ks6XSbCaTE?em=2&wdAllowInteractivity=False&ActiveCell='Supuestos'!A2&wdHideGridlines=True&wdHideHeaders=True&wdInConfigurator=True&wdInConfigurator=True&edaebf=rslc0" style="display:block;"></iframe>
+          </div>
+          <div class="io-grid">
+            <div>
+              <div class="io-col-label">Variables de entrada</div>
+              <div class="io-list">
+                <div class="io-chip input">Costo del terreno · Área total del lote</div>
+                <div class="io-chip input">Costos de construcción · Contingencia (5%)</div>
+                <div class="io-chip input">Soft Costs (permisos, consultoría, mercadeo)</div>
+                <div class="io-chip input">Construction Loan · LTC (70%) · Tasa de interés (3.5%)</div>
+                <div class="io-chip input">Precio de venta ($/SF) · Comisión de ventas</div>
+                <div class="io-chip input">Cronograma: inicio de ventas · inicio y fin de obra</div>
+                <div class="io-chip input">% vendido antes de iniciar obra · unidades/mes</div>
+              </div>
+            </div>
+            <div>
+              <div class="io-col-label">Resultados automáticos</div>
+              <div class="io-list">
+                <div class="io-chip output">IRR — tasa de retorno anualizada del proyecto</div>
+                <div class="io-chip output">ROE — retorno sobre el capital propio invertido</div>
+                <div class="io-chip output">Utilidad neta (total · por unidad · por SF)</div>
+                <div class="io-chip output">Margen sobre ventas · Retorno sobre costos</div>
+                <div class="io-chip output">Capital propio máximo requerido</div>
+                <div class="io-chip output">Ingresos netos después de comisiones y garantías</div>
+                <div class="io-chip output">Tabla de escenarios IRR: costos vs. precio de venta</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:24px;">
+            <div class="io-col-label" style="margin-bottom:10px;">Pipeline del modelo</div>
+            <div class="pipeline">
+              <div class="pipeline-step">Terreno</div>
+              <div class="pipeline-arrow">→</div>
+              <div class="pipeline-step hl">Costos de desarrollo</div>
+              <div class="pipeline-arrow">→</div>
+              <div class="pipeline-step hl">Construction Loan</div>
+              <div class="pipeline-arrow">→</div>
+              <div class="pipeline-step hl">Flujo de caja mensual</div>
+              <div class="pipeline-arrow">→</div>
+              <div class="pipeline-step">Ventas e ingresos</div>
+              <div class="pipeline-arrow">→</div>
+              <div class="pipeline-step">Retornos</div>
+            </div>
+          </div>
+
+          <div class="sheet-grid" style="margin-top:24px;">
+            <div class="sheet-card">
+              <div class="sheet-num">Hoja 01</div>
+              <div class="sheet-title">Deal Summary</div>
+              <div class="sheet-desc">Resumen ejecutivo del proyecto: costos de desarrollo desglosados (terreno, construcción, indirectos, financieros), supuestos de ventas, ingresos netos e indicadores de retorno completos.</div>
+            </div>
+            <div class="sheet-card">
+              <div class="sheet-num">Hoja 01 (cont.)</div>
+              <div class="sheet-title">Análisis de sensibilidad</div>
+              <div class="sheet-desc">Matriz que cruza variaciones en costos de desarrollo (±5%–15%) contra el precio de venta por SF (±10%). Muestra la IRR resultante en 20 combinaciones de escenarios simultáneos.</div>
+            </div>
+            <div class="sheet-card" style="grid-column: span 2;">
+              <div class="sheet-num">Hoja 02</div>
+              <div class="sheet-title">Flujo de Caja Mensual</div>
+              <div class="sheet-desc">Proyección mes a mes: desembolsos del construction loan, pagos de obra por etapa, ingresos por ventas cuota a cuota, intereses del préstamo y flujo neto del período. Muestra el mes de mayor exposición de capital y el cronograma de repago de la deuda.</div>
+            </div>
+          </div>
+
+          <div class="metrics-row" style="margin-top:24px;">
+            <div class="metric-box">
+              <div class="metric-label">IRR del proyecto</div>
+              <div class="metric-val">33.0%</div>
+              <div class="metric-sub">Caso base · 15 meses</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-label">ROE</div>
+              <div class="metric-val">87.8%</div>
+              <div class="metric-sub">Retorno sobre capital propio</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-label">Utilidad neta</div>
+              <div class="metric-val">$8.43M</div>
+              <div class="metric-sub">$140K/unidad · $105/SF</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-label">Margen sobre ventas</div>
+              <div class="metric-val">21.6%</div>
+              <div class="metric-sub">Utilidad / ventas brutas</div>
+            </div>
+          </div>
+
+          <div class="metrics-row" style="margin-top:10px;">
+            <div class="metric-box">
+              <div class="metric-label">Precio de venta total</div>
+              <div class="metric-val">$40M</div>
+              <div class="metric-sub">60 unidades · $500/SF</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-label">Costos totales</div>
+              <div class="metric-val">$30.6M</div>
+              <div class="metric-sub">Terreno + obra + indirectos + financieros</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-label">Capital propio máximo</div>
+              <div class="metric-val">$9.6M</div>
+              <div class="metric-sub">Mayor exposición durante la obra</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-label">Retorno sobre costos</div>
+              <div class="metric-val">27.6%</div>
+              <div class="metric-sub">Utilidad / costos totales</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB COLOMBIA -->
+        <div id="tab-col" class="tab-pane">
+          <p>
+            Herramienta de prefactibilidad para desarrolladores inmobiliarios y constructores en Colombia. Evalúa si un proyecto residencial genera rentabilidad suficiente antes de adquirir el lote o iniciar obras. Basado en el análisis del <strong>Proyecto Rosales, Medellín</strong>: 8 apartamentos de 75.9 m² en un lote de 225 m².
+          </p>
+          <div class="embed-wrap" style="margin-bottom:28px;">
+            <div class="embed-bar">
+              <span class="embed-bar-l"><span class="embed-dot"></span>Vista interactiva del modelo</span>
+              <span class="embed-bar-r">Excel · OneDrive</span>
+            </div>
+            <iframe width="100%" height="420" frameborder="0" scrolling="no" src="https://1drv.ms/x/c/588107c1db5a7c98/IQTuRJsxykauQpe5SG8fF5IRAWLCSsQKYrasC27FEdqkzYQ?em=2&wdAllowInteractivity=False&ActiveCell='Supuestos'!B1&wdHideGridlines=True&wdHideHeaders=True&wdInConfigurator=True&wdInConfigurator=True&edaebf=rslc0" style="display:block;"></iframe>
+          </div>
+          <div class="io-grid">
+            <div>
+              <div class="io-col-label">Variables de entrada</div>
+              <div class="io-list">
+                <div class="io-chip input">Precio por m² · Unidades vendibles</div>
+                <div class="io-chip input">Costo del terreno (lote)</div>
+                <div class="io-chip input">Costos directos de construcción</div>
+                <div class="io-chip input">Costos indirectos y comerciales</div>
+                <div class="io-chip input">IPC / inflación mensual</div>
+                <div class="io-chip input">Cronograma preventas–construcción–entrega</div>
+                <div class="io-chip input">Velocidad de ventas (unidades/mes)</div>
+              </div>
+            </div>
+            <div>
+              <div class="io-col-label">Resultados automáticos</div>
+              <div class="io-list">
+                <div class="io-chip output">TIR del proyecto</div>
+                <div class="io-chip output">VAN (Valor Actual Neto)</div>
+                <div class="io-chip output">Payback period</div>
+                <div class="io-chip output">Margen del proyecto %</div>
+                <div class="io-chip output">ROI sobre inversión total</div>
+                <div class="io-chip output">Flujo de caja acumulado mes a mes</div>
+                <div class="io-chip output">Punto de equilibrio de ventas</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:24px;">
+            <div class="io-col-label" style="margin-bottom:10px;">Pipeline del modelo</div>
+            <div class="pipeline">
+              <div class="pipeline-step">Supuestos</div>
+              <div class="pipeline-arrow">→</div>
+              <div class="pipeline-step hl">Presupuesto</div>
+              <div class="pipeline-arrow">→</div>
+              <div class="pipeline-step hl">Ventas</div>
+              <div class="pipeline-arrow">→</div>
+              <div class="pipeline-step hl">Flujo de Caja</div>
+              <div class="pipeline-arrow">→</div>
+              <div class="pipeline-step">TIR / VAN</div>
+              <div class="pipeline-arrow">→</div>
+              <div class="pipeline-step">Decisión</div>
+            </div>
+          </div>
+
+          <div class="sheet-grid" style="margin-top:24px;">
+            <div class="sheet-card">
+              <div class="sheet-num">Módulo 01</div>
+              <div class="sheet-title">Supuestos</div>
+              <div class="sheet-desc">Parámetros normativos y de mercado: área del lote, índice de construcción, densidad, precio x m², IPC y cronograma de ejecución.</div>
+            </div>
+            <div class="sheet-card">
+              <div class="sheet-num">Módulo 02</div>
+              <div class="sheet-title">Flujo de Caja</div>
+              <div class="sheet-desc">Construcción mes a mes del flujo: ingresos por ventas cuota a cuota, pagos del lote, costos de obra, gastos comerciales e impuestos.</div>
+            </div>
+            <div class="sheet-card">
+              <div class="sheet-num">Módulo 03</div>
+              <div class="sheet-title">Indicadores Financieros</div>
+              <div class="sheet-desc">Cálculo automático de TIR, VAN, Payback, margen del proyecto y ROI sobre la inversión total comprometida.</div>
+            </div>
+            <div class="sheet-card">
+              <div class="sheet-num">Módulo 04</div>
+              <div class="sheet-title">Dashboard Ejecutivo</div>
+              <div class="sheet-desc">Visualizaciones del flujo acumulado, inversión vs. retorno, punto de equilibrio y sensibilidades, listo para presentar a bancos o inversionistas.</div>
+            </div>
+          </div>
+
+          <div class="metrics-row" style="margin-top:24px;">
+            <div class="metric-box">
+              <div class="metric-label">Ingresos totales</div>
+              <div class="metric-val">$5.323M</div>
+              <div class="metric-sub">COP · 8 apartamentos</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-label">Costo del lote</div>
+              <div class="metric-val">$1.000M</div>
+              <div class="metric-sub">COP · 225 m²</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-label">Margen proyecto</div>
+              <div class="metric-val">9.7%</div>
+              <div class="metric-sub">Utilidad / Ingresos</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-label">Precio x m²</div>
+              <div class="metric-val">$8M</div>
+              <div class="metric-sub">COP · residencial</div>
+            </div>
+          </div>
+
+          <div style="margin-top:28px;">
+            <h2>Análisis de sensibilidad</h2>
+            <p>El modelo evalúa tres escenarios para mapear el rango de resultados posibles según condiciones del mercado y velocidad de ventas.</p>
+            <div class="sens-wrap">
+              <table class="sens-table">
+                <thead>
+                  <tr>
+                    <th>Variable</th>
+                    <th>Conservador</th>
+                    <th>Base</th>
+                    <th>Optimista</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Precio de venta</td>
+                    <td class="val-cons">−10%</td>
+                    <td class="val-base">Base</td>
+                    <td class="val-opt">+10%</td>
+                  </tr>
+                  <tr>
+                    <td>Costos de construcción</td>
+                    <td class="val-cons">+10%</td>
+                    <td class="val-base">Base</td>
+                    <td class="val-opt">−10%</td>
+                  </tr>
+                  <tr>
+                    <td>Velocidad de ventas</td>
+                    <td class="val-cons">Baja</td>
+                    <td class="val-base">Media</td>
+                    <td class="val-opt">Alta</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div style="margin-top:28px;">
+            <h2>Estructura de costos — referencia del sector</h2>
+            <p>Rangos normativos para proyectos residenciales en Colombia, validados contra el caso Belén Rosales.</p>
+            <div class="cost-chart">
+              <div class="cost-row">
+                <div class="cost-name">Costos directos</div>
+                <div class="cost-bar-outer"><div class="cost-bar-inner" style="width:47.8%;background:#bfdbfe;color:#1e40af;">47.8%</div></div>
+              </div>
+              <div class="cost-row">
+                <div class="cost-name">Costos indirectos</div>
+                <div class="cost-bar-outer"><div class="cost-bar-inner" style="width:20%;background:#bbf7d0;color:#065f46;">20.0%</div></div>
+              </div>
+              <div class="cost-row">
+                <div class="cost-name">Lote</div>
+                <div class="cost-bar-outer"><div class="cost-bar-inner" style="width:18.8%;background:#d1d5db;color:#374151;">18.8%</div></div>
+              </div>
+              <div class="cost-row">
+                <div class="cost-name">Utilidad</div>
+                <div class="cost-bar-outer"><div class="cost-bar-inner" style="width:9.7%;background:#d1fae5;color:#065f46;">9.7%</div></div>
+              </div>
+              <div class="cost-row">
+                <div class="cost-name">Costos financieros</div>
+                <div class="cost-bar-outer"><div class="cost-bar-inner" style="width:3.8%;background:#fef3c7;color:#92400e;">3.8%</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- METHODOLOGY -->
+      <div id="metodologia">
+        <h2>Valor para el inversionista</h2>
+        <p>
+          Los modelos resuelven el problema central del análisis inmobiliario informal: decisiones tomadas con base en precio x m² o rendimiento bruto estimado, sin considerar financiamiento, vacancia, costos operativos ni el valor del dinero en el tiempo.
+        </p>
+        <p>
+          Al estructurar los supuestos de forma separada de los cálculos —siguiendo la convención de colores estándar en modelos financieros institucionales (azul para entradas, negro para fórmulas, verde para vínculos entre hojas)— el modelo se convierte en un archivo auditable y reutilizable.
+        </p>
+        <ul>
+          <li><strong>Comparación rápida</strong> — Evalúa múltiples propiedades bajo los mismos supuestos de tasa de descuento, vacancia y salida</li>
+          <li><strong>Disciplina metodológica</strong> — Exige calcular el NOI real antes de llegar al Cap Rate; impide confundir rendimiento bruto con retorno neto</li>
+          <li><strong>Presentación a terceros</strong> — Diseño limpio adecuado para bancos, socios o comités de inversión</li>
+          <li><strong>Escenarios</strong> — Sensitivity tables bidimensionales identifican los supuestos que más impactan la rentabilidad</li>
+        </ul>
+        <p class="note">
+          El modelo 05A (EE.UU.) aplica a proyectos de desarrollo residencial multifamily: adquisición del terreno, construcción con construction loan y venta de unidades. El modelo 05B (Colombia) aplica a la prefactibilidad de proyectos residenciales en etapa temprana: validación antes de comprometer capital en el lote. Son metodológicamente complementarios pero independientes.
+        </p>
+      </div>
+
+      <!-- RELATED -->
+      <div>
+        <h2>Otras herramientas</h2>
+        <div class="related-grid">
+          <a href="stock-valuation-dashboard.html" class="related-card">
+            <div class="related-card-body"><h4>Dashboard de Valoración de Acciones</h4><p>Excel · Power Query · DCF · Graham · EE.UU.</p></div>
+            <span class="related-arr">↗</span>
+          </a>
+          <a href="stock-fundamental-screener.html" class="related-card">
+            <div class="related-card-body"><h4>Screener Fundamental BVC</h4><p>Power Query · VBA · Claude AI · Colombia</p></div>
+            <span class="related-arr">↗</span>
+          </a>
+          <a href="financial-statements-dashboard.html" class="related-card">
+            <div class="related-card-body"><h4>Financial Statements Dashboard</h4><p>Power BI · Supersociedades · Colombia</p></div>
+            <span class="related-arr">↗</span>
+          </a>
+          <a href="portfolio-dashboard.html" class="related-card">
+            <div class="related-card-body"><h4>Portfolio Dashboard</h4><p>Excel · BVC · NYSE · Dual currency</p></div>
+            <span class="related-arr">↗</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="foot-in">
+      <span class="foot-copy">© 2026 Andrés Felipe Alarcón · Finanzas Personales para COL-LATAM</span>
+      <a href="index.html" class="foot-back">← Volver al inicio</a>
+    </div>
+  </footer>
+
+  <script>
+    function switchTab(name, btn) {
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + name).classList.add('active');
+      btn.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
