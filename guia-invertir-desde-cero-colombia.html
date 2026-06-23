@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guía rápida para empezar a invertir desde cero en Colombia | Finanzas Personales e Inversiones</title>
+  <meta name="description" content="Aprende a invertir desde cero en Colombia: fondo de emergencia, CDT, ETFs y una hoja de ruta práctica para tus primeros 12 meses como inversionista."/>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#ffffff;--bg1:#f7f8fc;--bg2:#eef0f7;--bg3:#e2e5ef;
+      --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.16);
+      --accent:#2563eb;--warm:#9a6f00;--green:#059669;--rose:#dc2626;
+      --text:#0f1117;--text2:#4b5563;--text3:#9ca3af;--navy:#0d1b2e;
+      --mono:'JetBrains Mono',monospace;--sans:'DM Sans',sans-serif;--display:'Syne',sans-serif;
+      --r:10px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;line-height:1.7;-webkit-font-smoothing:antialiased;}
+
+    /* ── NAV ── */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid var(--border);}
+    .nav-in{max-width:780px;margin:0 auto;padding:0 32px;height:58px;display:flex;align-items:center;justify-content:space-between;}
+    .nav-brand{font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:-.02em;color:var(--text);text-decoration:none;}
+    .nav-back{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);text-decoration:none;transition:color .18s;}
+    .nav-back:hover{color:var(--text);}
+
+    /* ── ARTICLE HERO ── */
+    .article-hero{padding:112px 32px 52px;border-bottom:1px solid var(--border);background:var(--bg);}
+    .article-hero-in{max-width:780px;margin:0 auto;}
+    .breadcrumb{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:28px;display:flex;align-items:center;gap:6px;}
+    .breadcrumb a{color:var(--text3);text-decoration:none;transition:color .18s;}
+    .breadcrumb a:hover{color:var(--text);}
+    .art-tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:6px;margin-bottom:16px;}
+    .art-tag::before{content:'';width:18px;height:1px;background:var(--accent);}
+    h1{font-family:var(--display);font-size:clamp(28px,4.5vw,46px);font-weight:700;color:var(--text);line-height:1.1;letter-spacing:-.025em;margin-bottom:20px;}
+    .art-meta{display:flex;gap:20px;flex-wrap:wrap;align-items:center;margin-bottom:4px;}
+    .art-meta-item{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;}
+    .art-intro{font-size:17px;color:var(--text2);line-height:1.78;font-weight:300;max-width:680px;margin-top:22px;border-left:3px solid var(--accent);padding-left:20px;}
+
+    /* ── ARTICLE BODY ── */
+    .article-wrap{max-width:780px;margin:0 auto;padding:56px 32px 96px;}
+
+    /* Section block */
+    .section-block{margin-bottom:56px;}
+    .section-header{display:flex;align-items:flex-start;gap:20px;margin-bottom:20px;}
+    .section-num{font-family:var(--display);font-size:52px;font-weight:800;line-height:1;color:var(--accent);opacity:.15;flex-shrink:0;width:52px;}
+    .section-title-wrap{padding-top:6px;}
+    .section-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:6px;}
+    h2.section-title{font-family:var(--display);font-size:clamp(20px,3vw,26px);font-weight:700;letter-spacing:-.02em;line-height:1.2;color:var(--text);}
+    .section-body{padding-left:72px;}
+    .section-body p{font-size:15.5px;color:var(--text2);line-height:1.82;margin-bottom:14px;font-weight:300;}
+    .section-body p strong{color:var(--text);font-weight:500;}
+    .section-body h3{font-family:var(--display);font-size:15px;font-weight:700;letter-spacing:-.01em;color:var(--text);margin:22px 0 10px;}
+
+    /* Callout box */
+    .callout{background:var(--bg1);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:18px 22px;margin:18px 0;display:flex;gap:14px;align-items:flex-start;}
+    .callout-icon{font-size:18px;flex-shrink:0;margin-top:1px;}
+    .callout-text{font-size:14px;color:var(--text2);line-height:1.7;font-weight:300;}
+    .callout-text strong{color:var(--text);font-weight:500;}
+    .callout.green{border-left-color:var(--green);background:#f0fdf4;}
+    .callout.amber{border-left-color:#d97706;background:#fffbeb;}
+    .callout.rose{border-left-color:var(--rose);background:#fff1f2;}
+    .callout.navy{border-left-color:var(--navy);background:#f0f4ff;}
+
+    /* Step list */
+    .steps{display:flex;flex-direction:column;gap:6px;margin:16px 0;}
+    .step{display:flex;gap:12px;align-items:flex-start;padding:12px 16px;background:var(--bg1);border:1px solid var(--border);border-radius:8px;}
+    .step-num{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--accent);min-width:20px;padding-top:1px;}
+    .step-text{font-size:14px;color:var(--text2);line-height:1.65;font-weight:300;}
+    .step-text strong{color:var(--text);font-weight:500;}
+
+    /* Roadmap timeline */
+    .roadmap{display:flex;flex-direction:column;gap:8px;margin:16px 0;}
+    .roadmap-item{display:flex;gap:16px;align-items:flex-start;padding:16px 18px;border:1px solid var(--border);border-radius:8px;background:var(--bg);}
+    .roadmap-item.active{background:var(--bg1);}
+    .roadmap-period{font-family:var(--mono);font-size:10px;font-weight:500;color:var(--accent);letter-spacing:.06em;text-transform:uppercase;min-width:76px;padding-top:2px;flex-shrink:0;}
+    .roadmap-content{}
+    .roadmap-content strong{display:block;font-size:14px;font-weight:500;color:var(--text);margin-bottom:4px;}
+    .roadmap-content p{font-size:13.5px;color:var(--text2);line-height:1.6;font-weight:300;margin:0;}
+
+    /* Divider */
+    .section-sep{border:none;border-top:1px solid var(--border);margin:8px 0 56px;}
+
+    /* Highlight number */
+    .highlight-num{display:inline-block;background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:2px 10px;font-family:var(--mono);font-size:14px;font-weight:500;color:var(--text);vertical-align:middle;}
+
+    /* Comparison table */
+    .compare-table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;}
+    .compare-table th{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);font-weight:500;text-align:left;padding:10px 14px;border-bottom:2px solid var(--border2);background:var(--bg1);}
+    .compare-table td{padding:12px 14px;color:var(--text2);font-weight:300;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.55;}
+    .compare-table td strong{color:var(--text);font-weight:500;}
+    .compare-table tr:last-child td{border-bottom:none;}
+    .compare-table tr:hover td{background:var(--bg1);}
+    .badge{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.06em;padding:2px 8px;border-radius:4px;font-weight:500;}
+    .badge-low{background:#dcfce7;color:#166534;}
+    .badge-medium{background:#fef9c3;color:#854d0e;}
+    .badge-high{background:#fee2e2;color:#991b1b;}
+
+    /* Internal link card */
+    .internal-link{display:flex;align-items:center;gap:16px;padding:18px 22px;background:var(--bg1);border:1px solid var(--border);border-radius:8px;margin:24px 0;text-decoration:none;color:inherit;transition:all .18s;}
+    .internal-link:hover{border-color:var(--border2);background:var(--bg2);}
+    .internal-link-icon{font-size:22px;flex-shrink:0;}
+    .internal-link-body{}
+    .internal-link-body strong{display:block;font-family:var(--display);font-size:14px;font-weight:700;letter-spacing:-.01em;color:var(--text);margin-bottom:2px;}
+    .internal-link-body span{font-size:13px;color:var(--text3);font-weight:300;}
+    .internal-link-arr{font-size:16px;color:var(--text3);margin-left:auto;flex-shrink:0;transition:all .18s;}
+    .internal-link:hover .internal-link-arr{color:var(--accent);transform:translate(2px,-2px);}
+
+    /* TOC */
+    .toc{background:var(--bg1);border:1px solid var(--border);border-radius:var(--r);padding:22px 26px;margin-bottom:52px;}
+    .toc-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:14px;}
+    .toc-list{display:flex;flex-direction:column;gap:4px;}
+    .toc-item{display:flex;gap:12px;align-items:center;padding:7px 10px;border-radius:6px;text-decoration:none;color:var(--text2);font-size:14px;font-weight:300;transition:background .15s,color .15s;}
+    .toc-item:hover{background:var(--bg2);color:var(--text);}
+    .toc-item-num{font-family:var(--mono);font-size:10px;color:var(--text3);width:18px;flex-shrink:0;}
+
+    /* Conclusion */
+    .conclusion{background:var(--navy);border-radius:var(--r);padding:40px 36px;margin-top:20px;}
+    .conclusion h2{font-family:var(--display);font-size:22px;font-weight:700;color:#fff;margin-bottom:16px;letter-spacing:-.02em;}
+    .conclusion p{font-size:15px;color:rgba(255,255,255,.7);line-height:1.8;font-weight:300;margin-bottom:10px;}
+    .conclusion p:last-child{margin-bottom:0;}
+    .conclusion strong{color:#fff;font-weight:500;}
+
+    /* Related articles */
+    .related-label{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--text3);margin-bottom:14px;}
+    .related-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:4px;}
+    .related-card{background:var(--bg1);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;text-decoration:none;color:inherit;display:flex;justify-content:space-between;align-items:center;transition:all .18s;}
+    .related-card:hover{border-color:var(--border2);background:var(--bg2);}
+    .related-card-body h4{font-family:var(--display);font-size:14px;font-weight:700;letter-spacing:-.02em;margin-bottom:3px;}
+    .related-card-body p{font-size:12px;color:var(--text3);margin:0;font-weight:300;}
+    .related-arr{font-size:14px;color:var(--text3);flex-shrink:0;margin-left:12px;transition:all .18s;}
+    .related-card:hover .related-arr{color:var(--accent);transform:translate(2px,-2px);}
+
+    footer{border-top:1px solid var(--border);background:var(--navy);padding:24px 32px;}
+    .foot-in{max-width:780px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+    .foot-copy{font-family:var(--mono);font-size:10px;color:#64748b;}
+    .foot-back{font-family:var(--mono);font-size:11px;color:#64748b;text-decoration:none;letter-spacing:.08em;transition:color .18s;}
+    .foot-back:hover{color:#fff;}
+
+    @media(max-width:720px){
+      .article-hero{padding:88px 20px 44px;}
+      .article-wrap{padding:36px 20px 72px;}
+      .nav-in{padding:0 20px;}
+      .section-body{padding-left:0;}
+      .section-num{font-size:38px;width:38px;}
+      .related-cards{grid-template-columns:1fr;}
+      footer{padding:24px 20px;}
+      .compare-table{font-size:12.5px;}
+      .compare-table th,.compare-table td{padding:9px 10px;}
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-in">
+      <a href="index.html" class="nav-brand">Finanzas Personales e Inversiones</a>
+      <a href="index.html#aprende" class="nav-back">← Volver</a>
+    </div>
+  </nav>
+
+  <div class="article-hero">
+    <div class="article-hero-in">
+      <div class="breadcrumb">
+        <a href="index.html">Inicio</a>
+        <span>/</span>
+        <a href="index.html#aprende">Aprende</a>
+        <span>/</span>
+        <span>Invertir desde cero</span>
+      </div>
+      <div class="art-tag">Inversión</div>
+      <h1>Guía rápida para empezar<br>a invertir desde cero en Colombia</h1>
+      <div class="art-meta">
+        <span class="art-meta-item">Andrés Felipe Alarcón</span>
+        <span class="art-meta-item">Lectura · 7 min</span>
+        <span class="art-meta-item">Nivel · Básico</span>
+      </div>
+      <p class="art-intro">
+        Invertir no es solo para personas con mucho dinero ni para quienes entienden de economía. 
+        Es para cualquier colombiano con un ingreso regular que quiere que su dinero haga algo más 
+        que quedarse quieto. Si nunca has invertido un peso, esta guía es tu punto de partida.
+      </p>
+    </div>
+  </div>
+
+  <div class="article-wrap">
+
+    <!-- TABLA DE CONTENIDO -->
+    <div class="toc">
+      <div class="toc-label">Contenido</div>
+      <div class="toc-list">
+        <a href="#paso-0" class="toc-item"><span class="toc-item-num">00</span>Antes de invertir: tu base financiera</a>
+        <a href="#paso-1" class="toc-item"><span class="toc-item-num">01</span>Construye tu fondo de emergencia</a>
+        <a href="#paso-2" class="toc-item"><span class="toc-item-num">02</span>Entiende la diferencia entre ahorrar e invertir</a>
+        <a href="#paso-3" class="toc-item"><span class="toc-item-num">03</span>Opciones para empezar a invertir en Colombia</a>
+        <a href="#paso-4" class="toc-item"><span class="toc-item-num">04</span>Diversifica desde el principio</a>
+        <a href="#paso-5" class="toc-item"><span class="toc-item-num">05</span>Tres errores que debes evitar</a>
+        <a href="#paso-6" class="toc-item"><span class="toc-item-num">06</span>Tu hoja de ruta para los primeros 12 meses</a>
+      </div>
+    </div>
+
+    <!-- PASO 0: BASE FINANCIERA -->
+    <div class="section-block" id="paso-0">
+      <div class="section-header">
+        <div class="section-num">0</div>
+        <div class="section-title-wrap">
+          <div class="section-label">Antes de empezar</div>
+          <h2 class="section-title">Tu base financiera importa más que el primer CDT</h2>
+        </div>
+      </div>
+      <div class="section-body">
+        <p>
+          Hay un paso que muchas personas se saltan porque quieren llegar rápido al tema de inversiones: 
+          ordenar sus finanzas básicas primero. Invertir sin esa base es como construir una casa sin cimientos — 
+          funciona hasta que tiembla el piso.
+        </p>
+        <p>
+          Si aún tienes deudas de consumo con tasas altas, gastas más de lo que ganas o no tienes 
+          claridad sobre en qué se va tu salario, el primer paso no es abrir una cuenta de inversión 
+          — es cerrar esas fugas. Para eso existe un recurso que te conviene leer primero:
+        </p>
+
+        <a href="errores-financieros-colombia.html" class="internal-link">
+          <span class="internal-link-icon">📋</span>
+          <div class="internal-link-body">
+            <strong>Los 5 errores financieros más comunes en Colombia (y cómo evitarlos)</strong>
+            <span>Lectura previa recomendada · 6 min · Nivel básico-intermedio</span>
+          </div>
+          <span class="internal-link-arr">↗</span>
+        </a>
+
+        <p>
+          ¿Ya tienes tus finanzas básicas ordenadas? Perfecto. Entonces sigamos con los pasos reales 
+          para convertirte en inversionista.
+        </p>
+      </div>
+    </div>
+    <hr class="section-sep">
+
+    <!-- PASO 1: FONDO DE EMERGENCIA -->
+    <div class="section-block" id="paso-1">
+      <div class="section-header">
+        <div class="section-num">1</div>
+        <div class="section-title-wrap">
+          <div class="section-label">Paso 01 de 06</div>
+          <h2 class="section-title">Antes de invertir, construye tu fondo de emergencia</h2>
+        </div>
+      </div>
+      <div class="section-body">
+        <p>
+          El fondo de emergencia es el extintor de tus finanzas: esperas no necesitarlo nunca, 
+          pero si ocurre algo inesperado y no lo tienes, el incendio te consume. Un despido, 
+          una enfermedad, una reparación de carro — cualquiera de esos eventos puede arrasar 
+          meses de ahorro si no tienes un colchón de liquidez.
+        </p>
+        <p>
+          La regla es simple: necesitas entre <strong>3 y 6 meses de tus gastos fijos</strong> guardados 
+          en un lugar líquido y separado de tu cuenta corriente. Si tus gastos mensuales son 
+          <span class="highlight-num">$2.500.000 COP</span>, tu meta mínima es 
+          <span class="highlight-num">$7.500.000 COP</span>.
+        </p>
+
+        <div class="callout amber">
+          <span class="callout-icon">⚠️</span>
+          <div class="callout-text">
+            <strong>¿Por qué primero el fondo y después la inversión?</strong> Porque si inviertes 
+            sin fondo de emergencia, cualquier imprevisto te obligará a retirar tu inversión en el 
+            peor momento — posiblemente cuando el mercado esté bajo. El fondo te da el tiempo que 
+            necesita cualquier inversión para rendir.
+          </div>
+        </div>
+
+        <p><strong>¿Dónde guardar el fondo de emergencia en Colombia?</strong></p>
+        <div class="steps">
+          <div class="step"><span class="step-num">01</span><span class="step-text"><strong>Fondos de Inversión Colectiva (FIC) de liquidez inmediata</strong> — como los de Tyba, Fiduciaria Bancolombia o Daviplata. Rinden más que una cuenta corriente y permiten retiro en el mismo día.</span></div>
+          <div class="step"><span class="step-num">02</span><span class="step-text"><strong>Cuenta de ahorros remunerada</strong> — algunas entidades ofrecen tasas superiores al promedio del mercado. Revisa las condiciones porque pueden variar con frecuencia.</span></div>
+          <div class="step"><span class="step-num">03</span><span class="step-text"><strong>Lo que NO usar</strong> — no metas el fondo de emergencia en un CDT (queda bloqueado) ni en acciones (puede valer menos justo cuando más lo necesitas).</span></div>
+        </div>
+
+        <div class="callout green">
+          <span class="callout-icon">💡</span>
+          <span class="callout-text">Automatiza un aporte mensual fijo el día de pago, aunque sea el 10% de tu ingreso. Con eso puedes completar el fondo en 12 a 18 meses sin sentirlo.</span>
+        </div>
+      </div>
+    </div>
+    <hr class="section-sep">
+
+    <!-- PASO 2: AHORRAR VS INVERTIR -->
+    <div class="section-block" id="paso-2">
+      <div class="section-header">
+        <div class="section-num">2</div>
+        <div class="section-title-wrap">
+          <div class="section-label">Paso 02 de 06</div>
+          <h2 class="section-title">Entiende la diferencia entre ahorrar e invertir</h2>
+        </div>
+      </div>
+      <div class="section-body">
+        <p>
+          Ahorrar e invertir no son lo mismo, aunque suenen parecido. 
+          <strong>Ahorrar es proteger:</strong> guardas dinero para usarlo después, 
+          con muy poco o ningún riesgo. <strong>Invertir es hacer crecer:</strong> 
+          pones ese dinero a trabajar para que genere más dinero con el tiempo, 
+          asumiendo cierto nivel de riesgo a cambio de una rentabilidad mayor.
+        </p>
+        <p>
+          La diferencia se vuelve crítica cuando entra la inflación. Si tienes 
+          <span class="highlight-num">$10.000.000 COP</span> en una cuenta corriente 
+          que rinde 0,5% anual y la inflación está al 7%, al cabo de un año ese dinero 
+          tiene el poder adquisitivo de unos <span class="highlight-num">$9.350.000 COP</span> 
+          de hoy. No perdiste dinero en el extracto bancario — pero sí en capacidad de compra.
+        </p>
+
+        <div class="callout">
+          <span class="callout-icon">📊</span>
+          <div class="callout-text">
+            <strong>La diferencia en 20 años (ejemplo educativo):</strong><br>
+            <span style="display:block;margin-top:8px;">Persona A ahorra $500.000 COP al mes en cuenta corriente (rinde ~0,5% anual): en 20 años acumula aprox. $121.000.000 COP nominales, pero con inflación su poder adquisitivo real crece muy poco.</span>
+            <span style="display:block;margin-top:6px;">Persona B invierte $500.000 COP al mes en un portafolio diversificado con rendimiento histórico del 8% anual en COP: en 20 años acumula aprox. $292.000.000 COP. La diferencia no es cuánto gana cada una — es que una deja trabajar el interés compuesto.</span>
+            <span style="display:block;margin-top:6px;color:var(--text3);font-size:12px;">Nota: estos son ejemplos ilustrativos. Las rentabilidades pasadas no garantizan resultados futuros.</span>
+          </div>
+        </div>
+
+        <p>
+          El punto no es dejar de ahorrar — el ahorro tiene su lugar. El punto es entender 
+          que el dinero que no necesitas en el corto plazo tiene un costo de oportunidad 
+          si permanece inmóvil.
+        </p>
+      </div>
+    </div>
+    <hr class="section-sep">
+
+    <!-- PASO 3: OPCIONES EN COLOMBIA -->
+    <div class="section-block" id="paso-3">
+      <div class="section-header">
+        <div class="section-num">3</div>
+        <div class="section-title-wrap">
+          <div class="section-label">Paso 03 de 06</div>
+          <h2 class="section-title">Conoce las opciones más comunes para empezar en Colombia</h2>
+        </div>
+      </div>
+      <div class="section-body">
+        <p>
+          No necesitas entender todos los instrumentos financieros del mercado para empezar. 
+          Con conocer cuatro opciones básicas tienes suficiente para dar el primer paso. 
+          Aquí van explicadas como si se las contaras a un amigo tomando tinto:
+        </p>
+
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Instrumento</th>
+              <th>Riesgo</th>
+              <th>Liquidez</th>
+              <th>Monto mínimo</th>
+              <th>Ideal para</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>CDT</strong><br><span style="font-size:12px;color:var(--text3);">Certificado de Depósito a Término</span></td>
+              <td><span class="badge badge-low">Muy bajo</span></td>
+              <td>Baja (plazo fijo)</td>
+              <td>~$500.000 COP</td>
+              <td>Primer ahorro estructurado con fecha definida</td>
+            </tr>
+            <tr>
+              <td><strong>FIC</strong><br><span style="font-size:12px;color:var(--text3);">Fondo de Inversión Colectiva</span></td>
+              <td><span class="badge badge-low">Bajo–medio</span></td>
+              <td>Alta (retiro inmediato)</td>
+              <td>~$10.000 COP</td>
+              <td>Fondo de emergencia que rinde más que una cuenta corriente</td>
+            </tr>
+            <tr>
+              <td><strong>ETF internacional</strong><br><span style="font-size:12px;color:var(--text3);">Fondo cotizado en bolsa</span></td>
+              <td><span class="badge badge-medium">Medio</span></td>
+              <td>Alta (mercado bursátil)</td>
+              <td>~$50 USD</td>
+              <td>Diversificación global sin complicaciones</td>
+            </tr>
+            <tr>
+              <td><strong>Acciones BVC</strong><br><span style="font-size:12px;color:var(--text3);">Bolsa de Valores de Colombia</span></td>
+              <td><span class="badge badge-high">Medio–alto</span></td>
+              <td>Media</td>
+              <td>~$100.000 COP</td>
+              <td>Quien ya tiene base y quiere exposición local</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>El CDT: renta fija para empezar tranquilo</h3>
+        <p>
+          Un CDT es como prestarle dinero al banco por un tiempo definido (90, 180 o 360 días) 
+          a cambio de una tasa acordada. El banco te devuelve el capital más los intereses al vencer 
+          el plazo. Es predecible, está respaldado por Fogafin hasta ciertos montos, y es una 
+          excelente primera experiencia para quien nunca ha invertido.
+        </p>
+
+        <h3>Los FIC: liquidez con algo de rendimiento</h3>
+        <p>
+          Un Fondo de Inversión Colectiva agrupa el dinero de muchos inversionistas para invertirlo 
+          en diferentes instrumentos. Los fondos de liquidez (como los que ofrecen Tyba, 
+          Fiduciaria Bancolombia o Skandia) son ideales para el fondo de emergencia porque 
+          permiten retirar el dinero rápidamente y generalmente rinden más que una cuenta de ahorros tradicional.
+        </p>
+
+        <h3>Los ETF: la herramienta favorita del inversionista inteligente que no quiere complicarse</h3>
+        <p>
+          Un ETF (Exchange Traded Fund) es un fondo que cotiza en bolsa y replica el comportamiento 
+          de un índice o mercado. En lugar de elegir una sola acción — y apostar todo a una empresa — 
+          un ETF del S&amp;P 500, por ejemplo, te da exposición a las 500 empresas más grandes de 
+          Estados Unidos en una sola operación. Warren Buffett los recomienda para la mayoría de 
+          inversionistas individuales, y con razón: son baratos, diversificados y fáciles de entender. 
+          Desde Colombia los puedes comprar a través de plataformas como XTB o Trii.
+        </p>
+
+        <div class="callout navy">
+          <span class="callout-icon">🛡️</span>
+          <div class="callout-text">
+            <strong>¿Quién te protege como inversionista en Colombia?</strong><br>
+            <span style="display:block;margin-top:6px;"><strong>Fogafin</strong> — Cubre depósitos en entidades vigiladas (bancos, CDT) hasta ciertos límites por persona. Verifica los montos vigentes en fogafin.gov.co.</span>
+            <span style="display:block;margin-top:4px;"><strong>Superfinanciera</strong> — Regula y supervisa las entidades financieras. Antes de usar cualquier plataforma de inversión, verifica que esté inscrita en el RUES o autorizada por la Superfinanciera en superfinanciera.gov.co.</span>
+            <span style="display:block;margin-top:4px;"><strong>AMV</strong> — Autorregula a los intermediarios del mercado de valores. Si alguien te ofrece asesoría de inversión personalizada, debe estar inscrito ante el AMV.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="section-sep">
+
+    <!-- PASO 4: DIVERSIFICACIÓN -->
+    <div class="section-block" id="paso-4">
+      <div class="section-header">
+        <div class="section-num">4</div>
+        <div class="section-title-wrap">
+          <div class="section-label">Paso 04 de 06</div>
+          <h2 class="section-title">Diversifica desde el principio</h2>
+        </div>
+      </div>
+      <div class="section-body">
+        <p>
+          Hay un principio en finanzas que suena a lugar común pero que marca una diferencia real: 
+          no pongas todos los huevos en la misma canasta. En términos de inversión, esto significa 
+          distribuir tu dinero entre diferentes instrumentos, mercados y niveles de riesgo.
+        </p>
+        <p>
+          Piénsalo así: imagina que pones todo tu dinero en acciones de una sola empresa colombiana. 
+          Si esa empresa tiene un mal trimestre, una crisis sectorial o un escándalo, tu portafolio 
+          cae entero. Pero si ese mismo dinero está distribuido entre un FIC líquido, un CDT y un ETF 
+          global, el golpe de una parte no arrastra a las demás.
+        </p>
+
+        <div class="callout green">
+          <span class="callout-icon">🌱</span>
+          <div class="callout-text">
+            <strong>Un portafolio inicial sencillo con $500.000 COP:</strong><br>
+            <span style="display:block;margin-top:8px;">40% en FIC de liquidez — el colchón accesible.</span>
+            <span style="display:block;margin-top:4px;">40% en CDT a 90 días — estabilidad y rentabilidad definida.</span>
+            <span style="display:block;margin-top:4px;">20% en ETF global — crecimiento a largo plazo.</span>
+            <span style="display:block;margin-top:8px;color:var(--text3);font-size:12px;">Este ejemplo es educativo. No constituye asesoría de inversión personalizada.</span>
+          </div>
+        </div>
+
+        <p>
+          La diversificación no elimina el riesgo — lo distribuye. Y al principio, distribuirlo 
+          es exactamente lo que necesitas para ganar confianza sin exponerte demasiado.
+        </p>
+        <p>
+          A medida que aprendas más sobre cada instrumento y entiendas tu propio perfil de riesgo — 
+          qué tan cómodo te sientes viendo tu portafolio subir y bajar — podrás ajustar esa mezcla 
+          con más criterio.
+        </p>
+      </div>
+    </div>
+    <hr class="section-sep">
+
+    <!-- PASO 5: ERRORES -->
+    <div class="section-block" id="paso-5">
+      <div class="section-header">
+        <div class="section-num">5</div>
+        <div class="section-title-wrap">
+          <div class="section-label">Paso 05 de 06</div>
+          <h2 class="section-title">Los 3 errores que debes evitar como inversionista principiante</h2>
+        </div>
+      </div>
+      <div class="section-body">
+        <p>
+          No hace falta conocer todos los errores posibles — con evitar los tres más comunes 
+          ya llevas ventaja sobre la mayoría de personas que empiezan.
+        </p>
+
+        <div class="steps">
+          <div class="step">
+            <span class="step-num">01</span>
+            <span class="step-text">
+              <strong>Invertir sin fondo de emergencia.</strong> Ya lo vimos: si inviertes el 
+              dinero que podrías necesitar en los próximos 3 meses, cualquier imprevisto te 
+              obligará a retirar en el peor momento. Primero el fondo, después la inversión.
+            </span>
+          </div>
+          <div class="step">
+            <span class="step-num">02</span>
+            <span class="step-text">
+              <strong>Buscar ganancias rápidas.</strong> Los esquemas que prometen 
+              "duplicar tu dinero en 30 días", los grupos de WhatsApp con señales de Forex, 
+              las criptomonedas sin respaldo real — todos tienen algo en común: 
+              alguien gana, pero generalmente no eres tú. Invertir es un proceso de largo plazo. 
+              Desconfía de cualquier promesa de rentabilidad extraordinaria en poco tiempo.
+            </span>
+          </div>
+          <div class="step">
+            <span class="step-num">03</span>
+            <span class="step-text">
+              <strong>Vender por miedo cuando el mercado cae.</strong> Los mercados fluctúan — 
+              eso es normal, no una señal de catástrofe. El inversionista que vende cuando todo 
+              baja asegura su pérdida. El que se queda quieto y sigue su plan, históricamente, 
+              se recupera. El mayor enemigo de tu portafolio no es la volatilidad: es el pánico.
+            </span>
+          </div>
+        </div>
+
+        <div class="callout rose">
+          <span class="callout-icon">🔴</span>
+          <span class="callout-text">
+            <strong>Señal de alerta:</strong> Si alguien te promete una rentabilidad específica 
+            garantizada, te pide invertir con urgencia o te dice que el producto no está disponible 
+            para el "público general", detente. Verifica siempre que la plataforma esté autorizada 
+            por la Superfinanciera antes de transferir cualquier dinero.
+          </span>
+        </div>
+      </div>
+    </div>
+    <hr class="section-sep">
+
+    <!-- PASO 6: HOJA DE RUTA -->
+    <div class="section-block" id="paso-6">
+      <div class="section-header">
+        <div class="section-num">6</div>
+        <div class="section-title-wrap">
+          <div class="section-label">Paso 06 de 06</div>
+          <h2 class="section-title">Tu hoja de ruta para los primeros 12 meses</h2>
+        </div>
+      </div>
+      <div class="section-body">
+        <p>
+          No tienes que hacerlo todo de golpe. Una de las mejores cosas que puedes hacer como 
+          inversionista principiante es ir despacio al principio: aprender mientras actúas, 
+          en lugar de esperar a saberlo todo antes de hacer algo.
+        </p>
+
+        <div class="roadmap">
+          <div class="roadmap-item active">
+            <div class="roadmap-period">Meses 1–3</div>
+            <div class="roadmap-content">
+              <strong>Construye la base</strong>
+              <p>Calcula tus gastos fijos reales y define tu meta de fondo de emergencia. 
+              Abre una cuenta separada (FIC de liquidez) y configura un aporte automático el día de pago. 
+              No inviertes todavía — te preparas para hacerlo bien.</p>
+            </div>
+          </div>
+          <div class="roadmap-item">
+            <div class="roadmap-period">Meses 4–6</div>
+            <div class="roadmap-content">
+              <strong>Tu primera inversión formal</strong>
+              <p>Con el fondo de emergencia completo o en camino, abre tu primer CDT o amplía 
+              tu posición en un FIC de corto plazo. Aprende a leer el extracto, entiende cómo 
+              funciona la retención en la fuente sobre los rendimientos y familiarízate con 
+              el proceso de renovación.</p>
+            </div>
+          </div>
+          <div class="roadmap-item">
+            <div class="roadmap-period">Meses 7–12</div>
+            <div class="roadmap-content">
+              <strong>Primer ETF y visión de largo plazo</strong>
+              <p>Abre una cuenta en una plataforma que permita comprar ETFs desde Colombia 
+              (como XTB o Trii) y haz tu primera compra con un monto con el que te sientas 
+              cómodo. Aplica DCA: aporta una cantidad fija cada mes, sin importar si el mercado 
+              sube o baja. Revisa tu portafolio una vez al mes — no una vez al día.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <span class="callout-icon">📅</span>
+          <div class="callout-text">
+            <strong>DCA (Dollar Cost Averaging)</strong> — o promedio de costo en pesos — 
+            significa invertir una cantidad fija a intervalos regulares, sin importar el precio 
+            del mercado en ese momento. Cuando el mercado está bajo, compras más unidades. 
+            Cuando está alto, compras menos. En el largo plazo, este método elimina la presión 
+            de "elegir el momento perfecto" — que nadie logra de forma consistente.
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="section-sep">
+
+    <!-- CONCLUSIÓN -->
+    <div class="conclusion">
+      <h2>No necesitas ser rico para invertir. Necesitas empezar.</h2>
+      <p>
+        El mayor mito sobre la inversión en Colombia es que es para personas con mucho dinero 
+        o mucho conocimiento. Hoy puedes abrir una cuenta de inversión en menos de 20 minutos, 
+        empezar con <strong>$10.000 COP</strong> en un FIC o con unos <strong>$50 USD</strong> 
+        en un ETF global. Lo que te frenaba era el miedo, no la dificultad.
+      </p>
+      <p>
+        Lo que sí importa es la <strong>constancia</strong> y la <strong>educación continua</strong>. 
+        Un portafolio bien construido no se forma de golpe — se construye mes a mes, con decisiones 
+        informadas y sin reaccionar al ruido del mercado.
+      </p>
+      <p>
+        Invertir es plantar árboles: el mejor momento fue hace diez años. 
+        El segundo mejor momento es hoy.
+      </p>
+    </div>
+
+    <!-- HERRAMIENTAS RELACIONADAS -->
+    <div style="margin-top:56px;">
+      <div class="related-label">Herramientas relacionadas</div>
+      <div class="related-cards">
+        <a href="personal-budget-dashboard.html" class="related-card">
+          <div class="related-card-body">
+            <h4>Dashboard de Presupuesto Personal</h4>
+            <p>Controla ingresos, gastos y ahorro mes a mes — Power BI</p>
+          </div>
+          <span class="related-arr">↗</span>
+        </a>
+        <a href="portfolio-dashboard.html" class="related-card">
+          <div class="related-card-body">
+            <h4>Tracker de Portafolio</h4>
+            <p>Seguimiento de tus inversiones en BVC y NYSE</p>
+          </div>
+          <span class="related-arr">↗</span>
+        </a>
+        <a href="stock-valuation-dashboard.html" class="related-card">
+          <div class="related-card-body">
+            <h4>Valoración de Acciones</h4>
+            <p>DCF · Graham · Múltiplos — Excel</p>
+          </div>
+          <span class="related-arr">↗</span>
+        </a>
+        <a href="stock-fundamental-screener.html" class="related-card">
+          <div class="related-card-body">
+            <h4>Screener Fundamental BVC</h4>
+            <p>Ranking de acciones colombianas por fundamentales</p>
+          </div>
+          <span class="related-arr">↗</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="foot-in">
+      <span class="foot-copy">© 2026 Andrés Felipe Alarcón · Finanzas Personales para COL-LATAM</span>
+      <a href="index.html" class="foot-back">← Volver al inicio</a>
+    </div>
+  </footer>
+
+</body>
+</html>
