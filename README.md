@@ -1,8 +1,6 @@
 <div align="center">
 
-💼 Inversiones
-
-Finanzas personales e inversiones · Colombia / LATAM
+💼 Finanzas personales e inversiones · Colombia / LATAM
 
 <p>
   <a href="https://aalarconfp.github.io/inversiones/">
@@ -10,10 +8,6 @@ Finanzas personales e inversiones · Colombia / LATAM
   </a>
   <img src="https://img.shields.io/badge/🇨🇴%20COL--LATAM-Finanzas-059669?style=for-the-badge" alt="COL-LATAM">
   <img src="https://img.shields.io/badge/HTML-CSS--JS-9A6F00?style=for-the-badge" alt="HTML CSS JS">
-</p>
-
-<p>
-  <strong>Aprender · Analizar · Planificar · Invertir</strong>
 </p>
 
 </div>
@@ -57,10 +51,7 @@ Proyecto personal desarrollado por Andrés Felipe Alarcón.
 
 <div align="center">
 
-Finanzas personales · Inversiones · Análisis · Tecnología
-
 <br>
-
 
 
 </div>
