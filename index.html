@@ -98,23 +98,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
 .trust-item span{font-size:12px;color:var(--text3);font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;}
 
 /* ═══════════════════════════════════
-   PILARS — EMPIEZA AQUÍ
-═══════════════════════════════════ */
-.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,0.06);}
-.pillar{background:var(--bg1);padding:40px 36px;position:relative;transition:background .2s;}
-.pillar:hover{background:var(--bg2);}
-.pillar-icon{font-size:28px;margin-bottom:20px;display:block;}
-.pillar h3{font-family:var(--display);font-size:21px;font-weight:700;letter-spacing:-.025em;margin-bottom:10px;}
-.pillar p{font-size:14.5px;color:var(--text2);line-height:1.7;font-weight:300;margin-bottom:20px;}
-.pillar-link{font-family:var(--mono);font-size:11.5px;color:var(--accent);letter-spacing:.05em;display:inline-flex;align-items:center;gap:6px;transition:gap .18s;}
-.pillar-link:hover{gap:10px;}
-.pillar-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;}
-.ptag{font-family:var(--mono);font-size:10px;color:var(--text3);background:var(--bg);border:1px solid var(--border);padding:3px 9px;border-radius:4px;}
-
-/* ═══════════════════════════════════
-   TOOLS / GUIDES (free)
+   TOOLS / GUIDES (free) + CURSO
 ═══════════════════════════════════ */
 .tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;}
+.free-tools-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
 .tool-card{background:var(--bg1);border:1px solid var(--border);border-radius:var(--r);padding:28px 28px 24px;transition:border-color .18s,background .18s,box-shadow .18s;display:flex;flex-direction:column;box-shadow:0 1px 4px rgba(0,0,0,0.05);}
 .tool-card:hover{border-color:var(--border2);background:var(--bg2);box-shadow:0 4px 20px rgba(0,0,0,0.09);}
 .tool-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;}
@@ -122,7 +109,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
 .tool-badge{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;padding:3px 8px;border-radius:4px;font-weight:500;}
 .tb-free{background:rgba(5,150,105,.08);color:var(--green);border:1px solid rgba(5,150,105,.2);}
 .tb-guide{background:rgba(37,99,235,.08);color:var(--accent);border:1px solid rgba(37,99,235,.18);}
-.tb-template{background:rgba(154,111,0,.08);color:var(--warm);border:1px solid rgba(154,111,0,.2);}
+.tb-product{background:rgba(154,111,0,.1);color:var(--warm);border:1px solid rgba(154,111,0,.22);}
+.tool-card-product{background:linear-gradient(135deg,rgba(37,99,235,.06) 0%,rgba(154,111,0,.05) 100%);border-color:var(--border2);}
 .tool-card h3{font-family:var(--display);font-size:18px;font-weight:700;letter-spacing:-.025em;margin-bottom:8px;line-height:1.3;}
 .tool-card p{font-size:13.5px;color:var(--text2);line-height:1.65;font-weight:300;flex:1;}
 .tool-card-footer{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
@@ -177,23 +165,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
    PROYECTOS AVANZADOS
 ═══════════════════════════════════ */
 .adv-grid{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,0.06);}
-.adv-row{background:var(--bg1);padding:22px 32px;display:grid;grid-template-columns:44px 1fr auto;gap:20px;align-items:center;transition:background .18s;}
+.adv-row{background:var(--bg1);padding:22px 32px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;transition:background .18s;}
 .adv-row:hover{background:var(--bg2);}
 .adv-row:hover .adv-arr{color:var(--accent);transform:translate(2px,-2px);}
-.adv-num{font-family:var(--mono);font-size:12px;color:var(--text3);}
 .adv-body h4{font-family:var(--display);font-size:15.5px;font-weight:600;letter-spacing:-.02em;margin-bottom:3px;}
 .adv-body p{font-size:13px;color:var(--text2);font-weight:300;}
 .adv-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px;}
 .adv-tag{font-family:var(--mono);font-size:9.5px;color:var(--text3);background:var(--bg1);border:1px solid var(--border);padding:2px 7px;border-radius:4px;}
 .adv-tag-alt{font-family:var(--mono);font-size:9.5px;color:#1e40af;background:#dbeafe;border:1px solid #93c5fd;padding:2px 7px;border-radius:4px;font-weight:500;}
 .adv-arr{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--text3);opacity:1;transition:opacity .18s,transform .18s;flex-shrink:0;white-space:nowrap;}
-.tool-cta-disabled{font-family:var(--mono);font-size:11px;color:var(--text3);display:inline-flex;align-items:center;gap:6px;cursor:default;opacity:.55;}
-.adv-row-disabled{background:var(--bg1);padding:22px 32px;display:grid;grid-template-columns:44px 1fr auto;gap:20px;align-items:center;opacity:.45;cursor:default;}
-.adv-row-disabled .adv-num{font-family:var(--mono);font-size:12px;color:var(--text3);}
-.adv-row-disabled .adv-body h4{font-family:var(--display);font-size:15.5px;font-weight:600;letter-spacing:-.02em;margin-bottom:3px;}
-.adv-row-disabled .adv-body p{font-size:13px;color:var(--text2);font-weight:300;}
-.adv-row-disabled .adv-arr{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--text3);flex-shrink:0;white-space:nowrap;}
-.coming-soon{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--text3);flex-shrink:0;white-space:nowrap;}
 
 /* ═══════════════════════════════════
    ABOUT
@@ -247,8 +227,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
 .foot-links a:hover{color:var(--text2);}
 
 /* ── RESPONSIVE ─────────────────── */
-@media(max-width:900px){.pillars-grid{grid-template-columns:1fr;}.about-grid{grid-template-columns:1fr;}.adv-row{grid-template-columns:36px 1fr;}.adv-arr{display:none;}.contact-box{padding:40px 28px;}}
-@media(max-width:720px){.wrap{padding:0 20px;}.nav-in{padding:0 20px;}.nav-links{display:none;}.nav-ham{display:flex;}.mob-menu{padding:16px 20px 24px;}.hero{padding:110px 0 72px;}.hero-trust{gap:20px;}.foot-in{flex-direction:column;align-items:flex-start;}section{padding:72px 0;}}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr;}.adv-row{grid-template-columns:1fr;}.adv-arr{display:none;}.contact-box{padding:40px 28px;}}
+@media(max-width:720px){.wrap{padding:0 20px;}.nav-in{padding:0 20px;}.nav-links{display:none;}.nav-ham{display:flex;}.mob-menu{padding:16px 20px 24px;}.hero{padding:110px 0 72px;}.hero-trust{gap:20px;}.foot-in{flex-direction:column;align-items:flex-start;}section{padding:72px 0;}.free-tools-grid{grid-template-columns:1fr;}}
 
 /* ═══════════════════════════════════
    QUIZ DE PERFIL
@@ -314,21 +294,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
 .result-char-dot.conservative{background:#059669;}
 .result-char-dot.moderate{background:#d97706;}
 .result-char-dot.aggressive{background:#dc2626;}
-.result-plat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;}
-.rplat-card{background:var(--bg1);border:1px solid var(--border);border-radius:var(--r);padding:20px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:border-color .18s;}
-.rplat-card:hover{border-color:var(--border2);}
-.rplat-header{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
-.rplat-logo{width:36px;height:36px;border-radius:8px;border:1px solid var(--border);background:var(--bg2);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;}
-.rplat-logo img{width:36px;height:36px;object-fit:contain;}
-.rplat-logo-fb{font-family:var(--display);font-size:16px;font-weight:700;color:var(--accent);}
-.rplat-name{font-family:var(--display);font-size:15px;font-weight:700;letter-spacing:-.02em;}
-.rplat-cat{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.05em;}
-.rplat-why{font-size:13px;color:var(--text2);line-height:1.6;font-weight:300;margin-bottom:12px;}
-.rplat-code-row{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:8px 12px;margin-bottom:10px;}
-.rplat-code-label{font-family:var(--mono);font-size:10px;color:var(--text3);margin-bottom:2px;}
-.rplat-code-val{font-family:var(--mono);font-size:12px;color:var(--accent);font-weight:500;}
-.rplat-btn{display:block;text-align:center;background:var(--accent);color:#fff;font-family:var(--sans);font-size:13px;font-weight:500;padding:9px 16px;border-radius:8px;transition:background .18s;}
-.rplat-btn:hover{background:var(--accent-d);}
 .result-restart-row{display:flex;justify-content:flex-end;margin-top:24px;gap:10px;flex-wrap:wrap;}
 @media(max-width:600px){.qscreen{padding:28px 20px;}.quiz-intro-card{padding:24px 20px;gap:20px;}}
 
@@ -344,9 +309,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
       <small>Finanzas Personales · COL-LATAM</small>
     </div>
     <div class="nav-links">
-      <a href="#empieza">Empieza aquí</a>
+      <a href="#educacion">Educación</a>
+      <a href="#diagnostico">Diagnóstico</a>
       <a href="#herramientas">Herramientas</a>
-      <a href="#educacion">Aprende</a>
       <a href="#recursos">Recursos</a>
       <a href="sobre-mi.html">Sobre mí</a>
       <a href="#contacto" class="nav-cta">Escríbeme</a>
@@ -357,9 +322,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
   </div>
 </nav>
 <div class="mob-menu" id="mobMenu">
-  <a href="#empieza" onclick="toggleMenu()">Empieza aquí</a>
+  <a href="#educacion" onclick="toggleMenu()">Educación</a>
+  <a href="#diagnostico" onclick="toggleMenu()">Diagnóstico</a>
   <a href="#herramientas" onclick="toggleMenu()">Herramientas</a>
-  <a href="#educacion" onclick="toggleMenu()">Aprende</a>
   <a href="#recursos" onclick="toggleMenu()">Recursos</a>
   <a href="sobre-mi.html" onclick="toggleMenu()">Sobre mí</a>
   <a href="#contacto" onclick="toggleMenu()">Escríbeme</a>
@@ -374,10 +339,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
     <h1>Construye patrimonio<br>con <em>claridad</em><br>y <span class="warm">calma.</span></h1>
     <p class="hero-sub">
       Aprende a manejar tu dinero, invertir a largo plazo y construir un futuro financiero sólido.
-      Sin jerga técnica, sin humo — solo estrategia real y herramientas que funcionan.
     </p>
     <div class="hero-ctas">
-      <a href="#empieza" class="btn btn-primary">Empieza aquí →</a>
+      <a href="#diagnostico" class="btn btn-primary">Descubre tu perfil →</a>
       <a href="#herramientas" class="btn btn-ghost">Ver herramientas</a>
     </div>
     <div class="hero-trust">
@@ -399,104 +363,87 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
 
 <div class="divider"></div>
 
-<!-- ══ EMPIEZA AQUÍ ══════════════════════════════ -->
-<section id="empieza">
-  <div class="wrap">
-    <div class="rv">
-      <div class="lbl accent">Empieza aquí</div>
-      <div class="h2">Tres pasos para ordenar tu dinero.</div>
-      <p class="sub">No importa desde dónde empiezas. Estos tres pilares cubren lo esencial para tener finanzas sanas y construir patrimonio a largo plazo.</p>
-    </div>
-    <div class="pillars-grid rv">
-      <div class="pillar">
-        <span class="pillar-icon">💰</span>
-        <h3>Ahorra mejor</h3>
-        <p>Aprende a crear un presupuesto real, construir tu fondo de emergencia y dejar de perder dinero en cuentas que no te rinden nada.</p>
-        <div class="pillar-tags">
-          <span class="ptag">Presupuesto</span>
-          <span class="ptag">Fondo de emergencia</span>
-          <span class="ptag">Control de gastos</span>
-        </div>
-        <br>
-        <a href="#herramientas" class="pillar-link">Ver plantillas →</a>
-      </div>
-      <div class="pillar">
-        <span class="pillar-icon">📈</span>
-        <h3>Invierte a largo plazo</h3>
-        <p>Empieza a invertir en acciones y ETFs de forma racional. Sin promesas de enriquecerte rápido — solo estrategia, constancia y tiempo.</p>
-        <div class="pillar-tags">
-          <span class="ptag">Acciones</span>
-          <span class="ptag">ETFs</span>
-          <span class="ptag">DCA</span>
-          <span class="ptag">Largo plazo</span>
-        </div>
-        <br>
-        <a href="#recursos" class="pillar-link">Ver brokers →</a>
-      </div>
-      <div class="pillar">
-        <span class="pillar-icon">🏦</span>
-        <h3>Organiza tu dinero</h3>
-        <p>Ten claridad total sobre lo que entra, lo que sale y lo que crece. Patrimonio neto, seguimiento de inversiones y metas financieras reales.</p>
-        <div class="pillar-tags">
-          <span class="ptag">Patrimonio neto</span>
-          <span class="ptag">Portafolio</span>
-          <span class="ptag">Metas financieras</span>
-        </div>
-        <br>
-        <a href="#herramientas" class="pillar-link">Ver herramientas →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
 <!-- ══ HERRAMIENTAS ══════════════════════════════ -->
 <section id="herramientas">
   <div class="wrap">
     <div class="rv">
       <div class="lbl">Herramientas</div>
       <div class="h2">Recursos para tomar mejores decisiones.</div>
-      <p class="sub">Plantillas, guías y dashboards que uso personalmente. Diseñados para que cualquiera pueda usarlos.</p>
+      <p class="sub">Herramientas para analizar, organizar y mejorar tus decisiones financieras.</p>
     </div>
-    <div class="tools-grid rv">
 
-      <a href="personal-budget-dashboard.html" class="tool-card" style="text-decoration:none;color:inherit;">
+    <div class="result-section-title rv">Herramientas gratuitas</div>
+    <div class="free-tools-grid rv">
+
+      <a href="herramientas.html#patrimonio-neto" class="tool-card" style="text-decoration:none;color:inherit;">
         <div class="tool-card-top">
-          <div class="tool-label">Finanzas personales</div>
-          <div class="tool-badge tb-template">Plantilla</div>
+          <div class="tool-label">Patrimonio personal</div>
+          <div class="tool-badge tb-free">Gratuita</div>
         </div>
-        <h3>Dashboard de Presupuesto Personal</h3>
-        <p>Controla tus ingresos, gastos y ahorro mensual en un solo lugar. Te muestra exactamente a dónde va tu dinero y cómo mejorar tu balance.</p>
+        <h3>Patrimonio Neto</h3>
+        <p>Registra tus activos y tus pasivos para conocer tu patrimonio neto actual.</p>
         <div class="tool-card-footer">
-          <span class="tool-cta">Ver dashboard →</span>
-          <span class="tool-meta">Excel · Power BI</span>
+          <span class="tool-cta">Calcular →</span>
+          <span class="tool-meta">Activos − pasivos</span>
         </div>
       </a>
 
-      <a href="portfolio-dashboard.html" class="tool-card" style="text-decoration:none;color:inherit;">
+      <a href="herramientas.html#fondo-emergencia" class="tool-card" style="text-decoration:none;color:inherit;">
         <div class="tool-card-top">
-          <div class="tool-label">Inversiones</div>
-          <div class="tool-badge tb-template">Plantilla</div>
+          <div class="tool-label">Liquidez</div>
+          <div class="tool-badge tb-free">Gratuita</div>
         </div>
-        <h3>Tracker de Portafolio de Inversiones</h3>
-        <p>Sigue el desempeño de tus acciones en Colombia y EE.UU. desde una sola hoja. Calcula tu rendimiento real descontando inflación, sin fórmulas complicadas.</p>
+        <h3>Fondo de Emergencia</h3>
+        <p>A partir de tus gastos mensuales y tus ahorros actuales, calcula cuántos meses de cobertura tienes.</p>
         <div class="tool-card-footer">
-          <span class="tool-cta">Ver tracker →</span>
-          <span class="tool-meta">Excel · BVC · NYSE</span>
+          <span class="tool-cta">Calcular →</span>
+          <span class="tool-meta">Gastos → meses de cobertura</span>
         </div>
       </a>
 
-      <div class="tool-card">
+      <a href="herramientas.html#salida-deuda" class="tool-card" style="text-decoration:none;color:inherit;">
         <div class="tool-card-top">
-          <div class="tool-label">Patrimonio</div>
-          <div class="tool-badge tb-template">Plantilla</div>
+          <div class="tool-label">Deuda</div>
+          <div class="tool-badge tb-free">Gratuita</div>
         </div>
-        <h3>Calculadora de Patrimonio Neto</h3>
-        <p>Lo que tienes menos lo que debes. Una vista clara de tu patrimonio real hoy y cómo proyectarlo a futuro. El primer número que todo inversor debe conocer.</p>
+        <h3>Salida de Deuda</h3>
+        <p>Con el saldo, la tasa y el pago mensual de tu deuda, entiende cuánto tiempo te tomará salir de ella.</p>
         <div class="tool-card-footer">
-          <span class="tool-cta-disabled">Ver plantilla →</span>
-          <span class="tool-meta">Excel</span>
+          <span class="tool-cta">Calcular →</span>
+          <span class="tool-meta">Deuda, tasa y pago</span>
+        </div>
+      </a>
+
+      <a href="herramientas.html#capacidad-ahorro" class="tool-card" style="text-decoration:none;color:inherit;">
+        <div class="tool-card-top">
+          <div class="tool-label">Presupuesto</div>
+          <div class="tool-badge tb-free">Gratuita</div>
+        </div>
+        <h3>Capacidad de Ahorro o Inversión</h3>
+        <p>Compara tus ingresos y tus gastos para saber cuánto puedes destinar cada mes a ahorro o inversión.</p>
+        <div class="tool-card-footer">
+          <span class="tool-cta">Calcular →</span>
+          <span class="tool-meta">Ingresos − gastos</span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="tools-grid rv" style="margin-top:44px;">
+
+      <div class="tool-card tool-card-product">
+        <div class="tool-card-top">
+          <div class="tool-label">Guía Detallada</div>
+          <div class="tool-badge tb-product">Producto educativo</div>
+        </div>
+        <h3>Curso de Finanzas Personales e Inversiones</h3>
+        <p>Construye tu propio sistema de gestión financiera personal y de inversiones utilizando tus propios datos y herramientas prácticas.</p>
+        <div class="tool-card-footer" style="flex-direction:column;align-items:stretch;gap:14px;">
+          <div>
+            <div style="font-family:var(--display);font-size:20px;font-weight:700;letter-spacing:-.02em;">$99.900</div>
+            <span class="tool-meta">Programa educativo</span>
+          </div>
+          <span class="btn btn-primary" style="cursor:default;justify-content:center;">Conocer el curso →</span>
         </div>
       </div>
 
@@ -513,32 +460,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
         </div>
       </a>
 
-      <div class="tool-card">
-        <div class="tool-card-top">
-          <div class="tool-label">Guía práctica · COL-LATAM</div>
-          <div class="tool-badge tb-guide">Guía</div>
-        </div>
-        <h3>Cómo recibir dólares en Colombia</h3>
-        <p>La estructura óptima para freelancers y contratistas: cómo abrir una cuenta en dólares, a qué tasa convertir y cómo evitar perder plata en el proceso.</p>
-        <div class="tool-card-footer">
-          <span class="tool-cta-disabled">Leer guía →</span>
-          <span class="tool-meta">Wise · Global66</span>
-        </div>
-      </div>
-
-      <div class="tool-card">
-        <div class="tool-card-top">
-          <div class="tool-label">Estrategia de inversión</div>
-          <div class="tool-badge tb-guide">Guía</div>
-        </div>
-        <h3>La estrategia DCA explicada paso a paso</h3>
-        <p>Cómo invertir una cantidad fija cada mes sin importar si el mercado sube o baja — y por qué esto funciona mejor que intentar adivinar el momento perfecto.</p>
-        <div class="tool-card-footer">
-          <span class="tool-cta-disabled">Leer guía →</span>
-          <span class="tool-meta">Largo plazo · Sin especulación</span>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -551,7 +472,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
     <div class="rv">
       <div class="lbl">Aprende</div>
       <div class="h2">Finanzas sin complicaciones.</div>
-      <p class="sub">Artículos claros sobre los temas que más importan. Sin tecnicismos innecesarios — solo lo que necesitas saber para tomar mejores decisiones.</p>
+      <p class="sub">Artículos claros sobre los temas que más importan.</p>
     </div>
     <div class="articles-grid rv">
 
@@ -562,20 +483,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
         <div class="article-footer"><a href="articulo-errores-financieros-colombia.html" style="text-decoration:none;" class="tool-cta">Ver →</a></div>
       </div>
 
-      <div class="article-card">
-        <span class="article-tag">Ahorro</span>
-        <h3>Fondo de emergencia: cuánto necesitas y cómo armarlo</h3>
-        <p>La base de cualquier plan financiero. Aprende a calcular cuánto necesitas, dónde guardarlo y cómo construirlo sin que afecte tu vida.</p>
-        <div class="article-footer"><span class="tool-cta-disabled">Ver →</span></div>
-      </div>
-
-      <div class="article-card">
-        <span class="article-tag">Inversión</span>
-        <h3>ETFs para principiantes: la forma más fácil de empezar</h3>
-        <p>Un ETF te permite invertir en cientos de empresas con un solo clic. Qué son, cómo funcionan y cuáles tienen más sentido para alguien en COL-LATAM.</p>
-        <div class="article-footer"><span class="tool-cta-disabled">Ver →</span></div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -583,26 +490,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
 <div class="divider"></div>
 
 <!-- ══ RECURSOS ═══════════════════════════════════ -->
-<section id="recursos">
+<section id="diagnostico">
   <div class="wrap">
     <div class="rv">
-      <div class="lbl">Recursos curados</div>
-      <div class="h2">Las plataformas que yo uso.</div>
-      <p class="sub">No recomiendo lo que no conozco. Esta es una selección honesta de las plataformas que forman parte de mi estrategia financiera personal.</p>
+      <div class="lbl accent">Diagnóstico gratuito</div>
+      <div class="h2">¿Cuál es tu perfil de inversión?</div>
+      <p class="sub">Un diagnóstico orientativo de tu tolerancia al riesgo y horizonte de tiempo. Es independiente del directorio de recursos de abajo — no te va a recomendar ninguna plataforma.</p>
     </div>
-
-    <div class="disclosure rv">
-      <span style="flex-shrink:0;">⚠</span>
-      <span><strong>Aviso importante:</strong> Algunos enlaces incluyen códigos de beneficio que me generan un pequeño beneficio si los usas — sin costo adicional para ti. Esto <em>no</em> es asesoría financiera. Evalúa cada plataforma según tu situación personal antes de invertir.</span>
-    </div>
-
 
     <!-- ── QUIZ INTRO ────────────────── -->
     <div class="quiz-intro-card rv">
       <div class="quiz-intro-icon">🎯</div>
       <div class="quiz-intro-body">
-        <h3>¿No sabes cuál plataforma te conviene?</h3>
-        <p>Responde 10 preguntas breves sobre tus objetivos y tolerancia al riesgo. Al final te mostraré exactamente qué plataformas se adaptan a tu perfil, con sus códigos de beneficio.</p>
+        <h3>Conoce tu perfil de inversión</h3>
+        <p>Responde 10 preguntas breves sobre tus objetivos y tolerancia al riesgo. Al final obtendrás tu perfil (Conservador, Moderado o Crecimiento) y las categorías de instrumento que mejor se alinean con él.</p>
       </div>
       <div class="quiz-intro-cta">
         <button class="btn btn-primary" onclick="openQuiz()">Descubrir mi perfil →</button>
@@ -628,7 +529,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
           </div>
           <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px 16px;text-align:left;min-width:150px;">
             <div style="font-family:var(--mono);font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;">Al terminar</div>
-            <div style="font-size:13.5px;font-weight:300;">Plataformas recomendadas para ti</div>
+            <div style="font-size:13.5px;font-weight:300;">Categorías de instrumento sugeridas</div>
           </div>
         </div>
         <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
@@ -686,8 +587,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
           <div class="result-section-title">Instrumentos sugeridos</div>
           <div class="result-chars" id="resRecs"></div>
 
-          <div class="result-section-title">Plataformas recomendadas para ti</div>
-          <div class="result-plat-grid" id="resPlatGrid"></div>
+          <div class="result-section-title">¿Y ahora qué?</div>
+          <p style="font-size:13.5px;color:var(--text2);line-height:1.65;font-weight:300;max-width:480px;">Este diagnóstico es solo informativo — no está conectado a ninguna plataforma. Si quieres, el directorio de recursos de abajo tiene las opciones que uso, igual para todos los visitantes.</p>
+          <a href="#recursos" class="btn btn-ghost" onclick="closeQuiz()" style="margin-top:14px;display:inline-flex;">Ver directorio de recursos →</a>
 
           <div class="result-restart-row">
             <button class="q-restart" onclick="closeQuiz()">Cerrar ✕</button>
@@ -697,6 +599,25 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
       </div>
 
     </div><!-- /quiz-wrap -->
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ RECURSOS ═══════════════════════════════════ -->
+<section id="recursos">
+  <div class="wrap">
+    <div class="rv">
+      <div class="lbl">Recursos externos · Afiliados</div>
+      <div class="h2">Las plataformas que yo uso.</div>
+      <p class="sub">No recomiendo lo que no conozco. Esta es una selección honesta de las plataformas que forman parte de mi estrategia financiera personal.</p>
+    </div>
+
+    <div class="disclosure rv">
+      <span style="flex-shrink:0;">⚠</span>
+      <span><strong>Aviso importante:</strong> Algunos enlaces incluyen códigos de beneficio que me generan un pequeño beneficio si los usas — sin costo adicional para ti. Esto <em>no</em> es asesoría financiera ni una recomendación personalizada. Evalúa cada plataforma según tu propia situación antes de invertir.</span>
+    </div>
 
     <div class="res-tabs rv">
       <button class="res-tab active" onclick="switchTab('brokers',this)">Para invertir</button>
@@ -811,6 +732,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
             <button class="copy-btn" onclick="copyCode('andres442121',this)">Copiar</button>
             <a href="https://www.rappipay.co/rappicuenta/?referrer=singular_click_id%3Dcc30eb54-496b-48dc-8f74-4f9eb46b0e98" target="_blank" rel="noopener" class="res-link">Abrir cuenta ↗</a>
           </div>
+
+          <p style="font-size:12.5px;color:var(--text3);font-weight:300;line-height:1.6;margin-top:14px;margin-bottom:8px;">Si además buscas una alternativa de crédito, RappiCard puede complementar esta solución sin costos ocultos y con altas recompensas de uso.</p>
+          <a href="https://rappi.sng.link/Ev50a/kp0r/r_9c4b087068" target="_blank" rel="noopener" class="tool-cta">Conocer RappiCard ↗</a>
         </div>
 
         <div class="res-card">
@@ -922,12 +846,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
     <div class="rv">
       <div class="lbl">Para los curiosos</div>
       <div class="h2">Herramientas más avanzadas.</div>
-      <p class="sub">Si ya tienes lo básico cubierto y quieres ir más profundo — estos proyectos son para ti. Están diseñados para inversores con experiencia.</p>
+      <p class="sub">Modelos financieros y paneles más técnicos, para quien ya tiene las bases cubiertas.</p>
     </div>
     <div class="adv-grid rv">
 
       <a href="stock-valuation-dashboard.html" class="adv-row" style="color:inherit;">
-        <div class="adv-num">01</div>
         <div class="adv-body">
           <h4>Valoración de Acciones Múltiple — EE.UU.</h4>
           <p>¿Cómo saber si una acción está cara o barata? Este modelo consolida cuatro métodos de valoración distintos — DCF, Graham, múltiplos comparables y múltiplos históricos — para llegar a un precio objetivo más robusto.</p>
@@ -937,9 +860,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
       </a>
 
       <a href="financial-statements-dashboard.html" class="adv-row" style="color:inherit;">
-        <div class="adv-num">02</div>
         <div class="adv-body">
-          <h4>Dashboard de Estados Financieros — BVC</h4>
+          <h4>Panel de Estados Financieros — BVC</h4>
           <p>Análisis histórico de los estados financieros de una empresa colombiana — balance, P&amp;G y flujo de caja en cuatro años, con ratios de rentabilidad, liquidez y solvencia visualizados en Power BI.</p>
           <div class="adv-tags"><span class="adv-tag">Power BI</span><span class="adv-tag">Análisis Financiero</span><span class="adv-tag">Ratios</span><span class="adv-tag">BVC</span></div>
         </div>
@@ -947,7 +869,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
       </a>
 
       <a href="stock-fundamental-screener.html" class="adv-row" style="color:inherit;">
-        <div class="adv-num">03</div>
         <div class="adv-body">
           <h4>Screener Fundamental BVC</h4>
           <p>Herramienta automatizada para filtrar y rankear acciones de la BVC por calidad fundamental: P/U, P/VL, Yield, ROE y Deuda/EBIT. Usa Power Query y Claude AI para estructurar los datos y generar el Top 10.</p>
@@ -957,7 +878,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
       </a>
 
       <a href="real-estate-valuator.html" class="adv-row" style="color:inherit;">
-        <div class="adv-num">04</div>
         <div class="adv-body">
           <h4>Valorador de Inversiones Finca Raíz — EE.UU. y Colombia</h4>
           <p>Evalúa la rentabilidad y el potencial de inversión de proyectos inmobiliarios en distintos escenarios.</p>
@@ -966,15 +886,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
         <div class="adv-arr">Ver →</div>
       </a>
 
-      <div class="adv-row-disabled">
-        <div class="adv-num">05</div>
+      <a href="personal-budget-dashboard.html" class="adv-row" style="color:inherit;">
         <div class="adv-body">
-          <h4>Valorador de Portafolios de Crédito Privado</h4>
-          <p>Analiza el rendimiento y riesgo de préstamos hipotecarios privados y portafolios de crédito.</p>
-          <div class="adv-tags"><span class="adv-tag">Excel</span><span class="adv-tag">LTV</span><span class="adv-tag">Private Lending</span><span class="adv-tag">Deuda Hipotecaria</span><span class="adv-tag-alt">Inversión Alternativa</span></div>
+          <h4>Panel de Presupuesto Personal — Power BI</h4>
+          <p>Vista de solo lectura de mi propio presupuesto mensual en Power BI: ingresos, gastos y ahorro por categoría con metodología 50/30/20. Panel financiero desarrollado como proyecto de análisis y visualización — portafolio profesional.</p>
+          <div class="adv-tags"><span class="adv-tag">Power BI</span><span class="adv-tag">50/30/20</span><span class="adv-tag">Solo lectura</span></div>
         </div>
-        <div class="adv-arr coming-soon">Ver →</div>
-      </div>
+        <div class="adv-arr">Ver →</div>
+      </a>
+
+      <a href="portfolio-dashboard.html" class="adv-row" style="color:inherit;">
+        <div class="adv-body">
+          <h4>Seguimiento de Portafolio — Excel en vivo</h4>
+          <p>Vista en vivo de mi propio seguimiento de portafolio en Excel Online: posiciones en BVC y NYSE, TRM y ajuste por inflación. Modelo financiero desarrollado como proyecto de análisis y visualización — portafolio profesional.</p>
+          <div class="adv-tags"><span class="adv-tag">Excel · Power Query</span><span class="adv-tag">BVC · NYSE</span><span class="adv-tag">Solo lectura</span></div>
+        </div>
+        <div class="adv-arr">Ver →</div>
+      </a>
 
     </div>
   </div>
@@ -987,7 +915,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
     <div class="rv">
       <div class="lbl">También en</div>
       <div class="h2">Otros proyectos.</div>
-      <p class="sub" style="margin-bottom:32px;">Consultoría corporativa, asesoría crediticia en bienes raices y visualización de informacion financiera.</p>
+      <p class="sub" style="margin-bottom:32px;">Consultoría corporativa, asesoría crediticia en bienes raíces y visualización de información financiera.</p>
     </div>
     <div class="ext-grid rv">
 
@@ -1038,7 +966,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
         <div>
           <div class="ext-sub">Visualización de datos</div>
           <div class="ext-title">Tableau Public</div>
-          <div class="ext-desc">Herramienta alternativa para dashboards interactivos y visualizaciones financieras.</div>
+          <div class="ext-desc">Herramienta alternativa para paneles interactivos y visualizaciones financieras.</div>
           <span class="ext-tag">tableau.com · andres.alarconfp</span>
         </div>
       </a>
@@ -1069,7 +997,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
   <div class="foot-in">
     <div class="foot-copy">© 2026 Andrés Felipe Alarcón · Finanzas Personales para COL-LATAM</div>
     <div class="foot-links">
-      <a href="#empieza">Empieza</a>
       <a href="#herramientas">Herramientas</a>
       <a href="#proyectos">Avanzado</a>
       <a href="#otros-proyectos">Otros</a>
@@ -1179,45 +1106,24 @@ const QPROFILES = {
     label: 'Conservador', cls: 'conservative', ringColor: '#059669',
     desc: 'Priorizas la seguridad y la preservación de capital. Prefieres rendimientos predecibles aunque sean más bajos, y toleras poco la volatilidad.',
     chars: ['Baja tolerancia al riesgo','Preferencia por activos seguros y predecibles','Necesitas acceso frecuente a tu capital','Prioridad: proteger lo que tienes'],
-    recs: ['Fondos de inversión colectiva (FIC)','Depósitos a plazo y CDTs','Ahorro en dólares (USDC)','Cuentas de alto rendimiento'],
-    platforms: [
-      { name:'Tyba', cat:'Fondos de Inversión Colectiva', logo:'https://logo.clearbit.com/tyba.com.co', why:'FIC conservadores con respaldo de Credicorp Capital. Ideal para dar el primer paso.', codeLabel:'Código beneficio', code:'AAL985239', url:'https://tyba.com.co/', bonus:'$10.000 Tybs al invertir' },
-      { name:'RappiCuenta', cat:'Cuenta de Ahorros · 9% E.A.', logo:'https://logo.clearbit.com/rappipay.co', why:'9% E.A. en Bolsillos, sin cuota de manejo. Perfecto si aún estás pagando comisiones en tu banco.', codeLabel:'Código beneficio', code:'andres442121', url:'https://www.rappipay.co/rappicuenta/', bonus:'Hasta $100.000 COP' },
-      { name:'Littio', cat:'Ahorro en Dólares Digitales', logo:'https://logo.clearbit.com/littio.com', why:'Dolariza tus ahorros con USDC. Sin complicaciones, con tarjeta incluida.', codeLabel:'Código beneficio', code:'XMGC', url:'https://www.littio.com', bonus:'$10 USDC al depositar' }
-    ]
+    recs: ['Fondos de inversión colectiva (FIC)','Depósitos a plazo y CDTs','Ahorro en dólares (USDC)','Cuentas de alto rendimiento']
   },
   moderate: {
     label: 'Moderado', cls: 'moderate', ringColor: '#d97706',
     desc: 'Buscas un equilibrio entre crecimiento y seguridad. Aceptas cierta volatilidad si el potencial de retorno lo justifica. Tienes paciencia para el mediano plazo.',
     chars: ['Tolerancia moderada al riesgo','Horizonte de inversión de 1 a 5 años','Equilibrio entre seguridad y crecimiento','Flexibilidad para ajustar estrategia'],
-    recs: ['Carteras diversificadas acciones/bonos','ETFs temáticos e indexados','Acciones fraccionadas sin comisión','Fondos balanceados internacionales'],
-    platforms: [
-      { name:'XTB', cat:'Acciones Internacionales · ETFs', logo:'https://logo.clearbit.com/xtb.com', why:'Miles de activos, 0% comisión hasta €100K/mes. Plataforma regulada en Europa, ideal para DCA.', codeLabel:'Acceso', code:'Disponible en Colombia', url:'https://www.xtb.com', bonus:'0% comisión hasta €100K/mes' },
-      { name:'Hapi', cat:'Acciones USA · Sin comisiones', logo:'https://logo.clearbit.com/hapi.com', why:'Fracciones de acciones del S&P 500 desde Colombia. Sin comisiones, perfecto para DCA mensual.', codeLabel:'Código beneficio', code:'ANDALA21', url:'https://app.hapi.trade/rewards?code=ANDALA21', bonus:'$10 USD al abrir cuenta' },
-      { name:'Insights', cat:'ETFs Temáticos · SIPC', logo:'https://logo.clearbit.com/insightswm.com', why:'ETFs de tecnología, energía limpia y salud. Regulada y asegurada por el SIPC de EE.UU.', codeLabel:'Código beneficio', code:'AA9737', url:'https://www.insightswm.com/', bonus:'$10 USD al invertir' }
-    ]
+    recs: ['Carteras diversificadas acciones/bonos','ETFs temáticos e indexados','Acciones fraccionadas sin comisión','Fondos balanceados internacionales']
   },
   aggressive: {
     label: 'Crecimiento', cls: 'aggressive', ringColor: '#dc2626',
     desc: 'Buscas maximizar retornos a largo plazo y aceptas la volatilidad como parte del proceso. Tienes experiencia o disposición a aprender análisis de activos individuales.',
     chars: ['Alta tolerancia al riesgo','Horizonte de inversión largo (+5 años)','Capacidad para resistir caídas sin pánico','Enfoque en acumulación de riqueza'],
-    recs: ['Acciones individuales de crecimiento','Mercado colombiano (BVC)','ETFs de sectores de alto crecimiento','Criptomonedas (porción pequeña del portafolio)'],
-    platforms: [
-      { name:'Trii', cat:'Acciones Colombianas · BVC', logo:'https://logo.clearbit.com/trii.com.co', why:'La mejor opción para acciones colombianas. Comisiones mínimas y apertura 100% digital.', codeLabel:'Código beneficio', code:'aa_4m59', url:'https://trii.co/?referrals=aa_4m59&name=Andrés', bonus:'$5.000 COP en tu primera inversión' },
-      { name:'XTB', cat:'Acciones Internacionales · ETFs', logo:'https://logo.clearbit.com/xtb.com', why:'Miles de activos globales con 0% comisión. Plataforma profesional y regulada en Europa.', codeLabel:'Acceso', code:'Disponible en Colombia', url:'https://www.xtb.com', bonus:'0% comisión hasta €100K/mes' },
-      { name:'Binance', cat:'Criptomonedas', logo:'https://logo.clearbit.com/binance.com', why:'Para la porción de cripto en tu portafolio — solo spot, con comisiones mínimas. Posición pequeña.', codeLabel:'Código 50% descuento', code:'94547225', url:'https://accounts.binance.com/en/register?ref=94547225', bonus:'50% dto. en comisiones' }
-    ]
+    recs: ['Acciones individuales de crecimiento','Mercado colombiano (BVC)','ETFs de sectores de alto crecimiento','Criptomonedas (porción pequeña del portafolio)']
   }
 };
 
 let qCur = 0, qAnswers = [], qSel = null;
 
-
-function qImgErr(el) {
-  var first = (el.alt || '?')[0];
-  el.style.display = 'none';
-  el.parentElement.innerHTML = '<span class="rplat-logo-fb">' + first + '</span>';
-}
 
 function openQuiz() {
   const w = document.getElementById('quizWrap');
@@ -1306,24 +1212,6 @@ function showQResults() {
   recs.innerHTML = '';
   p.recs.forEach(r => {
     recs.innerHTML += '<div class="result-char"><div class="result-char-dot ' + p.cls + '"></div><span>' + r + '</span></div>';
-  });
-
-  const grid = document.getElementById('resPlatGrid');
-  grid.innerHTML = '';
-  p.platforms.forEach(pl => {
-    const noCode = pl.code === 'Disponible en Colombia';
-    const codeBlock = noCode
-      ? '<div class="rplat-code-row"><div><div class="rplat-code-label">' + pl.codeLabel + '</div><div class="rplat-code-val">' + pl.code + '</div></div></div>'
-      : '<div class="rplat-code-row"><div><div class="rplat-code-label">' + pl.codeLabel + '</div><div class="rplat-code-val">' + pl.code + '</div></div><button class="copy-btn" onclick="copyCode(' + "'" + pl.code + "'" + ',this)">Copiar</button></div>';
-    grid.innerHTML += '<div class="rplat-card">' +
-      '<div class="rplat-header">' +
-        '<div class="rplat-logo"><img src="' + pl.logo + '" alt="' + pl.name[0] + '" onerror="qImgErr(this)"></div>' +
-        '<div><div class="rplat-name">' + pl.name + '</div><div class="rplat-cat">' + pl.cat + '</div></div>' +
-      '</div>' +
-      '<div class="rplat-why">' + pl.why + '</div>' +
-      codeBlock +
-      '<a href="' + pl.url + '" target="_blank" rel="noopener" class="rplat-btn">Abrir cuenta →</a>' +
-    '</div>';
   });
 
   showQScreen('qsResults');
