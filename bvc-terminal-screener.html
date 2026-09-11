@@ -167,14 +167,12 @@
     .rank-mid { background: var(--bg2); color: var(--text3); }
     .rank-bot { background: #fee2e2; color: #991b1b; }
 
-    /* signal badges */
+    /* status badges (uso genérico, ej. "En portafolio: Sí") */
     .badge {
       display: inline-block; font-family: var(--mono); font-size: 9px; letter-spacing: .06em;
       text-transform: uppercase; padding: 2px 8px; border-radius: 4px;
     }
-    .badge-buy  { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; }
-    .badge-sell { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
-    .badge-hold { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+    .badge-pos  { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; }
 
     .note-text {
       font-family: var(--mono); font-size: 10px; color: var(--text3);
@@ -256,10 +254,6 @@
         <div class="stat-val" id="statPortfolio">—</div>
         <div class="stat-lbl">Portafolio</div>
       </div>
-      <div class="hero-stat">
-        <div class="stat-val" id="statBuys">—</div>
-        <div class="stat-lbl">Señales compra</div>
-      </div>
     </div>
   </div>
 </div>
@@ -324,35 +318,35 @@
 
 <script>
 const STOCKS = [
-  {ticker:'MINEROS',   portfolio:0,top10:1,rpg:8.30,  pvl:2.51, yield:2.37, roe:31.78, debt:0.05,  rRpg:5, rPvl:30,rYield:26,rRoe:1, rDebt:1, strategy:'',     comment:'',                   signal:'Buy'},
-  {ticker:'TERPEL',    portfolio:1,top10:1,rpg:5.64,  pvl:1.03, yield:7.71, roe:20.25, debt:2.90,  rRpg:1, rPvl:19,rYield:7, rRoe:3, rDebt:3, strategy:'Buy',   comment:'',                   signal:'Sell'},
-  {ticker:'PROMIGAS',  portfolio:0,top10:1,rpg:6.63,  pvl:1.11, yield:8.33, roe:17.27, debt:6.42,  rRpg:4, rPvl:20,rYield:6, rRoe:6, rDebt:11,strategy:'',     comment:'',                   signal:'Hold'},
-  {ticker:'BVC',       portfolio:0,top10:1,rpg:9.90,  pvl:1.69, yield:9.71, roe:17.13, debt:5.70,  rRpg:13,rPvl:28,rYield:1, rRoe:7, rDebt:8, strategy:'',     comment:'',                   signal:''},
-  {ticker:'BHI',       portfolio:1,top10:1,rpg:10.00, pvl:0.95, yield:6.71, roe:16.27, debt:5.27,  rRpg:14,rPvl:16,rYield:11,rRoe:8, rDebt:8, strategy:'Hold',  comment:'Div Pago Mar 26',    signal:''},
-  {ticker:'ECOPETROL', portfolio:0,top10:1,rpg:11.07, pvl:0.91, yield:9.03, roe:10.76, debt:4.04,  rRpg:17,rPvl:14,rYield:2, rRoe:11,rDebt:4, strategy:'',     comment:'',                   signal:''},
-  {ticker:'PFCIBEST',  portfolio:1,top10:1,rpg:9.45,  pvl:1.68, yield:6.34, roe:17.47, debt:2.00,  rRpg:9, rPvl:27,rYield:12,rRoe:4, rDebt:8, strategy:'Buy',   comment:'Div Pago Mar 26',    signal:''},
-  {ticker:'EXITO',     portfolio:0,top10:1,rpg:8.33,  pvl:0.71, yield:1.58, roe:8.70,  debt:2.86,  rRpg:6, rPvl:10,rYield:27,rRoe:15,rDebt:2, strategy:'',     comment:'',                   signal:''},
-  {ticker:'GEB',       portfolio:1,top10:1,rpg:9.77,  pvl:1.35, yield:8.62, roe:13.84, debt:8.48,  rRpg:12,rPvl:22,rYield:5, rRoe:9, rDebt:13,strategy:'',     comment:'',                   signal:''},
-  {ticker:'GRUBOLIVAR',portfolio:1,top10:1,rpg:5.82,  pvl:0.53, yield:3.17, roe:8.87,  debt:43.82, rRpg:2, rPvl:8, rYield:24,rRoe:14,rDebt:8, strategy:'',     comment:'',                   signal:''},
-  {ticker:'PFGRUPOARG',portfolio:0,top10:0,rpg:9.18,  pvl:0.98, yield:5.40, roe:-4.97, debt:5.23,  rRpg:7, rPvl:17,rYield:15,rRoe:31,rDebt:9, strategy:'',     comment:'',                   signal:''},
-  {ticker:'PFCEMARGOS',portfolio:0,top10:0,rpg:33.52, pvl:1.57, yield:5.94, roe:4.40,  debt:4.31,  rRpg:27,rPvl:25,rYield:13,rRoe:23,rDebt:6, strategy:'',     comment:'',                   signal:''},
-  {ticker:'NUTRESA',   portfolio:0,top10:0,rpg:112.59,pvl:25.78,yield:0.00, roe:21.72, debt:7.33,  rRpg:28,rPvl:31,rYield:28,rRoe:2, rDebt:12,strategy:'',     comment:'',                   signal:''},
-  {ticker:'CELSIA',    portfolio:0,top10:0,rpg:24.22, pvl:1.47, yield:6.85, roe:5.97,  debt:5.09,  rRpg:25,rPvl:24,rYield:9, rRoe:21,rDebt:8, strategy:'',     comment:'',                   signal:''},
-  {ticker:'PFCORFICOL',portfolio:1,top10:0,rpg:15.34, pvl:0.48, yield:6.75, roe:3.22,  debt:12.82, rRpg:21,rPvl:6, rYield:10,rRoe:25,rDebt:8, strategy:'',     comment:'',                   signal:''},
-  {ticker:'CEMARGOS',  portfolio:0,top10:0,rpg:29.30, pvl:1.37, yield:5.94, roe:4.40,  debt:4.31,  rRpg:26,rPvl:23,rYield:14,rRoe:22,rDebt:5, strategy:'',     comment:'',                   signal:''},
-  {ticker:'ENKA',      portfolio:0,top10:0,rpg:0,     pvl:0.40, yield:8.89, roe:-0.11, debt:0,      rRpg:29,rPvl:4, rYield:3, rRoe:28,rDebt:15,strategy:'',     comment:'',                   signal:''},
-  {ticker:'CIBEST',    portfolio:0,top10:0,rpg:9.45,  pvl:1.68, yield:4.72, roe:17.47, debt:2.00,  rRpg:10,rPvl:26,rYield:16,rRoe:5, rDebt:8, strategy:'',     comment:'',                   signal:''},
-  {ticker:'PFAVAL',    portfolio:0,top10:0,rpg:9.37,  pvl:0.91, yield:3.72, roe:10.02, debt:15.43, rRpg:8, rPvl:15,rYield:21,rRoe:12,rDebt:8, strategy:'',     comment:'',                   signal:''},
-  {ticker:'CONCONCRET',portfolio:0,top10:0,rpg:0,     pvl:0.39, yield:0,    roe:-12.25,debt:0,      rRpg:32,rPvl:3, rYield:28,rRoe:32,rDebt:17,strategy:'',     comment:'',                   signal:''},
-  {ticker:'BOGOTA',    portfolio:0,top10:0,rpg:9.49,  pvl:0.76, yield:4.25, roe:8.23,  debt:20.53, rRpg:11,rPvl:11,rYield:19,rRoe:17,rDebt:8, strategy:'',     comment:'',                   signal:''},
-  {ticker:'GRUPOAVAL', portfolio:0,top10:0,rpg:10.18, pvl:0.99, yield:3.59, roe:10.02, debt:15.43, rRpg:15,rPvl:18,rYield:23,rRoe:13,rDebt:8, strategy:'',     comment:'',                   signal:''},
-  {ticker:'PFDAVVNDA', portfolio:1,top10:0,rpg:10.40, pvl:0.78, yield:3.76, roe:7.75,  debt:15.53, rRpg:16,rPvl:12,rYield:20,rRoe:20,rDebt:8, strategy:'Sell',  comment:'',                   signal:''},
-  {ticker:'GRUPOSURA', portfolio:0,top10:0,rpg:23.95, pvl:0.88, yield:2.88, roe:7.97,  debt:3.55,  rRpg:24,rPvl:13,rYield:25,rRoe:19,rDebt:8, strategy:'',     comment:'',                   signal:''},
-  {ticker:'PFGRUPSURA',portfolio:0,top10:0,rpg:19.02, pvl:0.70, yield:3.61, roe:7.97,  debt:3.55,  rRpg:23,rPvl:9, rYield:22,rRoe:18,rDebt:8, strategy:'',     comment:'',                   signal:''},
-  {ticker:'ISA',       portfolio:0,top10:0,rpg:12.79, pvl:1.74, yield:4.52, roe:13.74, debt:4.95,  rRpg:19,rPvl:29,rYield:17,rRoe:10,rDebt:7, strategy:'',     comment:'',                   signal:''},
-  {ticker:'ETB',       portfolio:0,top10:0,rpg:0,     pvl:0.10, yield:0,    roe:-1.07, debt:0,      rRpg:30,rPvl:1, rYield:28,rRoe:29,rDebt:14,strategy:'',     comment:'',                   signal:''},
-  {ticker:'CORFICOLCF',portfolio:1,top10:0,rpg:14.47, pvl:0.46, yield:7.32, roe:3.22,  debt:12.82, rRpg:20,rPvl:5, rYield:8, rRoe:24,rDebt:8, strategy:'Sell',  comment:'',                   signal:''},
-  {ticker:'GRUPOARGOS',portfolio:0,top10:0,rpg:11.57, pvl:1.24, yield:4.44, roe:-4.97, debt:5.23,  rRpg:18,rPvl:21,rYield:18,rRoe:30,rDebt:10,strategy:'',     comment:'',                   signal:''},
+  {ticker:'MINEROS',   portfolio:0,top10:1,rpg:8.30,  pvl:2.51, yield:2.37, roe:31.78, debt:0.05,  rRpg:5, rPvl:30,rYield:26,rRoe:1, rDebt:1, comment:''},
+  {ticker:'TERPEL',    portfolio:1,top10:1,rpg:5.64,  pvl:1.03, yield:7.71, roe:20.25, debt:2.90,  rRpg:1, rPvl:19,rYield:7, rRoe:3, rDebt:3, comment:''},
+  {ticker:'PROMIGAS',  portfolio:0,top10:1,rpg:6.63,  pvl:1.11, yield:8.33, roe:17.27, debt:6.42,  rRpg:4, rPvl:20,rYield:6, rRoe:6, rDebt:11,comment:''},
+  {ticker:'BVC',       portfolio:0,top10:1,rpg:9.90,  pvl:1.69, yield:9.71, roe:17.13, debt:5.70,  rRpg:13,rPvl:28,rYield:1, rRoe:7, rDebt:8, comment:''},
+  {ticker:'BHI',       portfolio:1,top10:1,rpg:10.00, pvl:0.95, yield:6.71, roe:16.27, debt:5.27,  rRpg:14,rPvl:16,rYield:11,rRoe:8, rDebt:8, comment:'Div Pago Mar 26'},
+  {ticker:'ECOPETROL', portfolio:0,top10:1,rpg:11.07, pvl:0.91, yield:9.03, roe:10.76, debt:4.04,  rRpg:17,rPvl:14,rYield:2, rRoe:11,rDebt:4, comment:''},
+  {ticker:'PFCIBEST',  portfolio:1,top10:1,rpg:9.45,  pvl:1.68, yield:6.34, roe:17.47, debt:2.00,  rRpg:9, rPvl:27,rYield:12,rRoe:4, rDebt:8, comment:'Div Pago Mar 26'},
+  {ticker:'EXITO',     portfolio:0,top10:1,rpg:8.33,  pvl:0.71, yield:1.58, roe:8.70,  debt:2.86,  rRpg:6, rPvl:10,rYield:27,rRoe:15,rDebt:2, comment:''},
+  {ticker:'GEB',       portfolio:1,top10:1,rpg:9.77,  pvl:1.35, yield:8.62, roe:13.84, debt:8.48,  rRpg:12,rPvl:22,rYield:5, rRoe:9, rDebt:13,comment:''},
+  {ticker:'GRUBOLIVAR',portfolio:1,top10:1,rpg:5.82,  pvl:0.53, yield:3.17, roe:8.87,  debt:43.82, rRpg:2, rPvl:8, rYield:24,rRoe:14,rDebt:8, comment:''},
+  {ticker:'PFGRUPOARG',portfolio:0,top10:0,rpg:9.18,  pvl:0.98, yield:5.40, roe:-4.97, debt:5.23,  rRpg:7, rPvl:17,rYield:15,rRoe:31,rDebt:9, comment:''},
+  {ticker:'PFCEMARGOS',portfolio:0,top10:0,rpg:33.52, pvl:1.57, yield:5.94, roe:4.40,  debt:4.31,  rRpg:27,rPvl:25,rYield:13,rRoe:23,rDebt:6, comment:''},
+  {ticker:'NUTRESA',   portfolio:0,top10:0,rpg:112.59,pvl:25.78,yield:0.00, roe:21.72, debt:7.33,  rRpg:28,rPvl:31,rYield:28,rRoe:2, rDebt:12,comment:''},
+  {ticker:'CELSIA',    portfolio:0,top10:0,rpg:24.22, pvl:1.47, yield:6.85, roe:5.97,  debt:5.09,  rRpg:25,rPvl:24,rYield:9, rRoe:21,rDebt:8, comment:''},
+  {ticker:'PFCORFICOL',portfolio:1,top10:0,rpg:15.34, pvl:0.48, yield:6.75, roe:3.22,  debt:12.82, rRpg:21,rPvl:6, rYield:10,rRoe:25,rDebt:8, comment:''},
+  {ticker:'CEMARGOS',  portfolio:0,top10:0,rpg:29.30, pvl:1.37, yield:5.94, roe:4.40,  debt:4.31,  rRpg:26,rPvl:23,rYield:14,rRoe:22,rDebt:5, comment:''},
+  {ticker:'ENKA',      portfolio:0,top10:0,rpg:0,     pvl:0.40, yield:8.89, roe:-0.11, debt:0,      rRpg:29,rPvl:4, rYield:3, rRoe:28,rDebt:15,comment:''},
+  {ticker:'CIBEST',    portfolio:0,top10:0,rpg:9.45,  pvl:1.68, yield:4.72, roe:17.47, debt:2.00,  rRpg:10,rPvl:26,rYield:16,rRoe:5, rDebt:8, comment:''},
+  {ticker:'PFAVAL',    portfolio:0,top10:0,rpg:9.37,  pvl:0.91, yield:3.72, roe:10.02, debt:15.43, rRpg:8, rPvl:15,rYield:21,rRoe:12,rDebt:8, comment:''},
+  {ticker:'CONCONCRET',portfolio:0,top10:0,rpg:0,     pvl:0.39, yield:0,    roe:-12.25,debt:0,      rRpg:32,rPvl:3, rYield:28,rRoe:32,rDebt:17,comment:''},
+  {ticker:'BOGOTA',    portfolio:0,top10:0,rpg:9.49,  pvl:0.76, yield:4.25, roe:8.23,  debt:20.53, rRpg:11,rPvl:11,rYield:19,rRoe:17,rDebt:8, comment:''},
+  {ticker:'GRUPOAVAL', portfolio:0,top10:0,rpg:10.18, pvl:0.99, yield:3.59, roe:10.02, debt:15.43, rRpg:15,rPvl:18,rYield:23,rRoe:13,rDebt:8, comment:''},
+  {ticker:'PFDAVVNDA', portfolio:1,top10:0,rpg:10.40, pvl:0.78, yield:3.76, roe:7.75,  debt:15.53, rRpg:16,rPvl:12,rYield:20,rRoe:20,rDebt:8, comment:''},
+  {ticker:'GRUPOSURA', portfolio:0,top10:0,rpg:23.95, pvl:0.88, yield:2.88, roe:7.97,  debt:3.55,  rRpg:24,rPvl:13,rYield:25,rRoe:19,rDebt:8, comment:''},
+  {ticker:'PFGRUPSURA',portfolio:0,top10:0,rpg:19.02, pvl:0.70, yield:3.61, roe:7.97,  debt:3.55,  rRpg:23,rPvl:9, rYield:22,rRoe:18,rDebt:8, comment:''},
+  {ticker:'ISA',       portfolio:0,top10:0,rpg:12.79, pvl:1.74, yield:4.52, roe:13.74, debt:4.95,  rRpg:19,rPvl:29,rYield:17,rRoe:10,rDebt:7, comment:''},
+  {ticker:'ETB',       portfolio:0,top10:0,rpg:0,     pvl:0.10, yield:0,    roe:-1.07, debt:0,      rRpg:30,rPvl:1, rYield:28,rRoe:29,rDebt:14,comment:''},
+  {ticker:'CORFICOLCF',portfolio:1,top10:0,rpg:14.47, pvl:0.46, yield:7.32, roe:3.22,  debt:12.82, rRpg:20,rPvl:5, rYield:8, rRoe:24,rDebt:8, comment:''},
+  {ticker:'GRUPOARGOS',portfolio:0,top10:0,rpg:11.57, pvl:1.24, yield:4.44, roe:-4.97, debt:5.23,  rRpg:18,rPvl:21,rYield:18,rRoe:30,rDebt:10,comment:''},
 ];
 
 const SECTORS = [
@@ -380,7 +374,6 @@ const COLS = [
   {key:'yield',    label:'Yield %',     num:true,  rk:'rYield'},
   {key:'roe',      label:'ROE %',       num:true,  rk:'rRoe'},
   {key:'debt',     label:'Deuda/EBIT',  num:true,  rk:'rDebt'},
-  {key:'strategy', label:'Señal',       num:false},
   {key:'comment',  label:'Nota',        num:false},
 ];
 
@@ -392,14 +385,6 @@ function rankCls(r){
   if(r <= Math.round(t * 0.3)) return 'rank-top';
   if(r >= Math.round(t * 0.7)) return 'rank-bot';
   return 'rank-mid';
-}
-
-function badge(s){
-  if(!s) return '';
-  const labels = {buy:'Comprar', sell:'Vender', hold:'Mantener'};
-  const m = {buy:'badge-buy', sell:'badge-sell', hold:'badge-hold'};
-  const k = s.toLowerCase();
-  return `<span class="badge ${m[k]||''}">${labels[k]||s}</span>`;
 }
 
 function buildHead(id, clickable){
@@ -435,7 +420,6 @@ function buildRows(id, data){
     <td>${fmt(s.yield)}<span class="rank ${rankCls(s.rYield)}">#${s.rYield || '—'}</span></td>
     <td>${fmt(s.roe)}<span class="rank ${rankCls(s.rRoe)}">#${s.rRoe || '—'}</span></td>
     <td>${fmt(s.debt)}<span class="rank ${rankCls(s.rDebt)}">#${s.rDebt || '—'}</span></td>
-    <td>${badge(s.strategy) || badge(s.signal) || '<span style="color:var(--bg3)">—</span>'}</td>
     <td class="note-text">${s.comment || ''}</td>
   </tr>`).join('');
 }
@@ -447,7 +431,7 @@ function buildSectors(){
     <td>${s.sector}</td>
     <td>${fmt(s.rpg)}</td><td>${fmt(s.pvl)}</td>
     <td>${fmt(s.yield)}</td><td>${fmt(s.roe)}</td><td>${fmt(s.debt)}</td>
-    <td>${s.portfolio ? '<span class="badge badge-buy">Sí</span>' : '<span style="color:var(--bg3)">—</span>'}</td>
+    <td>${s.portfolio ? '<span class="badge badge-pos">Sí</span>' : '<span style="color:var(--bg3)">—</span>'}</td>
   </tr>`).join('');
 }
 
@@ -455,7 +439,6 @@ function updateHero(){
   document.getElementById('statTotal').textContent     = stocks.length;
   document.getElementById('statTop10').textContent     = stocks.filter(s => s.top10).length;
   document.getElementById('statPortfolio').textContent = stocks.filter(s => s.portfolio).length;
-  document.getElementById('statBuys').textContent      = stocks.filter(s => s.strategy === 'Buy' || s.signal === 'Buy').length;
 }
 
 function renderAll(){

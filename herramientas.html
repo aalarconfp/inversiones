@@ -43,8 +43,8 @@ a{text-decoration:none;color:inherit;}
 /* ── NAV ─────────────────────────── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid var(--border);}
 .nav-in{max-width:var(--max);margin:0 auto;padding:0 32px;height:60px;display:flex;align-items:center;}
-.nav-logo{font-family:var(--display);font-weight:700;font-size:14.5px;letter-spacing:-0.02em;color:var(--text);margin-right:auto;line-height:1.2;}
-.nav-logo small{display:block;font-family:var(--mono);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);font-weight:400;margin-top:1px;}
+.nav-logo{font-family:var(--display);font-weight:700;font-size:14.5px;letter-spacing:-0.02em;color:var(--text);margin-right:auto;line-height:1.2;flex-shrink:0;white-space:nowrap;}
+.nav-logo small{display:block;font-family:var(--mono);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);font-weight:400;margin-top:1px;white-space:nowrap;}
 .nav-links{display:flex;gap:2px;}
 .nav-links a{font-size:13px;color:var(--text2);padding:6px 13px;border-radius:8px;transition:color .18s,background .18s;}
 .nav-links a:hover{color:var(--text);background:rgba(0,0,0,0.05);}
@@ -149,9 +149,10 @@ footer{border-top:1px solid var(--border);padding:28px 0;}
       <small>Finanzas Personales · COL-LATAM</small>
     </a>
     <div class="nav-links">
-      <a href="index.html#educacion">Educación</a>
+      <a href="index.html#educacion">Aprende</a>
       <a href="index.html#diagnostico">Diagnóstico</a>
       <a href="index.html#herramientas" class="active">Herramientas</a>
+      <a href="curso-pfos-diy.html">Tu Sistema Financiero</a>
       <a href="index.html#recursos">Recursos</a>
       <a href="sobre-mi.html">Sobre mí</a>
       <a href="index.html#contacto" class="nav-cta">Escríbeme</a>
@@ -162,9 +163,10 @@ footer{border-top:1px solid var(--border);padding:28px 0;}
   </div>
 </nav>
 <div class="mob-menu" id="mobMenu">
-  <a href="index.html#educacion" onclick="toggleMenu()">Educación</a>
+  <a href="index.html#educacion" onclick="toggleMenu()">Aprende</a>
   <a href="index.html#diagnostico" onclick="toggleMenu()">Diagnóstico</a>
   <a href="index.html#herramientas" onclick="toggleMenu()">Herramientas</a>
+  <a href="curso-pfos-diy.html" onclick="toggleMenu()">Tu Sistema Financiero</a>
   <a href="index.html#recursos" onclick="toggleMenu()">Recursos</a>
   <a href="sobre-mi.html" onclick="toggleMenu()">Sobre mí</a>
   <a href="index.html#contacto" onclick="toggleMenu()">Escríbeme</a>
